@@ -25,13 +25,13 @@ def main() -> int:
     for name, url in MODELS.items():
         target = DEST / name
         if target.exists() and target.stat().st_size > 100_000:
-            print(f"✓ {name} (already present)")
+            print(f"ok   {name} (already present)")
             continue
-        print(f"↓ {name}")
+        print(f"get  {name}")
         with urllib.request.urlopen(url, timeout=60) as resp:
             data = resp.read()
         target.write_bytes(data)
-        print(f"  {len(data) / 1e6:.1f} MB  sha256={hashlib.sha256(data).hexdigest()[:16]}…")
+        print(f"  {len(data) / 1e6:.1f} MB  sha256={hashlib.sha256(data).hexdigest()[:16]}")
     return 0
 
 
