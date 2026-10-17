@@ -1,0 +1,8 @@
+{
+  "popupTitle": { "message": "Imaa Helper" },
+  "connected": { "message": "Connected to Imaa" },
+  "notConnected": { "message": "Imaa is not running" },
+  "hintConnected": { "message": "Make the ✊ fist gesture (or shake your head) to press a visible 'Skip ad' button." },
+  "hintNotConnected": { "message": "Start the Imaa app and make sure 'Browser helper' is on in its Settings." },
+  "port": { "message": "Port" }
+}

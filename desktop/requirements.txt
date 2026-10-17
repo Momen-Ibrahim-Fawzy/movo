@@ -1,0 +1,10 @@
+mediapipe>=0.10.14
+opencv-python>=4.9
+numpy>=1.24
+PySide6>=6.6
+pynput>=1.7.7
+websockets>=13
+segno>=1.6
+pycaw>=20240316; sys_platform == "win32"
+comtypes>=1.4; sys_platform == "win32"
+pyobjc-framework-Cocoa>=10; sys_platform == "darwin"
