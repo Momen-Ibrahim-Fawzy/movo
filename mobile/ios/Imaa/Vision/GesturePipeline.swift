@@ -9,6 +9,8 @@ final class GesturePipeline: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
 
     var handEnabled = true
     var headEnabled = false
+    var eyesEnabled = false
+    let eyes = EyeRecognizer()
     var targetFps = 15.0
     let hand = HandRecognizer()
     let head = HeadRecognizer()
@@ -88,7 +90,7 @@ final class GesturePipeline: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
         let aspect = w / max(h, 1)
         var requests: [VNRequest] = []
         if handEnabled { requests.append(handRequest) }
-        if headEnabled { requests.append(faceRequest) }
+        if headEnabled || eyesEnabled { requests.append(faceRequest) }
         guard !requests.isEmpty else { return }
         let handler = VNImageRequestHandler(cvPixelBuffer: buffer, orientation: .up, options: [:])
         do { try handler.perform(requests) } catch { return }
@@ -100,13 +102,18 @@ final class GesturePipeline: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
             present = lm != nil
             events += hand.update(lm, t: now)
         }
-        if headEnabled {
+        if headEnabled || eyesEnabled {
             let obs = face(aspect: aspect)
             present = present || obs != nil
-            events += head.update(obs, t: now)
+            let headEvents = head.update(obs, t: now)
+            if headEnabled { events += headEvents }
+            if eyesEnabled {
+                let d = head.baseline == nil ? (0.0, 0.0, 0.0) : head.delta
+                events += eyes.update(obs?.eyes, t: now, yaw: d.0, pitch: d.1, headBusy: now - head.lastEventAt < 0.8)
+            }
         }
         if present { lastSeen = now }
-        let pose = hand.livePose ?? head.livePose
+        let pose = hand.livePose ?? head.livePose ?? (eyesEnabled ? eyes.livePose : nil)
         DispatchQueue.main.async { [weak self] in
             self?.onPose?(pose, present)
             if !events.isEmpty { self?.onEvents?(events) }
@@ -142,6 +149,23 @@ final class GesturePipeline: NSObject, AVCaptureVideoDataOutputSampleBufferDeleg
             expressions["mouth_open"] = max(0, min(1, (open - 0.08) / 0.35))
             expressions["smile"] = max(0, min(1, (width - 0.95) / 0.35))
         }
-        return FaceObservation(yaw: yaw, pitch: pitch, roll: roll, expressions: expressions)
+        // Eye openness from the eye outlines and gaze from the pupils. Assign eyes by screen side: the video is
+        // mirrored, so the eye on the screen-left is the user's left eye.
+        var eyeFeatures: EyeFeatures?
+        if let lp = lm.leftPupil, let rp = lm.rightPupil {
+            let regions = [(pts(leftEye), pts(lp)), (pts(rightEye), pts(rp))].sorted { Geo.mean($0.0).x < Geo.mean($1.0).x }
+            func measure(_ outline: [P], _ pupil: [P]) -> (Double, Double, Double) {
+                let xs = outline.map(\.x), ys = outline.map(\.y)
+                let w = max((xs.max() ?? 0) - (xs.min() ?? 0), 1e-6), h = (ys.max() ?? 0) - (ys.min() ?? 0)
+                let c = Geo.mean(pupil.isEmpty ? outline : pupil)
+                let hx = (c.x - (xs.min() ?? 0)) / w - 0.5
+                let vy = 0.5 - (c.y - (ys.min() ?? 0)) / max(h, 1e-6)
+                return (h / w, hx, vy)
+            }
+            let l = measure(regions[0].0, regions[0].1), r = measure(regions[1].0, regions[1].1)
+            eyeFeatures = EyeFeatures(earLeft: l.0, earRight: r.0, blinkLeft: nil, blinkRight: nil,
+                                      gazeX: (l.1 + r.1) / 2, gazeY: (l.2 + r.2) / 2, smile: expressions["smile"] ?? 0)
+        }
+        return FaceObservation(yaw: yaw, pitch: pitch, roll: roll, expressions: expressions, eyes: eyeFeatures)
     }
 }

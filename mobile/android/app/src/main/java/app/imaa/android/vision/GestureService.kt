@@ -28,6 +28,8 @@ import app.imaa.android.ImaaApp
 import app.imaa.android.R
 import app.imaa.android.control.ActionRunner
 import app.imaa.android.core.Catalog
+import app.imaa.android.core.EyeCalibration
+import app.imaa.android.core.Eyes
 import app.imaa.android.core.GestureEvent
 import app.imaa.android.core.HandRecognizer
 import app.imaa.android.core.HeadRecognizer
@@ -150,7 +152,7 @@ class GestureService : LifecycleService() {
         proxy.use { image ->
             val now = SystemClock.uptimeMillis()
             val idle = now - lastSeen > 3000
-            val target = if (idle) 5 else prefs.targetFps()
+            val target = if (idle) 5 else if (prefs.eyesEnabled) maxOf(prefs.targetFps(), 15) else prefs.targetFps()
             if (now - lastFrame < 1000L / target) return
             lastFrame = now
             try {
@@ -163,8 +165,14 @@ class GestureService : LifecycleService() {
 
     private fun process(image: ImageProxy, now: Long, idle: Boolean) {
         val handOn = prefs.handEnabled
-        val headOn = prefs.headEnabled
-        val accurate = prefs.headMode == "accurate"
+        val eyesOn = prefs.eyesEnabled
+        val headOn = prefs.headEnabled || eyesOn
+        val accurate = prefs.headMode == "accurate" || eyesOn
+        val eyes = Eyes.recognizer
+        eyes.glasses = prefs.eyesGlasses
+        eyes.sensitivity = prefs.eyesSensitivity
+        eyes.holdScale = prefs.holdScale
+        if (eyes.calibration == null && prefs.eyesCalibration.isNotEmpty()) eyes.calibration = EyeCalibration.decode(prefs.eyesCalibration)
         if (handOn && handTracker == null) handTracker = HandTracker(this)
         if (!handOn) { handTracker?.close(); handTracker = null; hand.reset() }
         if (faceTracker != null && faceTracker!!.accurate != accurate) { faceTracker?.close(); faceTracker = null; head.recalibrate() }
@@ -186,7 +194,7 @@ class GestureService : LifecycleService() {
         val t = (now - startTime) / 1000f
 
         val runHand = handTracker != null && (faceTracker == null || frameNo % 2 == 0L)
-        val runFace = faceTracker != null && (handTracker == null || frameNo % 2 == 1L)
+        val runFace = faceTracker != null && (handTracker == null || eyesOn || frameNo % 2 == 1L)
         frameNo++
         val events = mutableListOf<GestureEvent>()
         var present = false
@@ -198,7 +206,12 @@ class GestureService : LifecycleService() {
         if (runFace) {
             val obs = faceTracker!!.detect(mp, ts, aspect)
             present = present || obs != null
-            events += head.update(obs, t)
+            val headEvents = head.update(obs, t)
+            if (prefs.headEnabled) events += headEvents
+            if (eyesOn) {
+                val d = if (head.baseline != null) head.delta else Triple(0f, 0f, 0f)
+                events += eyes.update(obs?.eyes, t, d.first, d.second, t - head.lastEventAt < 0.8f)
+            }
         }
         if (present) lastSeen = now
         mp.close()
@@ -209,7 +222,8 @@ class GestureService : LifecycleService() {
         while (fpsWindow.isNotEmpty() && now - fpsWindow.first() > 1000) fpsWindow.removeFirst()
         ImaaState.fps.value = fpsWindow.size
         ImaaState.idle.value = idle
-        ImaaState.livePose.value = hand.livePose ?: head.livePose
+        ImaaState.livePose.value = hand.livePose ?: head.livePose ?: if (eyesOn) eyes.livePose else null
+        ImaaState.eyeOpen.value = eyes.openness.toList()
         events.forEach { ev -> main.post { dispatch(ev) } }
     }
 

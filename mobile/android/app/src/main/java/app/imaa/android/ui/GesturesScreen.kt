@@ -40,13 +40,19 @@ fun GesturesScreen(modifier: Modifier) {
         TabRow(selectedTabIndex = tab, containerColor = MaterialTheme.colorScheme.background) {
             Tab(selected = tab == 0, onClick = { tab = 0 }, text = { Text(stringResource(R.string.gestures_hand)) })
             Tab(selected = tab == 1, onClick = { tab = 1 }, text = { Text(stringResource(R.string.gestures_head)) })
+            Tab(selected = tab == 2, onClick = { tab = 2 }, text = { Text(stringResource(R.string.gestures_eyes)) })
         }
-        val list = if (tab == 0) Catalog.handGestures else Catalog.headGestures
+        val list = when (tab) {
+            0 -> Catalog.handGestures
+            1 -> Catalog.headGestures
+            else -> Catalog.eyeGestures
+        }
         LazyColumn(
             Modifier.fillMaxSize().padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 16.dp),
         ) {
+            if (tab == 2) item { EyeSettingsCard() }
             items(list, key = { "${it.id}-$version" }) { GestureItem(it) }
         }
     }

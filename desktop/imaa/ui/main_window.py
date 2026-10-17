@@ -19,6 +19,7 @@ from imaa.paths import asset
 from imaa.services.system_hooks import is_wayland, mac_accessibility_trusted, open_mac_privacy
 from imaa.ui import theme
 from imaa.ui.pages.about import AboutPage
+from imaa.ui.pages.eyes import EyePage
 from imaa.ui.pages.gestures import HandPage, HeadPage
 from imaa.ui.pages.guide import GuidePage
 from imaa.ui.pages.home import HomePage
@@ -30,6 +31,7 @@ NAV = (
     ("home", "home", HomePage),
     ("hand", "hand", HandPage),
     ("head", "face", HeadPage),
+    ("eyes", "eye", EyePage),
     ("profiles", "layers", ProfilesPage),
     ("guide", "book", GuidePage),
     ("settings", "settings", SettingsPage),
@@ -170,6 +172,11 @@ class MainWindow(QMainWindow):
         hl.setContentsMargins(24, 16, 24, 0)
         hl.addWidget(w)
         return holder
+
+    def play_tick(self) -> None:
+        cb = getattr(self, "tick", None)
+        if cb:
+            cb()
 
     def rebuild_soon(self) -> None:
         self._rebuild_timer.start()

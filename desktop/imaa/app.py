@@ -113,6 +113,7 @@ def main(argv: list[str] | None = None) -> int:
             if not window.isVisible():
                 window.show_and_raise()
 
+    window.tick = lambda: sound.play() if sound is not None else QApplication.beep()
     controller.action_done.connect(on_action)
     controller.gesture_seen.connect(on_gesture)
     controller.state_changed.connect(on_state)

@@ -2,6 +2,9 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var model: AppModel
+    @State private var calibrating = false
+    @State private var calStep = "eyes.cal_ready"
+    @State private var calResult: Bool?
 
     var body: some View {
         NavigationStack {
@@ -18,6 +21,14 @@ struct SettingsView: View {
                     Button("settings.language") {
                         if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
                     }
+                }
+                Section("eyes.title") {
+                    Toggle("home.eyes", isOn: $model.eyesEnabled)
+                    Toggle("eyes.glasses", isOn: $model.eyesGlasses)
+                    Text(LocalizedStringKey(model.eyesCalibrated ? "eyes.cal_status_done" : "eyes.cal_status_auto"))
+                        .font(.footnote).foregroundStyle(.secondary)
+                    Button("eyes.calibrate") { calibrating = true }.disabled(!model.running || !model.eyesEnabled)
+                    if model.eyesCalibrated { Button("eyes.cal_reset", role: .destructive) { model.resetEyeCalibration() } }
                 }
                 Section("settings.detection") {
                     Picker("settings.power", selection: $model.powerMode) {
@@ -54,6 +65,27 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("nav.settings")
+            .sheet(isPresented: $calibrating) {
+                VStack(spacing: 18) {
+                    Image(systemName: "eye").font(.system(size: 44)).foregroundStyle(Brand.accent)
+                    if let ok = calResult {
+                        Text(LocalizedStringKey(ok ? "eyes.cal_done" : "eyes.cal_failed")).font(.title3.bold())
+                        Text(LocalizedStringKey(ok ? "eyes.cal_done_d" : "eyes.cal_failed_d")).multilineTextAlignment(.center).foregroundStyle(.secondary)
+                        Button("eyes.cal_close") { calibrating = false }.buttonStyle(.borderedProminent)
+                    } else {
+                        Text(LocalizedStringKey(calStep)).font(.title3.bold())
+                        Text(LocalizedStringKey(calStep + "_d")).multilineTextAlignment(.center).foregroundStyle(.secondary)
+                        ProgressView()
+                    }
+                }
+                .padding(32)
+                .presentationDetents([.medium])
+                .interactiveDismissDisabled(calResult == nil)
+                .task {
+                    calResult = nil
+                    calResult = await model.calibrateEyes { calStep = $0 }
+                }
+            }
         }
     }
 }

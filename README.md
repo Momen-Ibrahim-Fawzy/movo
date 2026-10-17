@@ -37,6 +37,7 @@
 | 📸 Screenshot | Saved to *Pictures/Imaa* and copied to the clipboard |
 | 🎙️ Calls | Microphone on / off for the whole system |
 | ⏩ Ads | Skip ads by pressing the visible *Skip* button for you |
+| 👁️ Eyes only | Wink left/right, double blink, long blink, close your eyes, glance up/down — with or without glasses |
 | 🖱️ Mouse | Air mouse (index finger) or head pointer (head + open mouth to click) |
 | ⌨️ Anything else | Bind any gesture to any keyboard shortcut |
 
@@ -57,6 +58,16 @@
 | ✊ Fist | Skip ad | | |
 | 🤘 Rock sign (hold) | Pause / resume Imaa | | |
 
+| Eyes (with or without glasses) | Action |
+|------|--------|
+| 😉 Wink left / right | Previous / next |
+| 👁️ Double blink | Play / pause |
+| 😌 Long blink (~1 s) | Skip ad |
+| 😴 Eyes closed 2 s | Pause / resume Imaa |
+| 🔼 / 🔽 Glance up / down (hold) | Scroll |
+
+Normal blinking is ignored. A 7-second calibration adapts eye gestures to your eyes and your glasses — see [EYE_GESTURES.md](docs/EYE_GESTURES.md).
+
 \* *Accurate* head mode. Every gesture can be re-assigned, switched off, or set per **profile**
 (General, Presentation, Media, Browser, Meeting — Imaa switches automatically for the app in front).
 
@@ -65,7 +76,7 @@
 - **Start, stop and pause inside the app** — big power button, tray menu, or **Ctrl + Alt + G** anywhere.
 - **English and Arabic** with a full right-to-left layout, **light, dark or system** theme — switch instantly.
 - **Practice mode** shows which gesture Imaa sees without doing anything.
-- **Head gestures and head pointer** for people who can't use their hands.
+- **Head gestures, head pointer and eye gestures** for people who can't use their hands.
 - **Phone as a remote camera** — the phone app recognises gestures and sends only the gesture name to the computer over your Wi-Fi.
 - **Light on resources** — about 10–20 ms of CPU per frame; rests at 5 fps when nobody is in view; Eco mode for older laptops.
 

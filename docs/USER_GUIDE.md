@@ -70,6 +70,24 @@ Press **Recalibrate head** while looking straight at the screen if head gestures
 ### Practice mode
 Home → *Practice mode*: Imaa highlights the gesture it sees and shows its name, but doesn't do anything.
 
+### Eye gestures (with or without glasses)
+Open **Eye gestures** in the sidebar and switch them on. If you wear glasses, turn on **I wear glasses**.
+Then press **Calibrate my eyes** (7 seconds: look at the screen, then close your eyes between two sounds) —
+do it *while wearing your glasses*, sitting as you normally do.
+
+| Eye gesture | Default action |
+|-------------|----------------|
+| 😉 Wink left / right (~0.35 s) | Previous / next |
+| 👁️ Double blink | Play / pause |
+| 😌 Long blink (~1 s) | Skip ad |
+| 😴 Eyes closed 2 s | Pause / resume Imaa |
+| 🔼 / 🔽 Glance up / down, hold | Scroll up / down |
+| ◀️ / ▶️ Glance left / right, hold | *(free to assign)* |
+
+Normal blinking never triggers anything. The **live eye meter** shows each eye's openness and where you are looking.
+Tips for glasses: avoid a lamp or window reflecting in the lenses, keep the frame from covering your pupils, and
+recalibrate when you switch between glasses and no glasses. Can't wink? Use double and long blinks instead.
+
 ## 4. Profiles
 
 Profiles hold different bindings for different apps. Built-in: **General**, **Presentation** (PowerPoint, Keynote,

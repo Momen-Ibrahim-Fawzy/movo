@@ -105,9 +105,11 @@ class HomePage(Page):
         items = [
             ("hand.enabled", "home.q_hand", "home.q_hand_d"),
             ("head.enabled", "home.q_head", "home.q_head_d"),
+            ("eyes.enabled", "home.q_eyes", "home.q_eyes_d"),
             ("pointer.air_mouse", "home.q_air", "home.q_air_d"),
             ("pointer.head_pointer", "home.q_headptr", "home.q_headptr_d"),
             ("hud.enabled", "home.q_hud", "home.q_hud_d"),
+            ("eyes.glasses", "eyes.glasses", "home.q_glasses_d"),
             ("__practice__", "home.q_practice", "home.q_practice_d"),
         ]
         for i, (key, title, desc) in enumerate(items):
@@ -226,7 +228,7 @@ class HomePage(Page):
             parts.append(tr("home.idle"))
         self.fps_label.setText(" · ".join(parts))
         self.light_label.setText("💡 " + tr("home.low_light") if s.low_light else "")
-        live = s.hand_pose or s.head_pose
+        live = s.hand_pose or s.head_pose or s.eye_pose
         self.preview.overlay_text = _live_text(live)
 
     def _on_preview(self, img) -> None:

@@ -21,6 +21,12 @@ Research notes that informed it are in [RESEARCH.md](RESEARCH.md); the technical
 | G5 | Friendly for everyone | Arabic + English (full RTL), light/dark/system themes, onboarding, live practice mode |
 | G6 | Everywhere | Windows, macOS, Linux desktop; Android phone/tablet/ChromeOS; iOS/iPadOS |
 
+### Eye gestures (added)
+
+Winks, double/long blinks, eyes-closed and held glances, designed to work **with or without glasses** through
+fused learned + geometric signals, per-person calibration and glare smoothing. Research and design:
+[EYE_GESTURES.md](EYE_GESTURES.md). Status: ✅ desktop, ✅ Android, ✅ iOS (code complete, CI build).
+
 ## 2. Non-goals (v1)
 
 - Sign-language translation (different problem, different models).

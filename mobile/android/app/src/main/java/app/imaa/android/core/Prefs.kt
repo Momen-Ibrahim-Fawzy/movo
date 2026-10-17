@@ -35,6 +35,10 @@ class Prefs(context: Context) {
     var remoteHost: String get() = str("remote_host", ""); set(v) = putStr("remote_host", v)
     var remotePort: Int get() = sp.getInt("remote_port", 47813); set(v) { sp.edit().putInt("remote_port", v).apply(); changed() }
     var remoteCode: String get() = str("remote_code", ""); set(v) = putStr("remote_code", v)
+    var eyesEnabled: Boolean get() = sp.getBoolean("eyes_enabled", false); set(v) = putBool("eyes_enabled", v)
+    var eyesGlasses: Boolean get() = sp.getBoolean("eyes_glasses", false); set(v) = putBool("eyes_glasses", v)
+    var eyesSensitivity: Float get() = sp.getFloat("eyes_sensitivity", 1f); set(v) = putFloat("eyes_sensitivity", v)
+    var eyesCalibration: String get() = str("eyes_calibration", ""); set(v) = putStr("eyes_calibration", v)
     var disclosureAccepted: Boolean get() = sp.getBoolean("disclosure", false); set(v) = putBool("disclosure", v)
 
     fun targetFps(): Int = when (powerMode) { "eco" -> 10; "performance" -> 24; else -> 15 }

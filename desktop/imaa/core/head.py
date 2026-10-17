@@ -27,6 +27,7 @@ class FaceObservation:
     pitch: float
     roll: float
     expressions: Optional[dict] = None  # mouth_open / smile / brows_up in 0..1 (Accurate mode only)
+    eyes: Optional[object] = None  # imaa.core.eyes.EyeFeatures (Accurate mode only)
 
 
 def pose_from_points(eye_a: Sequence[float], eye_b: Sequence[float], nose: Sequence[float]) -> tuple[float, float, float]:

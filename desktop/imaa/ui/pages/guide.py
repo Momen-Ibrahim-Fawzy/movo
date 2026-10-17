@@ -5,7 +5,7 @@ from __future__ import annotations
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QGridLayout, QHBoxLayout, QLabel, QPushButton, QVBoxLayout
 
-from imaa.core.catalog import DEFAULT_BINDINGS, HAND_GESTURES, HEAD_GESTURES
+from imaa.core.catalog import DEFAULT_BINDINGS, EYE_GESTURES, HAND_GESTURES, HEAD_GESTURES
 from imaa.i18n import tr
 from imaa.ui import theme
 from imaa.ui.pages import Page
@@ -18,6 +18,7 @@ STEPS = (
     ("guide.s4", "guide.s4_d", None),
     ("guide.s5", "guide.s5_d", "hand"),
     ("guide.s6", "guide.s6_d", "head"),
+    ("guide.s9", "guide.s9_d", "eyes"),
     ("guide.s7", "guide.s7_d", "profiles"),
     ("guide.s8", "guide.s8_d", "settings"),
 )
@@ -55,7 +56,11 @@ class GuidePage(Page):
             steps.lay.addLayout(row)
         self.body.addWidget(steps)
 
-        for title, gestures in (("guide.hand_sheet", HAND_GESTURES), ("guide.head_sheet", HEAD_GESTURES)):
+        for title, gestures in (
+            ("guide.hand_sheet", HAND_GESTURES),
+            ("guide.head_sheet", HEAD_GESTURES),
+            ("guide.eye_sheet", EYE_GESTURES),
+        ):
             sheet = Card()
             sheet.lay.addWidget(label(tr(title), "SectionTitle"))
             grid = QGridLayout()

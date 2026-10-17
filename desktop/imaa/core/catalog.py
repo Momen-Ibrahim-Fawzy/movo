@@ -51,7 +51,19 @@ HEAD_GESTURES: tuple[GestureInfo, ...] = (
     GestureInfo("brows_up", "head", "🤨", 400, accurate_only=True),
 )
 
-ALL_GESTURES: dict[str, GestureInfo] = {g.id: g for g in HAND_GESTURES + HEAD_GESTURES}
+EYE_GESTURES: tuple[GestureInfo, ...] = (
+    GestureInfo("wink_left", "eye", "😉", 350, accurate_only=True),
+    GestureInfo("wink_right", "eye", "😉", 350, accurate_only=True),
+    GestureInfo("blink_double", "eye", "👁️", accurate_only=True),
+    GestureInfo("blink_long", "eye", "😌", 600, accurate_only=True),
+    GestureInfo("eyes_closed", "eye", "😴", 2000, accurate_only=True),
+    GestureInfo("eye_look_up", "eye", "🔼", 600, accurate_only=True),
+    GestureInfo("eye_look_down", "eye", "🔽", 600, accurate_only=True),
+    GestureInfo("eye_look_left", "eye", "◀️", 600, accurate_only=True),
+    GestureInfo("eye_look_right", "eye", "▶️", 600, accurate_only=True),
+)
+
+ALL_GESTURES: dict[str, GestureInfo] = {g.id: g for g in HAND_GESTURES + HEAD_GESTURES + EYE_GESTURES}
 
 
 @dataclass(frozen=True)
@@ -148,6 +160,16 @@ DEFAULT_BINDINGS: dict[str, str] = {
     "mouth_open": "mic_toggle",
     "smile": "screenshot",
     "brows_up": "none",
+    # eyes
+    "wink_left": "previous",
+    "wink_right": "next",
+    "blink_double": "play_pause",
+    "blink_long": "skip_ad",
+    "eyes_closed": "pause_control",
+    "eye_look_up": "scroll_up",
+    "eye_look_down": "scroll_down",
+    "eye_look_left": "none",
+    "eye_look_right": "none",
 }
 
 # Profile presets: overrides on top of DEFAULT_BINDINGS, plus apps that activate them automatically.
@@ -159,6 +181,8 @@ PROFILE_PRESETS: dict[str, dict] = {
             "point_left": "slide_prev",
             "tilt_right": "slide_next",
             "tilt_left": "slide_prev",
+            "wink_right": "slide_next",
+            "wink_left": "slide_prev",
             "pinch": "slide_black",
             "victory": "slideshow_start",
         },

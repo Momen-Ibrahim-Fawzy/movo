@@ -5,7 +5,7 @@ from __future__ import annotations
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QComboBox, QGridLayout, QHBoxLayout, QLineEdit, QPushButton, QVBoxLayout, QWidget
 
-from imaa.core.catalog import ACTION_CATEGORIES, ACTIONS, HAND_GESTURES, HEAD_GESTURES
+from imaa.core.catalog import ACTION_CATEGORIES, ACTIONS, EYE_GESTURES, HAND_GESTURES, HEAD_GESTURES
 from imaa.i18n import tr
 from imaa.ui import theme
 from imaa.ui.pages import Page
@@ -44,7 +44,7 @@ class GestureCard(Card):
         text.setSpacing(2)
         name_row = QHBoxLayout()
         name_row.addWidget(label(tr(f"g.{gesture.id}"), "SectionTitle"))
-        if gesture.accurate_only:
+        if gesture.accurate_only and gesture.source == "head":
             badge = label(tr("head.accurate_badge"), "Small")
             badge.setStyleSheet(
                 f"background:{theme.current().accent_soft}; color:{theme.current().accent}; border-radius:8px; padding:2px 8px;"
@@ -96,9 +96,11 @@ class GesturesPage(Page):
     def __init__(self, ctx, parent=None):
         super().__init__(ctx, parent)
         self.profile = self.settings.get("active_profile")
-        hand = self.source == "hand"
         self.body.addWidget(
-            page_header(tr("hand.title" if hand else "head.title"), tr("hand.subtitle" if hand else "head.subtitle"))
+            page_header(
+                tr(f"{self.source if self.source != 'eye' else 'eyes'}.title"),
+                tr(f"{self.source if self.source != 'eye' else 'eyes'}.subtitle"),
+            )
         )
         self.body.addWidget(self._settings_card())
 
@@ -219,7 +221,7 @@ class GesturesPage(Page):
 
     # ------------------------------------------------------------------ grid
     def _gestures(self):
-        return HAND_GESTURES if self.source == "hand" else HEAD_GESTURES
+        return {"hand": HAND_GESTURES, "head": HEAD_GESTURES, "eye": EYE_GESTURES}[self.source]
 
     def _fill(self) -> None:
         while self.grid.count():

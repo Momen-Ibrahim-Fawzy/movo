@@ -1,7 +1,9 @@
 package app.imaa.android.vision
 
 import android.content.Context
+import app.imaa.android.core.EyeFeatures
 import app.imaa.android.core.FaceObservation
+import app.imaa.android.core.Geo
 import app.imaa.android.core.HeadRecognizer
 import app.imaa.android.core.P
 import com.google.mediapipe.framework.image.MPImage
@@ -86,7 +88,26 @@ class FaceTracker(context: Context, val accurate: Boolean) : AutoCloseable {
             "smile" to ((blend["mouthSmileLeft"] ?: 0f) + (blend["mouthSmileRight"] ?: 0f)) / 2,
             "brows_up" to maxOf(blend["browInnerUp"] ?: 0f, ((blend["browOuterUpLeft"] ?: 0f) + (blend["browOuterUpRight"] ?: 0f)) / 2),
         )
-        return FaceObservation(yaw, pitch, roll, expressions)
+        return FaceObservation(yaw, pitch, roll, expressions, eyeFeatures(::p, lm.size, blend, expressions["smile"] ?: 0f))
+    }
+
+    /** Same landmark/blendshape mapping as desktop (eyeBlinkLeft = the eye on the screen-right). Frames are mirrored. */
+    private fun eyeFeatures(p: (Int) -> P, count: Int, bs: Map<String, Float>, smile: Float): EyeFeatures? {
+        if (count < 478) return null
+        data class Side(val ear: Float, val blink: Float?, val hx: Float, val vy: Float, val up: Float, val down: Float)
+        fun side(outer: Int, inner: Int, up: IntArray, low: IntArray, top: Int, bottom: Int, iris: Int, blink: String, lu: String, ld: String): Side {
+            val width = maxOf(Geo.dist(p(outer), p(inner)), 1e-6f)
+            val ear = (Geo.dist(p(up[0]), p(low[0])) + Geo.dist(p(up[1]), p(low[1]))) / (2 * width)
+            val x0 = minOf(p(outer).x, p(inner).x); val x1 = maxOf(p(outer).x, p(inner).x)
+            val hx = (p(iris).x - x0) / maxOf(x1 - x0, 1e-6f) - 0.5f
+            val t = p(top).y; val b = p(bottom).y
+            val vy = 0.5f - (p(iris).y - t) / maxOf(b - t, 1e-6f)
+            return Side(ear, bs[blink], hx, vy, bs[lu] ?: 0f, bs[ld] ?: 0f)
+        }
+        val l = side(33, 133, intArrayOf(160, 158), intArrayOf(144, 153), 159, 145, 468, "eyeBlinkRight", "eyeLookUpRight", "eyeLookDownRight")
+        val r = side(263, 362, intArrayOf(385, 387), intArrayOf(380, 373), 386, 374, 473, "eyeBlinkLeft", "eyeLookUpLeft", "eyeLookDownLeft")
+        // Mirrored: the user's left eye is on the screen-left.
+        return EyeFeatures(l.ear, r.ear, l.blink, r.blink, (l.hx + r.hx) / 2, (l.vy + r.vy) / 2, (l.up + r.up) / 2, (l.down + r.down) / 2, smile)
     }
 
     override fun close() {

@@ -259,6 +259,7 @@ struct FaceObservation {
     var pitch: Double
     var roll: Double
     var expressions: [String: Double]?
+    var eyes: EyeFeatures?
 }
 
 /// Port of desktop/imaa/core/head.py.
@@ -267,6 +268,8 @@ final class HeadRecognizer {
     var holdScale = 1.0
     private(set) var livePose: String?
     private(set) var baseline: (Double, Double, Double)?
+    private(set) var delta: (Double, Double, Double) = (0, 0, 0)
+    private(set) var lastEventAt = -10.0
 
     private var samples: [(Double, Double, Double)] = []
     private var holdLabel: String?
@@ -307,6 +310,7 @@ final class HeadRecognizer {
             return []
         }
         let dy = obs.yaw - base.0, dp = obs.pitch - base.1, dr = obs.roll - base.2
+        delta = (dy, dp, dr)
         if abs(dy) < 5 && abs(dp) < 5 && abs(dr) < 5 {
             let a = 0.01
             baseline = (base.0 * (1 - a) + obs.yaw * a, base.1 * (1 - a) + obs.pitch * a, base.2 * (1 - a) + obs.roll * a)
@@ -314,6 +318,7 @@ final class HeadRecognizer {
         var events = dynamic(dy, dp, t)
         events += holds(dy, dp, dr, t)
         if let e = obs.expressions { events += expressions(e, t) }
+        if !events.isEmpty { lastEventAt = t }
         return events
     }
 

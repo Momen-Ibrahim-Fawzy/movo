@@ -20,6 +20,7 @@ from imaa.config import Settings
 from imaa.core.camera import Camera
 from imaa.core.dispatcher import Dispatcher
 from imaa.core.events import GestureEvent
+from imaa.core.eyes import EyeRecognizer, EyeSettings
 from imaa.core.hand import HandRecognizer, HandSettings
 from imaa.core.head import HeadRecognizer, HeadSettings
 from imaa.core.pointer import AirMouse, HeadPointer
@@ -67,6 +68,10 @@ class EngineStats:
     low_light: bool = False
     hand_pose: Optional[str] = None
     head_pose: Optional[str] = None
+    eye_pose: Optional[str] = None
+    eye_open: tuple = (1.0, 1.0)
+    eye_gaze: tuple = (0.0, 0.0)
+    eyes_seen: bool = False
     calibrated: bool = False
 
 
@@ -90,6 +95,7 @@ class Engine:
         self._restart_face = threading.Event()
         self.hand = HandRecognizer(HandSettings())
         self.head = HeadRecognizer(HeadSettings())
+        self.eyes = EyeRecognizer(EyeSettings())
         self.air_mouse = AirMouse()
         self.head_pointer = HeadPointer()
         self.running = False
@@ -129,6 +135,12 @@ class Engine:
         h = self.head.s
         h.sensitivity = float(s.get("head.sensitivity", 1.0))
         h.hold_scale = float(s.get("head.hold_scale", 1.0))
+        e = self.eyes.s
+        e.sensitivity = float(s.get("eyes.sensitivity", 1.0))
+        e.hold_scale = float(s.get("eyes.hold_scale", 1.0))
+        e.glasses = bool(s.get("eyes.glasses", False))
+        if (s.get("eyes.calibration") or {}) != e.calibration:
+            self.eyes.load_calibration(s.get("eyes.calibration") or {})
         self.dispatcher.executor.scroll_speed = float(s.get("hand.scroll_speed", 1.0))
         self.head_pointer.speed = float(s.get("pointer.speed", 1.0))
 
@@ -168,6 +180,7 @@ class Engine:
         proc_avg = 0.0
         hand_lm = None
         face_obs = None
+        last_head_event = -10.0
         dragging = False
         last_tick = time.monotonic()
         stats = EngineStats()
@@ -178,8 +191,9 @@ class Engine:
                 self._apply_settings()
                 s = self.settings
                 hand_on = bool(s.get("hand.enabled", True)) or bool(s.get("pointer.air_mouse"))
-                head_on = bool(s.get("head.enabled", False)) or bool(s.get("pointer.head_pointer"))
-                accurate = s.get("head.mode", "light") == "accurate" or bool(s.get("pointer.head_pointer"))
+                eyes_on = bool(s.get("eyes.enabled", False))
+                head_on = bool(s.get("head.enabled", False)) or bool(s.get("pointer.head_pointer")) or eyes_on
+                accurate = s.get("head.mode", "light") == "accurate" or bool(s.get("pointer.head_pointer")) or eyes_on
 
                 seq, frame = camera.latest(seq)
                 if frame is None:
@@ -220,7 +234,8 @@ class Engine:
                 now = time.monotonic()
                 ts = int(now * 1000)
                 run_hand = hand_tracker is not None and (face_tracker is None or frame_no % 2 == 0)
-                run_face = face_tracker is not None and (hand_tracker is None or frame_no % 2 == 1)
+                # Blinks are short: with eye gestures on, the (cheap) face model runs on every frame.
+                run_face = face_tracker is not None and (hand_tracker is None or eyes_on or frame_no % 2 == 1)
                 frame_no += 1
                 events: list[GestureEvent] = []
 
@@ -250,8 +265,18 @@ class Engine:
                 if run_face:
                     ts_f = max(ts, last_ts["face"] + 1)
                     last_ts["face"] = ts_f
-                    face_obs = face_tracker.detect(rgb, ts_f, aspect)
+                    face_obs = face_tracker.detect(rgb, ts_f, aspect, bool(s.get("camera.mirror", True)))
                     head_events = self.head.update(face_obs, now)
+                    if head_events:
+                        last_head_event = now
+                    if eyes_on:
+                        feats = face_obs.eyes if face_obs is not None else None
+                        events += self.eyes.update(
+                            feats,
+                            now,
+                            self.head.delta if self.head.calibrated else (0.0, 0.0, 0.0),
+                            head_busy=now - last_head_event < 0.8,
+                        )
                     if s.get("pointer.head_pointer"):
                         dt = min(0.2, now - last_tick)
                         if face_obs is not None and self.head.calibrated:
@@ -287,7 +312,7 @@ class Engine:
 
                 fps_times.append(now)
                 fps_times = [x for x in fps_times if now - x <= 1.0]
-                if now - last_stats >= 0.5:
+                if now - last_stats >= 0.25:
                     last_stats = now
                     stats.fps = float(len(fps_times))
                     stats.process_ms = proc_avg
@@ -298,9 +323,15 @@ class Engine:
                     stats.hand_pose = self.hand.live_pose if hand_lm is not None else None
                     stats.head_pose = self.head.live_pose if face_obs is not None else None
                     stats.calibrated = self.head.calibrated
+                    stats.eye_pose = self.eyes.live_pose if face_obs is not None else None
+                    stats.eye_open = self.eyes.openness
+                    stats.eye_gaze = self.eyes.gaze
+                    stats.eyes_seen = face_obs is not None and face_obs.eyes is not None
                     self.cb.stats(stats)
 
                 target = IDLE_FPS if idle else POWER_FPS.get(s.get("power_mode", "balanced"), 20)
+                if eyes_on and not idle:
+                    target = max(target, 15)  # deliberate blinks last 150–400 ms
                 remaining = 1 / target - (time.monotonic() - loop_start)
                 if remaining > 0:
                     self._stop.wait(remaining)

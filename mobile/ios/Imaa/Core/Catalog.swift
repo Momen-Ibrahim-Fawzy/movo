@@ -36,12 +36,22 @@ enum Catalog {
         .init(id: "turn_right", emoji: "➡️", accurateOnly: false), .init(id: "turn_left", emoji: "⬅️", accurateOnly: false),
         .init(id: "mouth_open", emoji: "😮", accurateOnly: true), .init(id: "smile", emoji: "😁", accurateOnly: true),
     ]
-    static let all: [String: GestureInfo] = Dictionary(uniqueKeysWithValues: (hand + head).map { ($0.id, $0) })
+    static let eyes: [GestureInfo] = [
+        .init(id: "wink_left", emoji: "😉", accurateOnly: false), .init(id: "wink_right", emoji: "😉", accurateOnly: false),
+        .init(id: "blink_double", emoji: "👁️", accurateOnly: false), .init(id: "blink_long", emoji: "😌", accurateOnly: false),
+        .init(id: "eyes_closed", emoji: "😴", accurateOnly: false), .init(id: "eye_look_up", emoji: "🔼", accurateOnly: false),
+        .init(id: "eye_look_down", emoji: "🔽", accurateOnly: false), .init(id: "eye_look_left", emoji: "◀️", accurateOnly: false),
+        .init(id: "eye_look_right", emoji: "▶️", accurateOnly: false),
+    ]
+    static let all: [String: GestureInfo] = Dictionary(uniqueKeysWithValues: (hand + head + eyes).map { ($0.id, $0) })
 
     static let viewerBindings: [String: ViewerAction] = [
         "point_right": .next, "point_left": .previous, "swipe_left": .next, "swipe_right": .previous,
         "tilt_right": .next, "tilt_left": .previous, "index_up_move_up": .scrollUp, "index_up_move_down": .scrollDown,
         "look_up": .scrollUp, "look_down": .scrollDown, "pinch_drag_up": .zoomIn, "pinch_drag_down": .zoomOut,
         "rock": .pause,
+        // Eyes: winks turn pages; double/long blink do too, for people who cannot wink.
+        "wink_right": .next, "wink_left": .previous, "blink_double": .next, "blink_long": .previous,
+        "eye_look_up": .scrollUp, "eye_look_down": .scrollDown, "eyes_closed": .pause,
     ]
 }

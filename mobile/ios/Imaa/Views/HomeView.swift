@@ -41,6 +41,8 @@ struct HomeView: View {
                         Text("home.quick").font(.headline)
                         Toggle("home.hand", isOn: $model.handEnabled)
                         Toggle("home.head", isOn: $model.headEnabled)
+                        Toggle("home.eyes", isOn: $model.eyesEnabled)
+                        Toggle("eyes.glasses", isOn: $model.eyesGlasses)
                         Toggle(isOn: $model.practice) {
                             VStack(alignment: .leading) {
                                 Text("home.practice")

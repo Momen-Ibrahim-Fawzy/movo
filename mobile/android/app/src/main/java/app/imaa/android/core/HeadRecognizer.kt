@@ -6,7 +6,13 @@ import kotlin.math.cos
 import kotlin.math.hypot
 import kotlin.math.sin
 
-data class FaceObservation(val yaw: Float, val pitch: Float, val roll: Float, val expressions: Map<String, Float>? = null)
+data class FaceObservation(
+    val yaw: Float,
+    val pitch: Float,
+    val roll: Float,
+    val expressions: Map<String, Float>? = null,
+    val eyes: EyeFeatures? = null,
+)
 
 /** Port of desktop/imaa/core/head.py: head pose relative to the user's own neutral pose. */
 class HeadRecognizer {
@@ -15,6 +21,8 @@ class HeadRecognizer {
     var livePose: String? = null
         private set
     var delta = Triple(0f, 0f, 0f)
+        private set
+    var lastEventAt = -10f
         private set
 
     private val turnDeg = 20f
@@ -76,6 +84,7 @@ class HeadRecognizer {
         events += dynamic(dy, dp, t)
         events += holds(dy, dp, dr, t)
         obs.expressions?.let { events += expressions(it, t) }
+        if (events.isNotEmpty()) lastEventAt = t
         return events
     }
 

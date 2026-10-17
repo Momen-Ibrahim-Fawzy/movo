@@ -41,7 +41,19 @@ object Catalog {
         GestureInfo("brows_up", "head", "🤨", R.string.g_brows_up, accurateOnly = true),
     )
 
-    val gestures: Map<String, GestureInfo> = (handGestures + headGestures).associateBy { it.id }
+    val eyeGestures = listOf(
+        GestureInfo("wink_left", "eye", "😉", R.string.g_wink_left),
+        GestureInfo("wink_right", "eye", "😉", R.string.g_wink_right),
+        GestureInfo("blink_double", "eye", "👁️", R.string.g_blink_double),
+        GestureInfo("blink_long", "eye", "😌", R.string.g_blink_long),
+        GestureInfo("eyes_closed", "eye", "😴", R.string.g_eyes_closed),
+        GestureInfo("eye_look_up", "eye", "🔼", R.string.g_eye_look_up),
+        GestureInfo("eye_look_down", "eye", "🔽", R.string.g_eye_look_down),
+        GestureInfo("eye_look_left", "eye", "◀️", R.string.g_eye_look_left),
+        GestureInfo("eye_look_right", "eye", "▶️", R.string.g_eye_look_right),
+    )
+
+    val gestures: Map<String, GestureInfo> = (handGestures + headGestures + eyeGestures).associateBy { it.id }
 
     val actions = listOf(
         ActionInfo("none", "∅", R.string.a_none),
@@ -100,6 +112,15 @@ object Catalog {
         "mouth_open" to "tap",
         "smile" to "screenshot",
         "brows_up" to "home",
+        "wink_left" to "previous",
+        "wink_right" to "next",
+        "blink_double" to "media_play_pause",
+        "blink_long" to "skip_ad",
+        "eyes_closed" to "pause_control",
+        "eye_look_up" to "scroll_up",
+        "eye_look_down" to "scroll_down",
+        "eye_look_left" to "none",
+        "eye_look_right" to "none",
     )
 }
 

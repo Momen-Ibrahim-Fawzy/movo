@@ -141,6 +141,8 @@ fun HomeScreen(modifier: Modifier, onOpenAccessibility: () -> Unit) {
         SectionCard(stringResource(R.string.home_quick)) {
             ToggleRow(stringResource(R.string.home_hand), null, prefs.handEnabled) { prefs.handEnabled = it }
             ToggleRow(stringResource(R.string.home_head), null, prefs.headEnabled) { prefs.headEnabled = it }
+            ToggleRow(stringResource(R.string.home_eyes), stringResource(R.string.home_eyes_d), prefs.eyesEnabled) { prefs.eyesEnabled = it }
+            ToggleRow(stringResource(R.string.eyes_glasses), null, prefs.eyesGlasses) { prefs.eyesGlasses = it }
             ToggleRow(stringResource(R.string.home_practice), stringResource(R.string.home_practice_d), prefs.practice) { prefs.practice = it }
             ToggleRow(stringResource(R.string.home_hud), null, prefs.hudEnabled) { prefs.hudEnabled = it }
         }

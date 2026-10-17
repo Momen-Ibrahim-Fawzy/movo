@@ -1,4 +1,5 @@
 import AVFoundation
+import AudioToolbox
 import SwiftUI
 import UIKit
 
@@ -17,6 +18,9 @@ final class AppModel: ObservableObject {
     @AppStorage("theme") var theme = "system"
     @AppStorage("handEnabled") var handEnabled = true { didSet { pipeline.handEnabled = handEnabled } }
     @AppStorage("headEnabled") var headEnabled = false { didSet { pipeline.headEnabled = headEnabled } }
+    @AppStorage("eyesEnabled") var eyesEnabled = false { didSet { pipeline.eyesEnabled = eyesEnabled } }
+    @AppStorage("eyesGlasses") var eyesGlasses = false { didSet { pipeline.eyes.glasses = eyesGlasses } }
+    @AppStorage("eyesCalibration") var eyesCalibration = Data()
     @AppStorage("holdScale") var holdScale = 1.0 { didSet { pipeline.hand.holdScale = holdScale } }
     @AppStorage("headSensitivity") var headSensitivity = 1.0 { didSet { pipeline.head.sensitivity = headSensitivity } }
     @AppStorage("powerMode") var powerMode = "balanced" { didSet { pipeline.targetFps = fps(for: powerMode) } }
@@ -35,6 +39,9 @@ final class AppModel: ObservableObject {
     init() {
         pipeline.handEnabled = handEnabled
         pipeline.headEnabled = headEnabled
+        pipeline.eyesEnabled = eyesEnabled
+        pipeline.eyes.glasses = eyesGlasses
+        pipeline.eyes.calibration = try? JSONDecoder().decode(EyeCalibration.self, from: eyesCalibration)
         pipeline.hand.holdScale = holdScale
         pipeline.head.sensitivity = headSensitivity
         pipeline.targetFps = fps(for: powerMode)
@@ -92,6 +99,27 @@ final class AppModel: ObservableObject {
     }
 
     func recalibrate() { pipeline.head.recalibrate() }
+
+    var eyesCalibrated: Bool { !eyesCalibration.isEmpty }
+
+    /// Eyes open 2 s → eyes closed 2.5 s. Returns true on success.
+    func calibrateEyes(step: @escaping (String) -> Void) async -> Bool {
+        let eyes = pipeline.eyes
+        step("eyes.cal_ready"); try? await Task.sleep(nanoseconds: 3_000_000_000)
+        step("eyes.cal_open"); eyes.beginCapture("open"); try? await Task.sleep(nanoseconds: 2_000_000_000)
+        AudioServicesPlaySystemSound(1057)
+        step("eyes.cal_closed"); eyes.beginCapture("closed"); try? await Task.sleep(nanoseconds: 2_500_000_000)
+        eyes.endCapture()
+        AudioServicesPlaySystemSound(1057)
+        guard let cal = eyes.finishCalibration() else { return false }
+        eyesCalibration = (try? JSONEncoder().encode(cal)) ?? Data()
+        return true
+    }
+
+    func resetEyeCalibration() {
+        eyesCalibration = Data()
+        pipeline.eyes.calibration = nil
+    }
 
     func connectRemote() {
         remote?.close()

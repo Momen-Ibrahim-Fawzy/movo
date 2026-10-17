@@ -15,4 +15,5 @@ object ImaaState {
     val remoteName = MutableStateFlow("")
     val accessibilityOn = MutableStateFlow(false)
     val recalibrate = MutableStateFlow(0)
+    val eyeOpen = MutableStateFlow(listOf(1f, 1f))
 }

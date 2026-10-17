@@ -38,6 +38,7 @@ DEFAULTS: dict[str, Any] = {
     "show_skeleton": True,
     "hand": {"enabled": True, "hold_scale": 1.0, "scroll_speed": 1.0, "swipe_enabled": True},
     "head": {"enabled": False, "mode": "light", "sensitivity": 1.0, "hold_scale": 1.0},
+    "eyes": {"enabled": False, "glasses": False, "sensitivity": 1.0, "hold_scale": 1.0, "calibration": {}},
     "pointer": {"air_mouse": False, "head_pointer": False, "speed": 1.0, "smoothing": 0.5},
     "disabled_gestures": [],
     "profiles": _default_profiles(),
