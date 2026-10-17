@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  desktop:
+    name: Desktop tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: desktop/requirements*.txt
+      - name: System libraries (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y xvfb libegl1 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libgl1 libpulse0
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python scripts/download_models.py
+      - name: Tests
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then xvfb-run -a python -m pytest -q; else python -m pytest -q; fi
+      - name: UI smoke test (renders every page in EN/AR, light/dark)
+        shell: bash
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then xvfb-run -a python scripts/screenshots.py shots; else python scripts/screenshots.py shots; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-screenshots-${{ matrix.os }}
+          path: desktop/shots
+          retention-days: 7
+
+  extension:
+    name: Browser helper
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - working-directory: browser-extension
+        run: |
+          node --check background.js
+          node --check popup.js
+          for f in manifest.json _locales/*/messages.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))"; done
+          zip -r ../imaa-browser-helper.zip . -x '*.DS_Store'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imaa-browser-helper
+          path: imaa-browser-helper.zip

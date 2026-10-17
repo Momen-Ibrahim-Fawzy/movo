@@ -1,0 +1,104 @@
+name: Desktop builds
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Windows x64, os: windows-latest, artifact: windows-x64 }
+          - { name: macOS Apple Silicon, os: macos-14, artifact: macos-arm64 }
+          - { name: macOS Intel, os: macos-13, artifact: macos-x86_64 }
+          - { name: Linux x64, os: ubuntu-22.04, artifact: linux-x86_64 }
+    defaults:
+      run:
+        working-directory: desktop
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: desktop/requirements*.txt
+      - name: System libraries (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-shape0 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libgl1 libfuse2 desktop-file-utils
+      - run: pip install -r requirements-dev.txt
+      - name: Slim OpenCV (camera capture only — drops ~50 MB of contrib modules and video codecs)
+        run: |
+          pip uninstall -y opencv-contrib-python opencv-python opencv-python-headless
+          pip install opencv-python-headless
+          python -c "import cv2, mediapipe; print(cv2.__version__)"
+      - run: python scripts/download_models.py
+      - name: Version
+        id: v
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then echo "version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"; else echo "version=0.0.0-dev" >> "$GITHUB_OUTPUT"; fi
+      - name: PyInstaller
+        run: pyinstaller packaging/imaa.spec --noconfirm --distpath dist --workpath build
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          cd dist && 7z a -tzip "Imaa-Windows-x64-portable.zip" Imaa > /dev/null && cd ..
+          "/c/Program Files (x86)/Inno Setup 6/ISCC.exe" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
+          ls dist
+      - name: Package (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          codesign --force --deep --sign - dist/Imaa.app
+          mkdir -p dmg && cp -R dist/Imaa.app dmg/ && ln -s /Applications dmg/Applications
+          hdiutil create -volname Imaa -srcfolder dmg -ov -format UDZO "dist/Imaa-macOS-${{ matrix.artifact }}.dmg"
+      - name: Package (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          tar -C dist -czf "dist/Imaa-Linux-x86_64.tar.gz" Imaa
+          mkdir -p AppDir/usr/bin AppDir/usr/share/applications AppDir/usr/share/icons/hicolor/512x512/apps
+          cp -R dist/Imaa/. AppDir/usr/bin/
+          cp packaging/linux/imaa.desktop AppDir/imaa.desktop
+          cp packaging/linux/imaa.desktop AppDir/usr/share/applications/
+          cp packaging/imaa.png AppDir/imaa.png
+          cp packaging/imaa.png AppDir/usr/share/icons/hicolor/512x512/apps/imaa.png
+          printf '#!/bin/sh\nHERE="$(dirname "$(readlink -f "$0")")"\nexec "$HERE/usr/bin/Imaa" "$@"\n' > AppDir/AppRun
+          chmod +x AppDir/AppRun
+          curl -sSLo appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
+          ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir "dist/Imaa-Linux-x86_64.AppImage"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: imaa-${{ matrix.artifact }}
+          path: |
+            desktop/dist/*.zip
+            desktop/dist/*.exe
+            desktop/dist/*.dmg
+            desktop/dist/*.tar.gz
+            desktop/dist/*.AppImage
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Browser helper zip
+        run: cd browser-extension && zip -r ../artifacts/Imaa-Browser-Helper.zip . -x '*.DS_Store'
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*
+          generate_release_notes: true
