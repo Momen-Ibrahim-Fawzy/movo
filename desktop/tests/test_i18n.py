@@ -1,10 +1,10 @@
 import re
 from pathlib import Path
 
-from imaa import i18n
-from imaa.core.catalog import ACTIONS, ALL_GESTURES, PROFILE_PRESETS
+from movo import i18n
+from movo.core.catalog import ACTIONS, ALL_GESTURES, PROFILE_PRESETS
 
-PKG = Path(__file__).resolve().parents[1] / "imaa"
+PKG = Path(__file__).resolve().parents[1] / "movo"
 PLACEHOLDER = re.compile(r"\{(\w+)\}")
 
 

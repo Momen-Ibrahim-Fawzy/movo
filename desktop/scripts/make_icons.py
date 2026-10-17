@@ -16,7 +16,7 @@ from PySide6.QtSvg import QSvgRenderer
 
 ROOT = Path(__file__).resolve().parents[2]
 SVG = ROOT / "branding" / "logo.svg"
-APP_ICONS = ROOT / "desktop" / "imaa" / "assets" / "icons"
+APP_ICONS = ROOT / "desktop" / "movo" / "assets" / "icons"
 PKG = ROOT / "desktop" / "packaging"
 BRAND = ROOT / "branding"
 
@@ -57,13 +57,13 @@ def main() -> int:
     render(256).save(str(APP_ICONS / "logo-256.png"))
     render(64, grayscale=True).save(str(APP_ICONS / "tray-off.png"))
     render(64).save(str(APP_ICONS / "tray-on.png"))
-    render(512).save(str(PKG / "imaa.png"))
+    render(512).save(str(PKG / "movo.png"))
 
     from PIL import Image  # Pillow writes multi-size ICO and ICNS files
 
     big = Image.open(io.BytesIO(png_bytes(render(1024))))
-    big.save(PKG / "imaa.ico", sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
-    big.save(PKG / "imaa.icns")
+    big.save(PKG / "movo.ico", sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
+    big.save(PKG / "movo.icns")
     print("icons written to", APP_ICONS, "and", PKG)
     return 0
 

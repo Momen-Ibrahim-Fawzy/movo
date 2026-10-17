@@ -16,8 +16,8 @@ desktop/dist/
 *.AppImage
 
 # Models are downloaded by desktop/scripts/download_models.py (and by the Android build)
-desktop/imaa/assets/models/*.task
-desktop/imaa/assets/models/*.tflite
+desktop/movo/assets/models/*.task
+desktop/movo/assets/models/*.tflite
 mobile/android/app/src/main/assets/*.task
 mobile/android/app/src/main/assets/*.tflite
 

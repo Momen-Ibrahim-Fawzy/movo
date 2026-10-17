@@ -1,6 +1,6 @@
 # Third-party notices
 
-Imaa is built on the following open-source components. Each remains under its own licence.
+Movo is built on the following open-source components. Each remains under its own licence.
 Full licence texts are shipped inside each installer next to the component.
 
 ## Desktop

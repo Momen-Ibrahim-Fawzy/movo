@@ -1,10 +1,10 @@
 # Research notes
 
-What we looked at before designing Imaa, and what we took from it. Collected October 2026.
+What we looked at before designing Movo, and what we took from it. Collected October 2026.
 
 ## 1. The landscape
 
-| Product | Platforms | Model | What it does well | Gap Imaa fills |
+| Product | Platforms | Model | What it does well | Gap Movo fills |
 |---------|-----------|-------|-------------------|----------------|
 | **Pawvis** | macOS 14+ | Free, open source | Hand-tracked cursor, finger-dip click, two-finger scroll, dwell click | macOS only; no head control; no presenter/media focus |
 | **Wand** | macOS | Free | Shortcut-style gestures (launch apps, media, slides) | Single platform; no accessibility head mode |
@@ -21,7 +21,7 @@ What we looked at before designing Imaa, and what we took from it. Collected Oct
 2. Most tools are single-platform; the paid cross-platform option is subscription-based.
 3. None ships a native Arabic interface or right-to-left layout.
 4. Gameface proved that **MediaPipe Face Landmarker blendshapes** (52 expression scores) are good enough for facial "clicks" and that **per-gesture thresholds** matter — we adopted both.
-5. Reviews of hand-gesture apps repeatedly mention *learning curve* and *lighting* — hence Imaa's practice mode, onboarding tour, low-light warning and adjustable hold times.
+5. Reviews of hand-gesture apps repeatedly mention *learning curve* and *lighting* — hence Movo's practice mode, onboarding tour, low-light warning and adjustable hold times.
 
 ## 2. Technology choices
 
@@ -37,7 +37,7 @@ What we looked at before designing Imaa, and what we took from it. Collected Oct
 
 ## 3. Platform rules that shape the product
 
-- **Google Play — Accessibility API**: only apps whose *primary purpose* is helping people with disabilities may declare `isAccessibilityTool`; everyone else must show a prominent in-app disclosure and get affirmative consent before enabling the service. Imaa does both: it is positioned as an accessibility tool *and* shows the disclosure dialog (`disclosure_body`).
+- **Google Play — Accessibility API**: only apps whose *primary purpose* is helping people with disabilities may declare `isAccessibilityTool`; everyone else must show a prominent in-app disclosure and get affirmative consent before enabling the service. Movo does both: it is positioned as an accessibility tool *and* shows the disclosure dialog (`disclosure_body`).
 - **Android 14** requires the `FOREGROUND_SERVICE_CAMERA` permission and a camera-typed foreground service started while the app is visible.
 - **iOS** does not allow apps to inject input into other apps. iOS therefore gets an in-app viewer plus a remote-camera mode for the desktop.
 - **macOS** needs Accessibility permission for synthetic key events and Screen Recording for screenshots; both must be re-granted after replacing the app bundle.

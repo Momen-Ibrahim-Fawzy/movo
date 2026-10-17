@@ -1,7 +1,7 @@
 import pytest
 from synthetic import face_points
 
-from imaa.core.head import FaceObservation, HeadRecognizer, pose_from_points
+from movo.core.head import FaceObservation, HeadRecognizer, pose_from_points
 
 FPS = 15
 

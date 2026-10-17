@@ -7,13 +7,13 @@ own bindings and profiles.
 
 - WebSocket, `ws://<computer-ip>:<port>` (default port **47813**), local network only.
 - Off by default on the desktop (Settings → Integrations → *Use my phone as a remote camera*).
-- Pairing link (shown as a QR code on the desktop): `imaa://pair?host=192.168.1.20&port=47813&code=123456`.
-  Scanning it with the phone's camera opens the Imaa app and fills in the details.
+- Pairing link (shown as a QR code on the desktop): `movo://pair?host=192.168.1.20&port=47813&code=123456`.
+  Scanning it with the phone's camera opens the Movo app and fills in the details.
 
 ## Handshake
 
 ```
-server → {"type": "challenge", "nonce": "<32 hex chars>", "server": "Imaa", "version": 1}
+server → {"type": "challenge", "nonce": "<32 hex chars>", "server": "Movo", "version": 1}
 client → {"type": "auth", "device": "Pixel 8", "proof": hex(HMAC-SHA256(key = pairing code, msg = nonce))}
 server → {"type": "welcome", "app_version": "1.0.0"}        # or close 4001 "pairing failed"
 ```
@@ -29,7 +29,7 @@ lock that address out for 60 s (close code 4003).
 {"type": "action", "action": "next"}
 ```
 
-- `gesture` must be one of the ids in `desktop/imaa/core/catalog.py`; unknown ids are ignored.
+- `gesture` must be one of the ids in `desktop/movo/core/catalog.py`; unknown ids are ignored.
 - `phase` is `start` or `repeat`; `magnitude` is clamped to 0–1.
 - `action` (optional, for on-screen remote buttons) must be a known action id; `custom_shortcut` is refused.
 - More than 30 messages per second are dropped. Messages are limited to 4 KB.

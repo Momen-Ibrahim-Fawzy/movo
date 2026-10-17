@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Imaa"
+rootProject.name = "Movo"
 include(":app")

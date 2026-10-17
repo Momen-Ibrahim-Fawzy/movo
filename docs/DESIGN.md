@@ -2,8 +2,11 @@
 
 ## Brand
 
-- **Name**: Imaa — Arabic *إيماءة* ("a gesture", "a nod"). Short, easy to say in both languages, and it names both input modes.
-- **Logo**: a white open hand with two motion arcs — "a wave" — on a solid blue rounded square.
+- **Name**: **Movo · موفو** — from "move". Four letters, the same sound in English and Arabic, playful but calm,
+  and not tied to one body part (hands, head and eyes all *move*). Tagline: **Control Without Contact · تحكّم دون لمس**.
+- **Logo**: a person in motion — a round head and one sweeping stroke (body and arm) sending two signal waves —
+  white on a solid blue rounded square. The original artwork is in [`branding/concepts/`](../branding/concepts/); the
+  production SVG is traced from it by `desktop/scripts/trace_logo.py`.
   Source: [`branding/logo.svg`](../branding/logo.svg); exports from 16 to 1024 px, `.ico`, `.icns`, Android adaptive icon and iOS app icon.
 - **Colour approach**: calm and familiar, like Google and Apple apps — neutral greys, white surfaces and a single
   blue accent. No gradients; colour is used only for meaning (the accent for actions and selection, green/amber/red for status).
@@ -37,7 +40,7 @@ Radii: 16 px cards, 10 px controls, pills fully rounded. Spacing: 8-point grid; 
 
 ```
 ┌──────────┬───────────────────────────────────────────────┐
-│ ◉ Imaa   │  Welcome back                                 │
+│ ◉ Movo   │  Welcome back                                 │
 │          │  ┌─────────────┐ ┌──────────────────────────┐ │
 │ ⌂ Home   │  │   ( ⏻ )     │ │  Camera preview   [on]   │ │
 │ ✋ Hand   │  │  ● Watching │ │                          │ │

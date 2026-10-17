@@ -3,11 +3,11 @@ import json
 
 import pytest
 
-from imaa.actions.keys import parse_shortcut
-from imaa.actions.skip_ad import matches
-from imaa.core.events import GestureEvent
-from imaa.services.browser_bridge import BrowserBridge
-from imaa.services.remote_server import RemoteServer, proof
+from movo.actions.keys import parse_shortcut
+from movo.actions.skip_ad import matches
+from movo.core.events import GestureEvent
+from movo.services.browser_bridge import BrowserBridge
+from movo.services.remote_server import RemoteServer, proof
 
 websockets = pytest.importorskip("websockets")
 from websockets.asyncio.client import connect  # noqa: E402
@@ -26,7 +26,7 @@ def test_skip_rejects(text):
 
 
 def test_parse_shortcut():
-    from imaa.actions.keys import Key
+    from movo.actions.keys import Key
 
     assert parse_shortcut("ctrl+shift+m") == [Key.ctrl, Key.shift, "m"]
     assert parse_shortcut("F5") == [Key.f5]

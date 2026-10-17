@@ -1,11 +1,11 @@
 # Eye gestures — research and plan
 
-Goal: let people control Imaa with their eyes alone — **with or without glasses** — for when hands and head
+Goal: let people control Movo with their eyes alone — **with or without glasses** — for when hands and head
 movement are unavailable or inconvenient (accessibility, eating, holding something, lying down).
 
 ## 1. What we learned
 
-| Topic | Finding | Consequence for Imaa |
+| Topic | Finding | Consequence for Movo |
 |-------|---------|----------------------|
 | Signals available on desktop/Android | MediaPipe Face Landmarker returns 478 landmarks **including 10 iris points** and 52 ARKit-style blendshapes, among them `eyeBlinkLeft/Right`, `eyeLookUp/Down/In/Out*`, `eyeSquint*` (values 0–1) | Already loaded in *Accurate* head mode — eye gestures cost **no extra model** and ~0 extra CPU |
 | Classic blink metric | *Eye Aspect Ratio* (EAR, Soukupová & Čech 2016): eyelid opening ÷ eye width; widely used with MediaPipe landmarks | Use EAR as a second, geometric signal next to the learned blendshape |
@@ -36,7 +36,7 @@ Sources: [MediaPipe Face Landmarker](https://developers.google.com/edge/mediapip
 | 😉 **Wink right** | Close only your right eye ~0.35 s | Next | Right = forward |
 | 👁️ **Double blink** | Two quick deliberate blinks | Play / pause | Most people can do it, even if they can't wink |
 | 😌 **Long blink** | Close both eyes 0.6–1.5 s, then open | Skip ad | Harmless if nothing to skip |
-| 😴 **Eyes closed** | Keep both eyes closed 2 s | Pause / resume Imaa | Safety switch that needs no hands or head |
+| 😴 **Eyes closed** | Keep both eyes closed 2 s | Pause / resume Movo | Safety switch that needs no hands or head |
 | 👀 **Look up / down** (hold) | Glance to the top/bottom of the screen | Scroll up / down, repeating | Reading hands-free |
 | 👀 **Look left / right** (hold) | Glance far left/right | *(free)* | Off by default: people glance aside often |
 
@@ -71,7 +71,7 @@ over both eyes and fused with the `eyeLookUp/Down` blendshapes, relative to the 
 
 **Calibration** (Eye gestures page → *Calibrate*, 6 seconds): eyes open looking at the screen centre (2 s),
 eyes closed (2 s), then normal blinking (2 s). Stores the personal open/closed levels and gaze centre in the settings,
-so glasses, eye shape and droopy lids are handled per person. Without calibration Imaa auto-learns the open level
+so glasses, eye shape and droopy lids are handled per person. Without calibration Movo auto-learns the open level
 from the last 20 s (90th percentile of openness).
 
 **Frame rate** — blinks are short, so when eye gestures are on the face model runs **every frame** (hand model on
@@ -81,8 +81,8 @@ alternate frames). The face model is ~4 ms, so the cost stays low.
 
 | # | Work | Where |
 |---|------|-------|
-| 1 | Eye features from Face Landmarker (EAR, iris, blendshapes, screen-side → user-side mapping) | `desktop/imaa/core/trackers.py` |
-| 2 | `EyeRecognizer` (smoothing, calibration, wink/double/long/closed/glance state machines, gates) | `desktop/imaa/core/eyes.py` |
+| 1 | Eye features from Face Landmarker (EAR, iris, blendshapes, screen-side → user-side mapping) | `desktop/movo/core/trackers.py` |
+| 2 | `EyeRecognizer` (smoothing, calibration, wink/double/long/closed/glance state machines, gates) | `desktop/movo/core/eyes.py` |
 | 3 | Catalog: 9 eye gestures + defaults; settings `eyes.*`; engine scheduling | `catalog.py`, `config.py`, `engine.py` |
 | 4 | UI: **Eye gestures** page (enable, *I wear glasses*, sensitivity, calibration wizard, live eye meter, gesture cards); Home quick switch; guide step | `ui/pages/` |
 | 5 | Tests with synthetic eyes: winks, double/long blink, closed, glances, natural blinks ignored, glare spikes ignored, look-down ≠ blink, smile/head gates | `tests/test_eyes.py` |

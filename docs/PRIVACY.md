@@ -1,6 +1,6 @@
 # Privacy
 
-**Short version: Imaa looks at your camera only while it is running, only on your device, and never keeps
+**Short version: Movo looks at your camera only while it is running, only on your device, and never keeps
 or sends a picture.**
 
 ## What happens to camera pictures
@@ -9,7 +9,7 @@ or sends a picture.**
 2. The frame is analysed by on-device models (MediaPipe on desktop/Android, Apple Vision on iOS) into a few
    dozen numbers (finger joint positions, head angles, expression scores).
 3. Those numbers are turned into a gesture name like `thumb_up`; the picture is discarded.
-4. While the Imaa window is visible and *Show camera* is on, a downscaled copy is drawn in the preview. It is
+4. While the Movo window is visible and *Show camera* is on, a downscaled copy is drawn in the preview. It is
    never written to disk.
 
 There is no code path that writes a camera frame to a file, a network socket, the clipboard or a log.
@@ -25,11 +25,11 @@ There is no code path that writes a camera frame to a file, a network socket, th
 ## What is stored
 
 - Your settings (language, theme, gesture bindings, profiles) in a JSON file in your user profile:
-  - Windows `%APPDATA%\Imaa\settings.json`
-  - macOS `~/Library/Application Support/Imaa/settings.json`
-  - Linux `~/.config/imaa/settings.json`
-- A small rotating log (`imaa.log`, ≤ 1 MB) with technical messages — no images, no keystrokes, no window titles.
-- Screenshots you ask for (✌️), saved to *Pictures/Imaa*.
+  - Windows `%APPDATA%\Movo\settings.json`
+  - macOS `~/Library/Application Support/Movo/settings.json`
+  - Linux `~/.config/movo/settings.json`
+- A small rotating log (`movo.log`, ≤ 1 MB) with technical messages — no images, no keystrokes, no window titles.
+- Screenshots you ask for (✌️), saved to *Pictures/Movo*.
 
 ## Permissions and why
 

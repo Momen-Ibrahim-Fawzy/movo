@@ -2,11 +2,11 @@ import json
 
 import pytest
 
-from imaa.actions import ActionRequest
-from imaa.config import Settings
-from imaa.core.dispatcher import Dispatcher
-from imaa.core.events import GestureEvent
-from imaa.services.active_window import match_profile
+from movo.actions import ActionRequest
+from movo.config import Settings
+from movo.core.dispatcher import Dispatcher
+from movo.core.events import GestureEvent
+from movo.services.active_window import match_profile
 
 
 class FakeExecutor:
@@ -123,3 +123,15 @@ def test_import_export_reset(settings, tmp_path):
     assert settings.get("theme") == "system"
     settings.import_from(out)
     assert settings.get("theme") == "dark"
+
+
+def test_settings_migrate_from_previous_name(tmp_path, monkeypatch):
+    from movo import paths
+
+    monkeypatch.delenv("MOVO_CONFIG_DIR", raising=False)
+    monkeypatch.setattr(paths, "_platform_dir", lambda name: tmp_path / name)
+    (tmp_path / "Imaa").mkdir()
+    (tmp_path / "Imaa" / "settings.json").write_text('{"theme": "dark"}', encoding="utf-8")
+    new_dir = paths.config_dir()
+    assert new_dir == tmp_path / "Movo"
+    assert Settings(new_dir / "settings.json").get("theme") == "dark"

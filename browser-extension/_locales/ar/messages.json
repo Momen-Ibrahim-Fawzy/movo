@@ -1,8 +1,8 @@
 {
-  "popupTitle": { "message": "مساعد إيماءة" },
-  "connected": { "message": "متصل بتطبيق إيماءة" },
-  "notConnected": { "message": "تطبيق إيماءة لا يعمل" },
+  "popupTitle": { "message": "مساعد موفو" },
+  "connected": { "message": "متصل بتطبيق موفو" },
+  "notConnected": { "message": "تطبيق موفو لا يعمل" },
   "hintConnected": { "message": "استخدم إيماءة القبضة ✊ (أو هزّ رأسك) للضغط على زر «تخطي الإعلان» الظاهر." },
-  "hintNotConnected": { "message": "شغّل تطبيق إيماءة وتأكد من تفعيل «مساعد المتصفح» في الإعدادات." },
+  "hintNotConnected": { "message": "شغّل تطبيق موفو وتأكد من تفعيل «مساعد المتصفح» في الإعدادات." },
   "port": { "message": "المنفذ" }
 }

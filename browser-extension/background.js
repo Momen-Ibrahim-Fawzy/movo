@@ -1,4 +1,4 @@
-// Imaa Helper — connects to the Imaa desktop app on 127.0.0.1 and runs its commands in the active tab.
+// Movo Helper — connects to the Movo desktop app on 127.0.0.1 and runs its commands in the active tab.
 // No page content, history or browsing data is ever sent to the app: only {clicked: true|false}.
 
 const DEFAULT_PORT = 47812;

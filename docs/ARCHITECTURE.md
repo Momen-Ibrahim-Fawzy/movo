@@ -52,11 +52,11 @@ flowchart LR
 | Thread | Owner | Work |
 |--------|-------|------|
 | GUI | Qt | UI, HUD, screenshots, tray |
-| `imaa-camera` | Camera | Read frames |
-| `imaa-engine` | Engine | Vision + recognition |
-| `imaa-actions` | ActionExecutor | Key/mouse injection, audio, UI Automation |
-| `imaa-net` | asyncio loop | Browser bridge and remote server |
-| `imaa-active-app` | Controller | Foreground app polling every 1.2 s |
+| `movo-camera` | Camera | Read frames |
+| `movo-engine` | Engine | Vision + recognition |
+| `movo-actions` | ActionExecutor | Key/mouse injection, audio, UI Automation |
+| `movo-net` | asyncio loop | Browser bridge and remote server |
+| `movo-active-app` | Controller | Foreground app polling every 1.2 s |
 
 All cross-thread communication into the UI goes through queued Qt signals.
 

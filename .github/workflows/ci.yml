@@ -64,8 +64,8 @@ jobs:
           node --check background.js
           node --check popup.js
           for f in manifest.json _locales/*/messages.json; do node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))"; done
-          zip -r ../imaa-browser-helper.zip . -x '*.DS_Store'
+          zip -r ../movo-browser-helper.zip . -x '*.DS_Store'
       - uses: actions/upload-artifact@v4
         with:
-          name: imaa-browser-helper
-          path: imaa-browser-helper.zip
+          name: movo-browser-helper
+          path: movo-browser-helper.zip

@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=Movo
+Name[ar]=موفو
+GenericName=Gesture control
+GenericName[ar]=التحكم بالإيماءات
+Comment=Control your computer with hand and head gestures, privately
+Comment[ar]=تحكّم في حاسوبك بإيماءات اليد والرأس بخصوصية تامة
+Exec=Movo
+Icon=movo
+Terminal=false
+Categories=Utility;Accessibility;
+Keywords=gesture;hands-free;accessibility;camera;presentation;
+StartupWMClass=Movo

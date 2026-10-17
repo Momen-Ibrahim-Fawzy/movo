@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Imaa</string>
-    <string name="tagline">Control your phone with a wave or a nod — privately.</string>
+    <string name="app_name">Movo</string>
+    <string name="tagline">Control your phone with a wave, a nod or a wink — without touching it.</string>
 
     <string name="nav_home">Home</string>
     <string name="nav_gestures">Gestures</string>
@@ -17,14 +17,14 @@
     <string name="state_remote_d">Sending gestures to your computer.</string>
 
     <string name="home_control_title">Phone control</string>
-    <string name="home_control_on">Imaa can control your phone.</string>
-    <string name="home_control_off">Turn on Imaa in Accessibility settings so gestures can scroll, go back, take screenshots and skip ads.</string>
+    <string name="home_control_on">Movo can control your phone.</string>
+    <string name="home_control_off">Turn on Movo in Accessibility settings so gestures can scroll, go back, take screenshots and skip ads.</string>
     <string name="home_control_button">Turn on</string>
     <string name="home_quick">Quick switches</string>
     <string name="home_hand">Hand gestures</string>
     <string name="home_head">Head gestures</string>
     <string name="home_practice">Practice mode</string>
-    <string name="home_practice_d">See what Imaa recognises without doing anything</string>
+    <string name="home_practice_d">See what Movo recognises without doing anything</string>
     <string name="home_hud">On-screen feedback</string>
     <string name="home_last">Last action</string>
     <string name="home_seeing">Seeing</string>
@@ -35,11 +35,11 @@
     <string name="home_pause">Pause</string>
     <string name="home_resume">Resume</string>
 
-    <string name="disclosure_title">How Imaa uses Accessibility</string>
-    <string name="disclosure_body">Imaa is an accessibility tool for hands-free control. When you turn it on, Imaa can:\n\n• perform taps, swipes and pinches you ask for with gestures (scroll, zoom, next/previous),\n• press system buttons (Back, Home, Recents, Notifications, Screenshot),\n• look for a visible “Skip ad” button on screen and press it when you make the skip gesture.\n\nImaa does not read, store or send your screen content, typing or personal data. Everything stays on this phone. You can turn it off at any time in Settings → Accessibility.</string>
+    <string name="disclosure_title">How Movo uses Accessibility</string>
+    <string name="disclosure_body">Movo is an accessibility tool for hands-free control. When you turn it on, Movo can:\n\n• perform taps, swipes and pinches you ask for with gestures (scroll, zoom, next/previous),\n• press system buttons (Back, Home, Recents, Notifications, Screenshot),\n• look for a visible “Skip ad” button on screen and press it when you make the skip gesture.\n\nMovo does not read, store or send your screen content, typing or personal data. Everything stays on this phone. You can turn it off at any time in Settings → Accessibility.</string>
     <string name="disclosure_agree">I agree, open settings</string>
     <string name="disclosure_cancel">Not now</string>
-    <string name="camera_permission">Imaa needs the camera to see your gestures. The picture never leaves your phone.</string>
+    <string name="camera_permission">Movo needs the camera to see your gestures. The picture never leaves your phone.</string>
     <string name="grant">Allow camera</string>
 
     <string name="gestures_hand">Hand</string>
@@ -49,7 +49,7 @@
 
     <string name="remote_title">Use this phone as a remote camera</string>
     <string name="remote_body">Put your phone where it can see you and control your computer with gestures. Only the name of each gesture is sent over your Wi-Fi — never video.</string>
-    <string name="remote_steps">On the computer: Imaa → Settings → Integrations → turn on “Use my phone as a remote camera”, then scan the QR code with this phone’s camera, or type the details below.</string>
+    <string name="remote_steps">On the computer: Movo → Settings → Integrations → turn on “Use my phone as a remote camera”, then scan the QR code with this phone’s camera, or type the details below.</string>
     <string name="remote_host">Computer address</string>
     <string name="remote_port">Port</string>
     <string name="remote_code">Pairing code</string>
@@ -78,10 +78,10 @@
     <string name="settings_head_sens">Head sensitivity</string>
     <string name="settings_recalibrate">Recalibrate head</string>
     <string name="settings_privacy">Privacy</string>
-    <string name="settings_privacy_text">Imaa looks at the camera only while it is running, and only on this phone. Pictures are analysed in memory and immediately discarded — nothing is recorded, saved or uploaded. No accounts, no analytics, no ads.</string>
+    <string name="settings_privacy_text">Movo looks at the camera only while it is running, and only on this phone. Pictures are analysed in memory and immediately discarded — nothing is recorded, saved or uploaded. No accounts, no analytics, no ads.</string>
     <string name="settings_about">About</string>
     <string name="settings_version">Version %1$s</string>
-    <string name="settings_meaning">“Imaa” (إيماءة) is Arabic for a gesture or a nod.</string>
+    <string name="settings_meaning">“Movo” comes from “move”: control your devices with motion — a wave, a nod or a wink — without touching them.</string>
 
     <string name="notif_channel">Gesture control</string>
     <string name="notif_running">Watching for gestures</string>
@@ -90,18 +90,18 @@
     <string name="notif_resume">Resume</string>
     <string name="notif_stop">Stop</string>
 
-    <string name="accessibility_label">Imaa gesture control</string>
+    <string name="accessibility_label">Movo gesture control</string>
     <string name="accessibility_summary">Hands-free control with hand and head gestures.</string>
-    <string name="accessibility_description">Imaa lets you control your phone without touching it, using hand and head gestures seen by the front camera. It performs taps, swipes, pinches and system actions (Back, Home, Recents, Notifications, Screenshot) that you request with gestures, and presses visible “Skip ad” buttons when you make the skip gesture. Imaa does not collect, store or share screen content or personal data.</string>
+    <string name="accessibility_description">Movo lets you control your phone without touching it, using hand and head gestures seen by the front camera. It performs taps, swipes, pinches and system actions (Back, Home, Recents, Notifications, Screenshot) that you request with gestures, and presses visible “Skip ad” buttons when you make the skip gesture. Movo does not collect, store or share screen content or personal data.</string>
 
-    <string name="hud_needs_accessibility">Turn on Imaa in Accessibility settings first</string>
+    <string name="hud_needs_accessibility">Turn on Movo in Accessibility settings first</string>
     <string name="hud_unsupported">Not available on this phone</string>
     <string name="hud_mic_muted">Microphone muted</string>
     <string name="hud_mic_on">Microphone on</string>
     <string name="hud_skip_done">Ad skipped</string>
     <string name="hud_skip_none">No skippable ad right now</string>
-    <string name="hud_paused">Imaa paused</string>
-    <string name="hud_resumed">Imaa resumed</string>
+    <string name="hud_paused">Movo paused</string>
+    <string name="hud_resumed">Movo resumed</string>
     <string name="error_camera">The camera could not be opened.</string>
 
     <!-- gestures -->
@@ -157,19 +157,19 @@
     <string name="a_skip_ad">Skip ad</string>
     <string name="a_tap">Tap centre of screen</string>
     <string name="a_lock_screen">Lock screen</string>
-    <string name="a_pause_control">Pause / resume Imaa</string>
+    <string name="a_pause_control">Pause / resume Movo</string>
     <string name="nav_help">Help</string>
-    <string name="help_title">How to use Imaa</string>
+    <string name="help_title">How to use Movo</string>
     <string name="help_s1">Turn on phone control</string>
-    <string name="help_s1_d">On Home, tap Turn on and enable “Imaa gesture control” in Accessibility. This lets gestures scroll, go back and take screenshots.</string>
-    <string name="help_s2">Start Imaa</string>
-    <string name="help_s2_d">Tap the big power button and allow the camera. A notification shows Imaa is watching, with Pause and Stop buttons.</string>
+    <string name="help_s1_d">On Home, tap Turn on and enable “Movo gesture control” in Accessibility. This lets gestures scroll, go back and take screenshots.</string>
+    <string name="help_s2">Start Movo</string>
+    <string name="help_s2_d">Tap the big power button and allow the camera. A notification shows Movo is watching, with Pause and Stop buttons.</string>
     <string name="help_s3">Prop up your phone</string>
     <string name="help_s3_d">Stand the phone so the front camera sees your hand 30–80 cm away, with light in front of you.</string>
     <string name="help_s4">Make a gesture and hold it</string>
     <string name="help_s4_d">Hold the pose for about half a second. A bubble shows what happened — try 👍 to raise the volume.</string>
     <string name="help_s5">Choose what each gesture does</string>
-    <string name="help_s5_d">Open Gestures to change any action or switch a gesture off. Practice mode shows what Imaa sees without doing anything.</string>
+    <string name="help_s5_d">Open Gestures to change any action or switch a gesture off. Practice mode shows what Movo sees without doing anything.</string>
     <string name="help_s6">Pause or stop</string>
     <string name="help_s6_d">Make the 🤘 sign, or use Pause / Stop in the notification or on Home.</string>
     <string name="gestures_eyes">Eyes</string>
@@ -184,7 +184,7 @@
     <string name="eyes_calibrate">Calibrate my eyes</string>
     <string name="eyes_reset">Reset</string>
     <string name="eyes_cal_done_status">✅ Calibrated for you. Calibrate again if you change glasses or lighting.</string>
-    <string name="eyes_cal_auto_status">Not calibrated — Imaa learns your eyes automatically, but calibrating is more reliable.</string>
+    <string name="eyes_cal_auto_status">Not calibrated — Movo learns your eyes automatically, but calibrating is more reliable.</string>
     <string name="eyes_cal_ready">Get ready</string>
     <string name="eyes_cal_ready_d">Hold the phone as usual and look at the screen.</string>
     <string name="eyes_cal_open">Eyes open</string>

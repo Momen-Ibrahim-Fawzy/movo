@@ -1,6 +1,6 @@
-name: Imaa
+name: Movo
 options:
-  bundleIdPrefix: app.imaa
+  bundleIdPrefix: app.movo
   deploymentTarget:
     iOS: "16.0"
   developmentLanguage: en
@@ -8,20 +8,20 @@ options:
 settings:
   base:
     SWIFT_VERSION: "5.9"
-    MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "1.1.0"
+    CURRENT_PROJECT_VERSION: "2"
     DEVELOPMENT_TEAM: ""
     CODE_SIGN_STYLE: Automatic
 targets:
-  Imaa:
+  Movo:
     type: application
     platform: iOS
     sources:
-      - path: Imaa
+      - path: Movo
     info:
       path: Supporting/Info.plist
       properties:
-        CFBundleDisplayName: Imaa
+        CFBundleDisplayName: Movo
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         CFBundleDevelopmentRegion: en
@@ -34,32 +34,32 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSCameraUsageDescription: Imaa looks at your hand and head gestures. The picture is processed on this device only and is never saved or sent.
-        NSLocalNetworkUsageDescription: Imaa can send gesture names (never video) to the Imaa app on your own computer.
+        NSCameraUsageDescription: Movo looks at your hand and head gestures. The picture is processed on this device only and is never saved or sent.
+        NSLocalNetworkUsageDescription: Movo can send gesture names (never video) to the Movo app on your own computer.
         CFBundleURLTypes:
-          - CFBundleURLName: app.imaa.pair
-            CFBundleURLSchemes: [imaa]
+          - CFBundleURLName: app.movo.pair
+            CFBundleURLSchemes: [movo]
         NSAppTransportSecurity:
           NSAllowsLocalNetworking: true
         UIApplicationSupportsIndirectInputEvents: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: app.imaa.ios
+        PRODUCT_BUNDLE_IDENTIFIER: app.movo.ios
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: NO
-  ImaaTests:
+  MovoTests:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: ImaaTests
+      - path: MovoTests
     dependencies:
-      - target: Imaa
+      - target: Movo
 schemes:
-  Imaa:
+  Movo:
     build:
       targets:
-        Imaa: all
-        ImaaTests: [test]
+        Movo: all
+        MovoTests: [test]
     test:
-      targets: [ImaaTests]
+      targets: [MovoTests]

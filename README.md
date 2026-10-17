@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="branding/logo-128.png" width="96" alt="Imaa logo" />
+  <img src="branding/concepts/movo-logo-artwork.png" width="220" alt="Movo · موفو" />
 </p>
 
-<h1 align="center">Imaa · إيماءة</h1>
+<h3 align="center">Control Without Contact · تحكّم دون لمس</h3>
 
 <p align="center">
-  <b>Control your computer and phone with a wave of your hand or a nod of your head — privately.</b><br/>
+  <b>Control your computer and phone with a wave of your hand, a nod of your head or a wink — privately.</b><br/>
   Everything happens on your device. No video is recorded, saved or sent anywhere.
 </p>
 
@@ -34,7 +34,7 @@
 | 📽️ Presentations | Next / previous slide, black screen, start the slideshow |
 | 📜 Reading | Scroll up / down (speed follows your hand), zoom in / out |
 | 📑 Browsing | Next / previous tab, back / forward, new / close tab |
-| 📸 Screenshot | Saved to *Pictures/Imaa* and copied to the clipboard |
+| 📸 Screenshot | Saved to *Pictures/Movo* and copied to the clipboard |
 | 🎙️ Calls | Microphone on / off for the whole system |
 | ⏩ Ads | Skip ads by pressing the visible *Skip* button for you |
 | 👁️ Eyes only | Wink left/right, double blink, long blink, close your eyes, glance up/down — with or without glasses |
@@ -56,26 +56,26 @@
 | ✌️ Victory | Screenshot | 😮 Open mouth \* | Microphone on / off |
 | 🤙 Call sign | Microphone on / off | 😁 Smile \* | Screenshot |
 | ✊ Fist | Skip ad | | |
-| 🤘 Rock sign (hold) | Pause / resume Imaa | | |
+| 🤘 Rock sign (hold) | Pause / resume Movo | | |
 
 | Eyes (with or without glasses) | Action |
 |------|--------|
 | 😉 Wink left / right | Previous / next |
 | 👁️ Double blink | Play / pause |
 | 😌 Long blink (~1 s) | Skip ad |
-| 😴 Eyes closed 2 s | Pause / resume Imaa |
+| 😴 Eyes closed 2 s | Pause / resume Movo |
 | 🔼 / 🔽 Glance up / down (hold) | Scroll |
 
 Normal blinking is ignored. A 7-second calibration adapts eye gestures to your eyes and your glasses — see [EYE_GESTURES.md](docs/EYE_GESTURES.md).
 
 \* *Accurate* head mode. Every gesture can be re-assigned, switched off, or set per **profile**
-(General, Presentation, Media, Browser, Meeting — Imaa switches automatically for the app in front).
+(General, Presentation, Media, Browser, Meeting — Movo switches automatically for the app in front).
 
 ### Built for everyone
 
 - **Start, stop and pause inside the app** — big power button, tray menu, or **Ctrl + Alt + G** anywhere.
 - **English and Arabic** with a full right-to-left layout, **light, dark or system** theme — switch instantly.
-- **Practice mode** shows which gesture Imaa sees without doing anything.
+- **Practice mode** shows which gesture Movo sees without doing anything.
 - **Head gestures, head pointer and eye gestures** for people who can't use their hands.
 - **Phone as a remote camera** — the phone app recognises gestures and sends only the gesture name to the computer over your Wi-Fi.
 - **Light on resources** — about 10–20 ms of CPU per frame; rests at 5 fps when nobody is in view; Eco mode for older laptops.
@@ -86,43 +86,43 @@ All downloads are on the **[Releases page](../../releases/latest)**. Every tagge
 
 | Your device | Download |
 |-------------|----------|
-| Windows 10 / 11 | `Imaa-Setup-x.y.z.exe` (installer) or `Imaa-Windows-x64-portable.zip` |
-| Mac with Apple Silicon (M1 or newer) | `Imaa-macOS-macos-arm64.dmg` |
-| Mac with Intel | `Imaa-macOS-macos-x86_64.dmg` |
-| Linux (Ubuntu, Fedora, …) | `Imaa-Linux-x86_64.AppImage` or `.tar.gz` |
-| Android 8+ phone, tablet or Chromebook | `Imaa-Android.apk` |
+| Windows 10 / 11 | `Movo-Setup-x.y.z.exe` (installer) or `Movo-Windows-x64-portable.zip` |
+| Mac with Apple Silicon (M1 or newer) | `Movo-macOS-macos-arm64.dmg` |
+| Mac with Intel | `Movo-macOS-macos-x86_64.dmg` |
+| Linux (Ubuntu, Fedora, …) | `Movo-Linux-x86_64.AppImage` or `.tar.gz` |
+| Android 8+ phone, tablet or Chromebook | `Movo-Android.apk` |
 | iPhone / iPad (iOS 16+) | Build with Xcode (see below) |
-| Chrome, Edge, Brave, Firefox (optional, for ad skipping) | `Imaa-Browser-Helper.zip` |
+| Chrome, Edge, Brave, Firefox (optional, for ad skipping) | `Movo-Browser-Helper.zip` |
 
 ### Windows
-1. Download **Imaa-Setup-x.y.z.exe** and double-click it. No administrator rights needed.
+1. Download **Movo-Setup-x.y.z.exe** and double-click it. No administrator rights needed.
 2. If you see *"Windows protected your PC"*, click **More info → Run anyway**.
-3. Open **Imaa** from the Start menu.
+3. Open **Movo** from the Start menu.
 
 ### macOS
 1. Download the `.dmg` that matches your Mac (Apple menu → *About This Mac* shows "Apple M…" or "Intel").
-2. Open it and drag **Imaa** onto **Applications**, then open it from Applications.
+2. Open it and drag **Movo** onto **Applications**, then open it from Applications.
 3. If macOS says it can't verify the app: **System Settings → Privacy & Security → Open Anyway**.
-4. Allow the **Camera**. When the yellow banner appears, click **Open Settings** and switch Imaa on under **Accessibility**, then reopen Imaa.
+4. Allow the **Camera**. When the yellow banner appears, click **Open Settings** and switch Movo on under **Accessibility**, then reopen Movo.
 
 ### Linux
 ```bash
-chmod +x Imaa-Linux-x86_64.AppImage
-./Imaa-Linux-x86_64.AppImage
+chmod +x Movo-Linux-x86_64.AppImage
+./Movo-Linux-x86_64.AppImage
 ```
 Works best in an X11 session. Volume and microphone use `pactl` (PulseAudio / PipeWire).
 
 ### Android
-1. Download **Imaa-Android.apk** on the phone and open it. Allow installing from your browser if asked.
-2. Open Imaa, tap **Turn on** under *Phone control* and enable **Imaa gesture control** in Accessibility.
+1. Download **Movo-Android.apk** on the phone and open it. Allow installing from your browser if asked.
+2. Open Movo, tap **Turn on** under *Phone control* and enable **Movo gesture control** in Accessibility.
 3. Tap the power button and allow the camera.
 
 ### iPhone / iPad
-On a Mac with Xcode 15+: `brew install xcodegen`, then `cd mobile/ios && xcodegen && open Imaa.xcodeproj`, choose your
+On a Mac with Xcode 15+: `brew install xcodegen`, then `cd mobile/ios && xcodegen && open Movo.xcodeproj`, choose your
 iPhone and press **Run**. (An App Store / TestFlight build needs an Apple Developer account.)
 
 ### Browser helper (optional)
-Unzip **Imaa-Browser-Helper.zip**. In Chrome/Edge/Brave open `chrome://extensions`, turn on **Developer mode**,
+Unzip **Movo-Browser-Helper.zip**. In Chrome/Edge/Brave open `chrome://extensions`, turn on **Developer mode**,
 click **Load unpacked** and pick the folder. In Firefox use `about:debugging` → **Load Temporary Add-on**.
 
 ## How to use
@@ -131,7 +131,7 @@ click **Load unpacked** and pick the folder. In Firefox use `about:debugging` �
 2. **Face the camera** — sit 40–100 cm away with light in front of you; raise one hand, palm towards the screen.
 3. **Make a gesture and hold it** for half a second — try 👍. A small bubble on screen confirms what happened.
 4. **Click the app you want to control once** (slides, video, browser) — keyboard actions go to the last window you clicked.
-5. **Pause** with 🤘, the *Pause* button, or **Ctrl + Alt + G**. Closing the window keeps Imaa in the tray.
+5. **Pause** with 🤘, the *Pause* button, or **Ctrl + Alt + G**. Closing the window keeps Movo in the tray.
 6. Open **How to use** in the app for the full step-by-step guide and a cheat sheet of every gesture,
    and **Practice mode** to learn gestures without triggering anything.
 
@@ -139,7 +139,7 @@ More detail: [User guide](docs/USER_GUIDE.md) · [دليل المستخدم](doc
 
 ## Privacy
 
-Imaa only looks at the camera while it is running. Each picture is analysed in memory and replaced by the next one —
+Movo only looks at the camera while it is running. Each picture is analysed in memory and replaced by the next one —
 there is no code that writes camera pictures to disk or to the network. No accounts, analytics or ads.
 The browser helper only listens on `127.0.0.1`; the phone remote is off until you turn it on and pair with a code.
 Details: [docs/PRIVACY.md](docs/PRIVACY.md).
@@ -148,16 +148,16 @@ Details: [docs/PRIVACY.md](docs/PRIVACY.md).
 
 ```
 desktop/            Windows · macOS · Linux app (Python, Qt, MediaPipe)
-  imaa/core/        camera, trackers, hand & head recognisers, engine, dispatcher
-  imaa/actions/     keyboard, mouse, volume, microphone, ad skipping
-  imaa/services/    browser bridge, phone remote, auto-profiles, autostart, hotkey
-  imaa/ui/          theme, pages, HUD, tray, onboarding
-  imaa/i18n/        English and Arabic strings
+  movo/core/        camera, trackers, hand & head recognisers, engine, dispatcher
+  movo/actions/     keyboard, mouse, volume, microphone, ad skipping
+  movo/services/    browser bridge, phone remote, auto-profiles, autostart, hotkey
+  movo/ui/          theme, pages, HUD, tray, onboarding
+  movo/i18n/        English and Arabic strings
   tests/            unit tests (synthetic hands and faces), service tests
   packaging/        PyInstaller spec, Windows installer, Linux desktop entry, icons
 mobile/android/     Android app (Kotlin, Jetpack Compose, CameraX, MediaPipe)
 mobile/ios/         iOS / iPadOS app (Swift, SwiftUI, Vision)
-browser-extension/  Imaa Helper for Chromium browsers and Firefox
+browser-extension/  Movo Helper for Chromium browsers and Firefox
 branding/           logo sources and exports
 docs/               plan, research, architecture, design, privacy, guides
 ```
@@ -171,13 +171,13 @@ cd desktop
 python -m venv .venv && . .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt
 python scripts/download_models.py                   # one-time, ~12 MB of on-device models
-python -m imaa                                      # run
+python -m movo                                      # run
 pytest                                              # tests
-pyinstaller packaging/imaa.spec --noconfirm         # package for this OS
+pyinstaller packaging/movo.spec --noconfirm         # package for this OS
 ```
 
 **Android**: open `mobile/android` in Android Studio (or run `gradle assembleDebug`). The build downloads the models.
-**iOS**: `cd mobile/ios && xcodegen && open Imaa.xcodeproj`.
+**iOS**: `cd mobile/ios && xcodegen && open Movo.xcodeproj`.
 
 Continuous integration builds every platform; tagging `vX.Y.Z` publishes a release.
 

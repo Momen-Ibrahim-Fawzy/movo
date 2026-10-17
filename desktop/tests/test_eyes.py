@@ -1,6 +1,6 @@
 import pytest
 
-from imaa.core.eyes import EyeFeatures, EyeRecognizer, EyeSettings
+from movo.core.eyes import EyeFeatures, EyeRecognizer, EyeSettings
 
 FPS = 20
 OPEN, CLOSED = 0.30, 0.08

@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-os.environ.setdefault("IMAA_CONFIG_DIR", tempfile.mkdtemp(prefix="imaa-shots-"))
+os.environ.setdefault("MOVO_CONFIG_DIR", tempfile.mkdtemp(prefix="movo-shots-"))
 
 
 def main() -> int:
@@ -20,10 +20,10 @@ def main() -> int:
     from PySide6.QtCore import QTimer
     from PySide6.QtWidgets import QApplication
 
-    from imaa.config import Settings
-    from imaa.controller import Controller
-    from imaa.core.engine import EngineStats
-    from imaa.ui.main_window import NAV, MainWindow, apply_appearance
+    from movo.config import Settings
+    from movo.controller import Controller
+    from movo.core.engine import EngineStats
+    from movo.ui.main_window import NAV, MainWindow, apply_appearance
 
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / "docs" / "screenshots"
     out.mkdir(parents=True, exist_ok=True)

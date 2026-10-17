@@ -1,4 +1,4 @@
-"""Download the on-device MediaPipe models (Apache 2.0) into imaa/assets/models.
+"""Download the on-device MediaPipe models (Apache 2.0) into movo/assets/models.
 
 The app never downloads anything at run time; this runs once for development and in CI before packaging.
 Usage: python scripts/download_models.py
@@ -17,7 +17,7 @@ MODELS = {
     "blaze_face_short_range.tflite": f"{BASE}/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite",
     "face_landmarker.task": f"{BASE}/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
 }
-DEST = Path(__file__).resolve().parents[1] / "imaa" / "assets" / "models"
+DEST = Path(__file__).resolve().parents[1] / "movo" / "assets" / "models"
 
 
 def main() -> int:

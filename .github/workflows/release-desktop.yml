@@ -46,42 +46,42 @@ jobs:
         run: |
           if [[ "$GITHUB_REF" == refs/tags/v* ]]; then echo "version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"; else echo "version=0.0.0-dev" >> "$GITHUB_OUTPUT"; fi
       - name: PyInstaller
-        run: pyinstaller packaging/imaa.spec --noconfirm --distpath dist --workpath build
+        run: pyinstaller packaging/movo.spec --noconfirm --distpath dist --workpath build
 
       - name: Package (Windows)
         if: runner.os == 'Windows'
         run: |
-          cd dist && 7z a -tzip "Imaa-Windows-x64-portable.zip" Imaa > /dev/null && cd ..
+          cd dist && 7z a -tzip "Movo-Windows-x64-portable.zip" Movo > /dev/null && cd ..
           ISCC="/c/Program Files (x86)/Inno Setup 6/ISCC.exe"
           if [ ! -f "$ISCC" ]; then choco install innosetup -y --no-progress > /dev/null; fi
           # Git Bash would rewrite "/DAppVersion=..." into a file path; turn that conversion off for this call.
-          MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" "$ISCC" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
+          MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" "$ISCC" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/movo.iss
           ls dist
       - name: Package (macOS)
         if: runner.os == 'macOS'
         run: |
-          codesign --force --deep --sign - dist/Imaa.app
-          mkdir -p dmg && cp -R dist/Imaa.app dmg/ && ln -s /Applications dmg/Applications
-          hdiutil create -volname Imaa -srcfolder dmg -ov -format UDZO "dist/Imaa-macOS-${{ matrix.artifact }}.dmg"
+          codesign --force --deep --sign - dist/Movo.app
+          mkdir -p dmg && cp -R dist/Movo.app dmg/ && ln -s /Applications dmg/Applications
+          hdiutil create -volname Movo -srcfolder dmg -ov -format UDZO "dist/Movo-macOS-${{ matrix.artifact }}.dmg"
       - name: Package (Linux)
         if: runner.os == 'Linux'
         run: |
-          tar -C dist -czf "dist/Imaa-Linux-x86_64.tar.gz" Imaa
+          tar -C dist -czf "dist/Movo-Linux-x86_64.tar.gz" Movo
           mkdir -p AppDir/usr/bin AppDir/usr/share/applications AppDir/usr/share/icons/hicolor/512x512/apps
-          cp -R dist/Imaa/. AppDir/usr/bin/
-          cp packaging/linux/imaa.desktop AppDir/imaa.desktop
-          cp packaging/linux/imaa.desktop AppDir/usr/share/applications/
-          cp packaging/imaa.png AppDir/imaa.png
-          cp packaging/imaa.png AppDir/usr/share/icons/hicolor/512x512/apps/imaa.png
-          printf '#!/bin/sh\nHERE="$(dirname "$(readlink -f "$0")")"\nexec "$HERE/usr/bin/Imaa" "$@"\n' > AppDir/AppRun
+          cp -R dist/Movo/. AppDir/usr/bin/
+          cp packaging/linux/movo.desktop AppDir/movo.desktop
+          cp packaging/linux/movo.desktop AppDir/usr/share/applications/
+          cp packaging/movo.png AppDir/movo.png
+          cp packaging/movo.png AppDir/usr/share/icons/hicolor/512x512/apps/movo.png
+          printf '#!/bin/sh\nHERE="$(dirname "$(readlink -f "$0")")"\nexec "$HERE/usr/bin/Movo" "$@"\n' > AppDir/AppRun
           chmod +x AppDir/AppRun
           curl -sSLo appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
-          ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir "dist/Imaa-Linux-x86_64.AppImage"
+          ARCH=x86_64 ./appimagetool --appimage-extract-and-run AppDir "dist/Movo-Linux-x86_64.AppImage"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: imaa-${{ matrix.artifact }}
+          name: movo-${{ matrix.artifact }}
           path: |
             desktop/dist/*.zip
             desktop/dist/*.exe
@@ -100,7 +100,7 @@ jobs:
         with:
           path: artifacts
       - name: Browser helper zip
-        run: cd browser-extension && zip -r ../artifacts/Imaa-Browser-Helper.zip . -x '*.DS_Store'
+        run: cd browser-extension && zip -r ../artifacts/Movo-Browser-Helper.zip . -x '*.DS_Store'
       - uses: softprops/action-gh-release@v2
         with:
           files: artifacts/**/*

@@ -1,4 +1,4 @@
-"""Generate Imaa/Resources/{en,ar}.lproj/Localizable.strings.
+"""Generate Movo/Resources/{en,ar}.lproj/Localizable.strings.
 
 Gesture names come from the desktop string tables so all platforms use the same words.
 Usage: python mobile/ios/scripts/make_strings.py
@@ -8,8 +8,8 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-OUT = ROOT / "mobile" / "ios" / "Imaa" / "Resources"
-DESKTOP = {lang: json.loads((ROOT / "desktop" / "imaa" / "i18n" / f"{lang}.json").read_text(encoding="utf-8")) for lang in ("en", "ar")}
+OUT = ROOT / "mobile" / "ios" / "Movo" / "Resources"
+DESKTOP = {lang: json.loads((ROOT / "desktop" / "movo" / "i18n" / f"{lang}.json").read_text(encoding="utf-8")) for lang in ("en", "ar")}
 
 GESTURES = [
     "thumb_up", "thumb_down", "point_right", "point_left", "pinch", "index_up_move_up", "index_up_move_down",
@@ -25,7 +25,7 @@ EYE_KEYS = [
 ]
 
 STRINGS = {
-    "app.name": ("Imaa", "إيماءة"),
+    "app.name": ("Movo", "موفو"),
     "nav.home": ("Home", "الرئيسية"),
     "nav.viewer": ("Viewer", "العارض"),
     "nav.remote": ("Remote", "عن بُعد"),
@@ -44,7 +44,7 @@ STRINGS = {
     "home.pause": ("Pause", "إيقاف مؤقت"),
     "home.resume": ("Resume", "استئناف"),
     "home.camera_denied": (
-        "Imaa needs the camera to see your gestures. The picture never leaves your device.",
+        "Movo needs the camera to see your gestures. The picture never leaves your device.",
         "يحتاج التطبيق إلى الكاميرا لرؤية إيماءاتك. الصورة لا تغادر جهازك أبدًا.",
     ),
     "home.open_settings": ("Open Settings", "فتح الإعدادات"),
@@ -52,7 +52,7 @@ STRINGS = {
     "home.hand": ("Hand gestures", "إيماءات اليد"),
     "home.head": ("Head gestures", "إيماءات الرأس"),
     "home.practice": ("Practice mode", "وضع التدريب"),
-    "home.practice_d": ("See what Imaa recognises without doing anything", "اعرف ما يتعرّف عليه التطبيق دون تنفيذ أي إجراء"),
+    "home.practice_d": ("See what Movo recognises without doing anything", "اعرف ما يتعرّف عليه التطبيق دون تنفيذ أي إجراء"),
     "home.last": ("Last action", "آخر إجراء"),
     "home.nothing": (
         "Nothing yet — open a PDF in the Viewer and point 👉 to turn the page.",
@@ -84,8 +84,8 @@ STRINGS = {
         "استخدم هذا الجهاز ككاميرا إيماءات لحاسوبك. تُرسَل أسماء الإيماءات فقط عبر شبكة Wi-Fi — وليس الفيديو أبدًا.",
     ),
     "remote.steps": (
-        "On the computer: Imaa → Settings → Integrations → “Use my phone as a remote camera”. Scan the QR code with the Camera app, or type the details below.",
-        "على الحاسوب: إيماءة ← الإعدادات ← التكاملات ← «استخدام هاتفي ككاميرا عن بُعد». امسح رمز QR بتطبيق الكاميرا أو أدخل البيانات أدناه.",
+        "On the computer: Movo → Settings → Integrations → “Use my phone as a remote camera”. Scan the QR code with the Camera app, or type the details below.",
+        "على الحاسوب: موفو ← الإعدادات ← التكاملات ← «استخدام هاتفي ككاميرا عن بُعد». امسح رمز QR بتطبيق الكاميرا أو أدخل البيانات أدناه.",
     ),
     "remote.paired": ("Pairing details received", "تم استلام بيانات الاقتران"),
     "remote.host": ("Computer address", "عنوان الحاسوب"),
@@ -114,22 +114,22 @@ STRINGS = {
     "settings.gestures": ("Gestures in the Viewer", "الإيماءات في العارض"),
     "settings.privacy": ("Privacy", "الخصوصية"),
     "settings.privacy_text": (
-        "Imaa looks at the camera only while it is running, and only on this device. Pictures are analysed in memory and immediately discarded. No accounts, no analytics, no ads.",
+        "Movo looks at the camera only while it is running, and only on this device. Pictures are analysed in memory and immediately discarded. No accounts, no analytics, no ads.",
         "لا ينظر التطبيق إلى الكاميرا إلا أثناء تشغيله وعلى هذا الجهاز فقط. تُحلَّل الصور في الذاكرة ثم تُحذف فورًا. لا حسابات ولا تحليلات ولا إعلانات.",
     ),
     "settings.about": ("About", "حول التطبيق"),
-    "settings.meaning": ("“Imaa” (إيماءة) is Arabic for a gesture or a nod.", "«إيماءة» تعني الإشارة باليد أو الإيماء بالرأس."),
+    "settings.meaning": ("“Movo” comes from “move”: control your devices with motion — a wave, a nod or a wink — without touching them.", "«موفو» مستوحى من الحركة: تحكّم في أجهزتك بتلويحة يد أو إيماءة رأس أو غمزة عين — دون لمس."),
     "settings.version": ("Version", "الإصدار"),
-    "help.title": ("How to use Imaa", "طريقة استخدام إيماءة"),
+    "help.title": ("How to use Movo", "طريقة استخدام موفو"),
     "help.gestures": ("Gestures", "الإيماءات"),
-    "help.s1": ("Start Imaa", "شغّل التطبيق"),
+    "help.s1": ("Start Movo", "شغّل التطبيق"),
     "help.s1_d": ("Tap the power button on Home and allow the camera.", "اضغط زر التشغيل في الصفحة الرئيسية واسمح بالكاميرا."),
     "help.s2": ("Open something to control", "افتح شيئًا للتحكم فيه"),
     "help.s2_d": ("In Viewer, open a PDF or photos. Turn pages with 👉 👈, scroll with ☝️, zoom with pinch-and-pull.", "في العارض افتح ملف PDF أو صورًا. قلّب الصفحات بـ 👉 👈، ومرّر بـ ☝️، وكبّر بالقرص والسحب."),
     "help.s3": ("Prop up your device", "اسند جهازك"),
     "help.s3_d": ("Stand it so the front camera sees your hand 30–80 cm away, with light in front of you.", "ضعه بحيث ترى الكاميرا الأمامية يدك على بُعد 30–80 سم، مع إضاءة أمامك."),
     "help.s4": ("Control your computer", "تحكّم في حاسوبك"),
-    "help.s4_d": ("In Remote, scan the QR code shown by Imaa on your computer, then turn on “Send gestures to the computer”.", "في صفحة عن بُعد امسح رمز QR الظاهر في تطبيق إيماءة على حاسوبك، ثم فعّل «إرسال الإيماءات إلى الحاسوب»."),
+    "help.s4_d": ("In Remote, scan the QR code shown by Movo on your computer, then turn on “Send gestures to the computer”.", "في صفحة عن بُعد امسح رمز QR الظاهر في تطبيق موفو على حاسوبك، ثم فعّل «إرسال الإيماءات إلى الحاسوب»."),
     "help.s5": ("Pause any time", "أوقف مؤقتًا في أي وقت"),
     "help.s5_d": ("Make the 🤘 sign or tap Pause on Home.", "أشر بعلامة 🤘 أو اضغط إيقاف مؤقت في الصفحة الرئيسية."),
 }
@@ -141,7 +141,7 @@ def escape(text: str) -> str:
 
 def main() -> None:
     for index, lang in enumerate(("en", "ar")):
-        lines = [f"/* Imaa — {lang}. Generated by scripts/make_strings.py */"]
+        lines = [f"/* Movo — {lang}. Generated by scripts/make_strings.py */"]
         lines += [f'"{key}" = "{escape(pair[index])}";' for key, pair in STRINGS.items()]
         lines += [f'"g.{g}" = "{escape(DESKTOP[lang]["g." + g])}";' for g in GESTURES]
         lines += [f'"{k}" = "{escape(DESKTOP[lang][k])}";' for k in EYE_KEYS]

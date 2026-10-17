@@ -3,8 +3,8 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "imaa"
-version = "1.0.0"
+name = "movo"
+version = "1.1.0"
 description = "Control your computer with hand and head gestures — privately, on-device."
 readme = "../README.md"
 requires-python = ">=3.10"
@@ -26,13 +26,13 @@ dev = ["pytest>=8", "ruff>=0.6", "pyinstaller>=6.6", "pillow>=10"]
 mac = ["pyobjc-framework-Cocoa>=10"]
 
 [project.scripts]
-imaa = "imaa.app:main"
+movo = "movo.app:main"
 
 [tool.setuptools.packages.find]
-include = ["imaa*"]
+include = ["movo*"]
 
 [tool.setuptools.package-data]
-imaa = ["i18n/*.json", "assets/icons/*", "assets/sounds/*", "assets/models/*"]
+movo = ["i18n/*.json", "assets/icons/*", "assets/sounds/*", "assets/models/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -49,4 +49,4 @@ ignore = ["E501", "B008", "UP007", "UP045"]
 "tests/*" = ["B017"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["imaa"]
+known-first-party = ["movo"]

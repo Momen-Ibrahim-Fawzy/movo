@@ -1,7 +1,7 @@
 import pytest
 from synthetic import POSES, hand, pinch_hand
 
-from imaa.core.hand import HandRecognizer, analyze, classify
+from movo.core.hand import HandRecognizer, analyze, classify
 
 FPS = 30
 

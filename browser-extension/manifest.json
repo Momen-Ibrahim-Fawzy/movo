@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Imaa Helper",
-  "short_name": "Imaa",
-  "version": "1.0.0",
-  "description": "Lets the Imaa gesture app press 'Skip ad' buttons for you. Talks only to Imaa on this computer.",
+  "name": "Movo Helper",
+  "short_name": "Movo",
+  "version": "1.1.0",
+  "description": "Lets the Movo gesture app press 'Skip ad' buttons for you. Talks only to Movo on this computer.",
   "default_locale": "en",
   "minimum_chrome_version": "116",
   "icons": { "16": "icons/16.png", "32": "icons/32.png", "64": "icons/64.png", "128": "icons/128.png" },
   "background": { "service_worker": "background.js", "scripts": ["background.js"] },
   "permissions": ["tabs", "scripting", "storage"],
   "host_permissions": ["<all_urls>"],
-  "action": { "default_title": "Imaa Helper", "default_popup": "popup.html" },
-  "browser_specific_settings": { "gecko": { "id": "helper@imaa.app", "strict_min_version": "121.0" } }
+  "action": { "default_title": "Movo Helper", "default_popup": "popup.html" },
+  "browser_specific_settings": { "gecko": { "id": "helper@movo.app", "strict_min_version": "121.0" } }
 }

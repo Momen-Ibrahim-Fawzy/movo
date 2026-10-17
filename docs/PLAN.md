@@ -1,6 +1,6 @@
-# Imaa — Product & Implementation Plan
+# Movo — Product & Implementation Plan
 
-> **Imaa** (Arabic: **إيماءة**, "a gesture / a nod") lets people control their computer and phone
+> **Movo · موفو** — *Control Without Contact*. The name comes from "move": Movo lets people control their computer and phone
 > with hand and head gestures, using only the camera they already have.
 > Everything is processed live, on the device. No video is recorded, stored, or sent anywhere.
 
@@ -45,11 +45,11 @@ fused learned + geometric signals, per-person calibration and glare smoothing. R
 | Presentation | Next / previous slide, black screen, start/stop slideshow, full screen |
 | Scroll & zoom | Scroll up/down (speed follows how far you move), zoom in / out / reset |
 | Tabs & windows | Next / previous tab, new tab, close tab, switch app, show desktop |
-| Capture | Screenshot (saved to *Pictures/Imaa*, optional copy to clipboard) |
+| Capture | Screenshot (saved to *Pictures/Movo*, optional copy to clipboard) |
 | Microphone | Toggle microphone mute (system-wide), or a meeting app's own shortcut via profiles |
 | Ads | Skip ad — clicks a visible "Skip" button (browser helper, Windows UI Automation, Android Accessibility) |
 | Mouse | Air mouse (index finger moves the cursor, pinch clicks), head pointer (head moves the cursor) |
-| Control | Pause / resume Imaa itself, custom keyboard shortcut (any key combination) |
+| Control | Pause / resume Movo itself, custom keyboard shortcut (any key combination) |
 
 ### 3.2 Hand gestures (defaults — every one is re-bindable)
 
@@ -66,7 +66,7 @@ fused learned + geometric signals, per-person calibration and glare smoothing. R
 | ✌️ Victory | Screenshot | The "photo" pose |
 | 🤙 Call sign | Toggle microphone | The "phone call" pose |
 | ✊ Fist | Skip ad | "Punch the ad" |
-| 🤘 Rock sign (hold longer) | Pause / resume Imaa | Deliberate, rarely made by accident |
+| 🤘 Rock sign (hold longer) | Pause / resume Movo | Deliberate, rarely made by accident |
 | 🖖 Three fingers | *(free)* | Available for custom bindings |
 
 Safety rules borrowed from the reference behaviour and extended:
@@ -100,14 +100,14 @@ second and re-captured with one click ("Recalibrate"), so posture, camera height
 ### 3.4 App features
 
 - **Start / Stop / Pause inside the app** — one big button on Home, the tray/menu-bar icon, and a global
-  shortcut (default **Ctrl + Alt + G**). Closing the window keeps Imaa in the tray (configurable); *Quit* is explicit.
+  shortcut (default **Ctrl + Alt + G**). Closing the window keeps Movo in the tray (configurable); *Quit* is explicit.
 - **Live preview** with skeleton overlay (optional — turning it off saves CPU). Preview is never produced when
   the window is hidden.
 - **On-screen feedback (HUD)** — small, click-through bubble that shows the action just performed
   (e.g. "🔊 Volume up"). Position and on/off configurable.
-- **Practice mode** — gesture cards light up when Imaa sees that gesture, so people learn without triggering actions.
+- **Practice mode** — gesture cards light up when Movo sees that gesture, so people learn without triggering actions.
 - **Profiles** — General, Presentation, Media, Browser, Meeting. Each has its own bindings and an optional list of apps;
-  Imaa switches automatically when that app is in front (e.g. PowerPoint → Presentation).
+  Movo switches automatically when that app is in front (e.g. PowerPoint → Presentation).
 - **Settings** — language (System / English / العربية), theme (System / Light / Dark), camera, resolution, mirror,
   power mode (Eco / Balanced / Performance), hand & head sensitivity, hold times, HUD, sounds, start with the system,
   start minimised, start detecting on launch, global shortcut, screenshot folder, import/export, reset.
@@ -157,10 +157,10 @@ second and re-captured with one click ("Recalibrate"), so posture, camera height
    that is not a browser extension. The phone remote listens on the LAN only when the user turns it on, and requires pairing.
 3. iOS: apps cannot inject input into other apps or the system; that is why iOS ships the viewer + remote mode.
 4. Android: Google Play only lets apps declare `isAccessibilityTool` when helping people with disabilities is the primary
-   purpose. Imaa's in-app disclosure explains exactly what the service does before the user turns it on (required by Play policy).
+   purpose. Movo's in-app disclosure explains exactly what the service does before the user turns it on (required by Play policy).
 5. macOS: needs *Camera* and *Accessibility* permission (the app detects missing permission and opens the right settings page).
    Screenshots need *Screen Recording*.
-6. Linux: key injection works on X11; on Wayland Imaa uses `ydotool`/`pactl` fallbacks where available and says so in Settings.
+6. Linux: key injection works on X11; on Wayland Movo uses `ydotool`/`pactl` fallbacks where available and says so in Settings.
 
 ## 7. Business model (see [BUSINESS.md](BUSINESS.md))
 
