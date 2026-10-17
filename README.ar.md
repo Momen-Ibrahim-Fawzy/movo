@@ -29,7 +29,7 @@
 
 | جهازك | الملف |
 |-------|-------|
-| ويندوز 10 / 11 | `Movo-Setup-x.y.z.exe` (برنامج تثبيت) أو `Movo-Windows-x64-portable.zip` |
+| ويندوز 10 / 11 | `Movo-Setup-Windows-x64.exe` (برنامج تثبيت) أو `Movo-Windows-x64-portable.zip` |
 | ماك بمعالج Apple (M1 أو أحدث) | `Movo-macOS-macos-arm64.dmg` |
 | ماك بمعالج Intel | `Movo-macOS-macos-x86_64.dmg` |
 | لينكس | `Movo-Linux-x86_64.AppImage` |
@@ -38,7 +38,7 @@
 | مساعد المتصفح (اختياري لتخطي الإعلانات) | `Movo-Browser-Helper.zip` |
 
 ### ويندوز
-1. نزّل **Movo-Setup-x.y.z.exe** وانقر عليه مرتين (لا يحتاج صلاحيات المسؤول).
+1. نزّل **Movo-Setup-Windows-x64.exe** وانقر عليه مرتين (لا يحتاج صلاحيات المسؤول).
 2. إذا ظهرت رسالة *«حماية Windows لجهازك»* اضغط **مزيد من المعلومات ← التشغيل على أي حال**.
 3. افتح **Movo** من قائمة ابدأ.
 

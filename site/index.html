@@ -250,7 +250,7 @@
         <p class="section-sub" data-i18n="d_sub">Free. Pick your device.</p>
         <div class="grid">
           <div class="card"><h3>🪟 Windows</h3><p class="muted" data-i18n="d_win">Windows 10 / 11. No admin rights needed.</p>
-            <a class="btn btn-primary" data-asset="Movo-Setup" data-i18n="d_installer">Installer</a>
+            <a class="btn btn-primary" data-asset="Movo-Setup-Windows-x64.exe" data-i18n="d_installer">Installer</a>
             <a class="btn btn-ghost" data-asset="Movo-Windows-x64-portable.zip" data-i18n="d_portable">Portable (zip)</a></div>
           <div class="card"><h3> macOS</h3><p class="muted" data-i18n="d_mac">macOS 12 or newer.</p>
             <a class="btn btn-primary" data-asset="Movo-macOS-macos-arm64.dmg" data-i18n="d_mac_arm">Apple Silicon (M1+)</a>
@@ -386,15 +386,15 @@
       const ua = navigator.userAgent;
       if (/Android/i.test(ua)) return ["Movo-Android.apk", "Android"];
       if (/iPhone|iPad|iPod/i.test(ua)) return [null, "iPhone / iPad"];
-      if (/Windows/i.test(ua)) return ["Movo-Setup", "Windows"];
+      if (/Windows/i.test(ua)) return ["Movo-Setup-Windows-x64.exe", "Windows"];
       if (/Mac/i.test(ua)) return ["Movo-macOS-macos-arm64.dmg", "macOS"];
       if (/Linux/i.test(ua)) return ["Movo-Linux-x86_64.AppImage", "Linux"];
       return [null, ""];
     }
+    // Stable file names → permanent "latest release" links that work without the GitHub API.
     function link(name) {
       if (!name) return "#download";
-      const hit = Object.keys(assets).find((k) => k.startsWith(name));
-      return hit ? assets[hit] : RELEASES;
+      return `${RELEASES}/download/${name}`;
     }
     function updateMain() {
       const [asset, os] = detect();

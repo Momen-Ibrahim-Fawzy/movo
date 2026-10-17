@@ -87,7 +87,7 @@ All downloads are on the **[Releases page](../../releases/latest)**. Every tagge
 
 | Your device | Download |
 |-------------|----------|
-| Windows 10 / 11 | `Movo-Setup-x.y.z.exe` (installer) or `Movo-Windows-x64-portable.zip` |
+| Windows 10 / 11 | `Movo-Setup-Windows-x64.exe` (installer) or `Movo-Windows-x64-portable.zip` |
 | Mac with Apple Silicon (M1 or newer) | `Movo-macOS-macos-arm64.dmg` |
 | Mac with Intel | `Movo-macOS-macos-x86_64.dmg` |
 | Linux (Ubuntu, Fedora, …) | `Movo-Linux-x86_64.AppImage` or `.tar.gz` |
@@ -96,7 +96,7 @@ All downloads are on the **[Releases page](../../releases/latest)**. Every tagge
 | Chrome, Edge, Brave, Firefox (optional, for ad skipping) | `Movo-Browser-Helper.zip` |
 
 ### Windows
-1. Download **Movo-Setup-x.y.z.exe** and double-click it. No administrator rights needed.
+1. Download **Movo-Setup-Windows-x64.exe** and double-click it. No administrator rights needed.
 2. If you see *"Windows protected your PC"*, click **More info → Run anyway**.
 3. Open **Movo** from the Start menu.
 

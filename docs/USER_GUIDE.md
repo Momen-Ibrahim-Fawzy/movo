@@ -5,7 +5,7 @@
 ## 1. Install
 
 ### Windows 10 / 11
-1. Download **Movo-Setup-x.y.z.exe** from the Releases page and run it (no administrator rights needed).
+1. Download **Movo-Setup-Windows-x64.exe** from the Releases page and run it (no administrator rights needed).
    Prefer no installer? Download **Movo-Windows-x64-portable.zip**, right-click → *Extract All*, and open `Movo.exe`.
 2. If Windows shows *"Windows protected your PC"*, click **More info → Run anyway** (shown until the app is code-signed).
 
