@@ -3,28 +3,30 @@
 ## Brand
 
 - **Name**: Imaa — Arabic *إيماءة* ("a gesture", "a nod"). Short, easy to say in both languages, and it names both input modes.
-- **Logo**: an open hand with two motion arcs — "a wave" — in white on a violet → teal gradient squircle.
+- **Logo**: a white open hand with two motion arcs — "a wave" — on a solid blue rounded square.
   Source: [`branding/logo.svg`](../branding/logo.svg); exports from 16 to 1024 px, `.ico`, `.icns`, Android adaptive icon and iOS app icon.
-- **Gradient**: `#7C5CFF` → `#00C9A7` (135°). Violet = human/personal, teal = calm/technology.
+- **Colour approach**: calm and familiar, like Google and Apple apps — neutral greys, white surfaces and a single
+  blue accent. No gradients; colour is used only for meaning (the accent for actions and selection, green/amber/red for status).
 
 ## Tokens
 
 | Token | Light | Dark |
 |-------|-------|------|
-| Background | `#F5F6FA` | `#0E1016` |
-| Sidebar / surface | `#FFFFFF` | `#13161F` / `#181B26` |
-| Surface alt | `#F0F1F7` | `#222636` |
-| Border | `#E3E5EE` | `#2A2F3E` |
-| Text | `#161A26` | `#ECEEF5` |
-| Muted text | `#5F6678` | `#9AA2B5` |
-| Accent | `#6A4DF5` | `#8B74FF` |
-| Success / warning / danger | `#0E9F6E` / `#C27803` / `#E02D3C` | `#34D399` / `#FBBF24` / `#F87171` |
+| Background | `#F8F9FA` | `#1F1F1F` |
+| Sidebar / surface | `#FFFFFF` | `#202124` / `#28292C` |
+| Surface alt | `#F1F3F4` | `#303134` |
+| Border | `#E0E3E7` | `#3C4043` |
+| Text | `#1F1F1F` | `#E8EAED` |
+| Muted text | `#5F6368` | `#9AA0A6` |
+| Accent (blue) | `#1A73E8` | `#8AB4F8` |
+| Accent soft (selection) | `#E8F0FE` | `#283B57` |
+| Success / warning / danger | `#1E8E3E` / `#E37400` / `#D93025` | `#81C995` / `#FDD663` / `#F28B82` |
 
 Radii: 16 px cards, 10 px controls, pills fully rounded. Spacing: 8-point grid; pages have 32 px side margins on desktop, 18 dp on phones.
 
 ## Principles
 
-1. **One big obvious control.** The power button is the first thing you see; its state (idle grey / gradient with breathing rings / spinner while starting) is readable from across a room.
+1. **One big obvious control.** The power button is the first thing you see; its state (idle grey / solid blue with breathing rings / spinner while starting) is readable from across a room.
 2. **Always show what the camera sees and what just happened.** Live pose overlay on the preview, a recent-actions feed, and a click-through HUD bubble for actions performed while the window is hidden.
 3. **Learn by doing.** Practice mode lights up the matching gesture card without triggering anything; onboarding ends with a gesture tour.
 4. **Safe by default.** Deliberate hold times, the 🤘 pause gesture, a global pause shortcut, and closing the window keeps the app in the tray — quitting is explicit.
@@ -54,7 +56,7 @@ In Arabic the sidebar moves to the right and every row mirrors.
 
 ## Mobile
 
-- **Android**: Material 3 with the brand palette (no dynamic colour, so the brand stays recognisable), bottom navigation (Home · Gestures · Remote · Settings), status bubble drawn by the Accessibility service, ongoing notification with Pause/Stop.
+- **Android**: Material 3 with the neutral + blue palette, bottom navigation (Home · Gestures · Remote · Settings), status bubble drawn by the Accessibility service, ongoing notification with Pause/Stop.
 - **iOS**: native SwiftUI tab bar (Home · Viewer · Remote · Settings), SF Symbols, grouped backgrounds, system tint from the accent colour.
 
 ## Screenshots

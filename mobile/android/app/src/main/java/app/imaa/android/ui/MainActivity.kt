@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Cast
+import androidx.compose.material.icons.outlined.HelpOutline
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.PanTool
 import androidx.compose.material.icons.outlined.Settings
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
                                 Icons.Outlined.Home to R.string.nav_home,
                                 Icons.Outlined.PanTool to R.string.nav_gestures,
                                 Icons.Outlined.Cast to R.string.nav_remote,
+                                Icons.Outlined.HelpOutline to R.string.nav_help,
                                 Icons.Outlined.Settings to R.string.nav_settings,
                             )
                             items.forEachIndexed { i, (icon, label) ->
@@ -88,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                         0 -> HomeScreen(m, onOpenAccessibility = ::openAccessibilitySettings)
                         1 -> GesturesScreen(m)
                         2 -> RemoteScreen(m)
+                        3 -> HelpScreen(m)
                         else -> SettingsScreen(m, onLanguage = ::setLanguage)
                     }
                 }

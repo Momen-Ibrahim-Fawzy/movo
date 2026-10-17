@@ -2,14 +2,12 @@
   "app.name": "Imaa",
   "app.tagline": "Control your computer with a wave of your hand or a nod of your head — privately.",
   "app.tagline_short": "Gesture control",
-
   "nav.home": "Home",
   "nav.hand": "Hand gestures",
   "nav.head": "Head gestures",
   "nav.profiles": "Profiles",
   "nav.settings": "Settings",
   "nav.about": "About & help",
-
   "state.stopped": "Stopped",
   "state.stopped_d": "Press the button to start watching for gestures.",
   "state.starting": "Starting…",
@@ -19,11 +17,9 @@
   "state.paused": "Paused",
   "state.paused_d": "Gestures are ignored until you resume (or make the 🤘 sign).",
   "state.error": "Something went wrong",
-
   "error.camera_unavailable": "The camera could not be opened. Close other apps that use it (Zoom, Teams, Camera) or pick another camera in Settings.",
   "error.camera_lost": "The camera stopped sending pictures. Check that it is connected, then start again.",
   "error.engine_failed": "Gesture detection stopped unexpectedly. Start again; if it keeps happening, try a lower resolution.",
-
   "home.title": "Welcome back",
   "home.subtitle": "Start Imaa, then use your hands or head to control the app in front.",
   "home.power_tip": "Start or stop gesture control",
@@ -57,11 +53,9 @@
   "home.from_phone": "📱 Phone",
   "home.action_failed": "This action could not be completed",
   "home.privacy": "Your camera picture is processed on this device only. Nothing is recorded, saved or sent anywhere.",
-
   "pose.open_palm": "✋ Open hand",
   "pose.point_up": "☝️ Index up",
   "pose.pinch": "🤏 Pinch",
-
   "g.thumb_up": "Thumb up",
   "g.thumb_up.how": "Make a fist with your thumb pointing up. Hold to keep going.",
   "g.thumb_down": "Thumb down",
@@ -116,7 +110,6 @@
   "g.smile.how": "Give a big smile for a moment.",
   "g.brows_up": "Raise eyebrows",
   "g.brows_up.how": "Raise both eyebrows for a moment.",
-
   "a.none": "Do nothing",
   "a.volume_up": "Volume up",
   "a.volume_down": "Volume down",
@@ -158,7 +151,6 @@
   "a.right_click": "Right click",
   "a.pause_control": "Pause / resume Imaa",
   "a.custom_shortcut": "Custom shortcut…",
-
   "hud.mic_muted": "Microphone muted",
   "hud.mic_unmuted": "Microphone on",
   "hud.mic_unsupported": "Can't control the microphone on this system",
@@ -173,7 +165,6 @@
   "hud.paused": "Imaa paused",
   "hud.resumed": "Imaa resumed",
   "hud.practice": "{gesture} → {action}",
-
   "hand.title": "Hand gestures",
   "hand.subtitle": "Choose what each gesture does. Changes apply instantly.",
   "hand.enable": "Use hand gestures",
@@ -185,7 +176,6 @@
   "hand.swipe": "Swipes",
   "hand.swipe_d": "Quick open-hand swipes left and right.",
   "hand.air_d": "Replaces hand gestures with cursor control. 🤘 still pauses.",
-
   "head.title": "Head gestures",
   "head.subtitle": "Hands-free control: nod, shake, tilt, turn — and facial expressions in Accurate mode.",
   "head.enable": "Use head gestures",
@@ -202,13 +192,11 @@
   "head.recalibrate": "Neutral position",
   "head.recalibrate_tip": "Look straight at the screen and press to set your neutral head position.",
   "head.accurate_badge": "Accurate mode",
-
   "gestures.enable_tip": "Turn this gesture on or off",
   "gestures.does": "Does",
   "gestures.shortcut_ph": "Keys, e.g. ctrl+shift+m",
   "gestures.editing": "Editing profile",
   "gestures.reset": "Restore defaults",
-
   "profile.general": "General",
   "profile.general.d": "Everyday use: volume, media, scrolling, tabs.",
   "profile.presentation": "Presentation",
@@ -219,7 +207,6 @@
   "profile.browser.d": "Pointing goes back and forward in history.",
   "profile.meeting": "Meeting",
   "profile.meeting.d": "Quick mic toggle for calls. Turns on for Zoom, Teams, Webex, Slack and Discord.",
-
   "profiles.title": "Profiles",
   "profiles.subtitle": "Different gestures for different apps. Imaa can switch automatically.",
   "profiles.auto": "Switch profiles automatically",
@@ -240,7 +227,6 @@
   "profiles.delete": "Delete",
   "profiles.name": "Profile name",
   "profiles.delete_q": "Delete the profile “{name}”?",
-
   "settings.title": "Settings",
   "settings.subtitle": "Make Imaa yours.",
   "settings.appearance": "Appearance",
@@ -310,7 +296,6 @@
   "settings.import_failed": "That file isn't an Imaa settings file.",
   "settings.reset": "Reset everything",
   "settings.reset_q": "Reset all settings and profiles to the defaults?",
-
   "about.title": "About & help",
   "about.version": "Version {version}",
   "about.meaning": "“Imaa” (إيماءة) is Arabic for a gesture or a nod — the two ways you can talk to your computer here.",
@@ -325,11 +310,9 @@
   "about.credits": "Credits",
   "about.credits_text": "Hand, face and expression tracking by Google MediaPipe (Apache 2.0). Interface built with Qt for Python (LGPL). Full licence texts are included with the app.",
   "about.copyright": "© 2026 Momen Ibrahim Fawzy. All rights reserved.",
-
   "banner.mac_accessibility": "macOS is blocking keyboard and mouse control. Allow Imaa under Privacy & Security → Accessibility, then restart Imaa.",
   "banner.wayland": "You're using Wayland. Some keyboard shortcuts may need X11 or the ydotool service; volume and microphone work through PulseAudio/PipeWire.",
   "banner.open_settings": "Open Settings",
-
   "tray.show": "Show Imaa",
   "tray.quit": "Quit Imaa",
   "tray.start": "Start gestures",
@@ -337,7 +320,6 @@
   "tray.pause": "Pause",
   "tray.resume": "Resume",
   "tray.hidden": "Imaa is still running in the tray. Right-click the icon to quit.",
-
   "onb.welcome": "Welcome to Imaa",
   "onb.welcome_d": "Control your computer with simple hand and head gestures. Let's set things up — it takes a minute.",
   "onb.privacy": "Your privacy comes first",
@@ -355,5 +337,28 @@
   "onb.back": "Back",
   "onb.next": "Next",
   "onb.finish": "Let's go",
-  "onb.step": "Step {n} of {total}"
+  "onb.step": "Step {n} of {total}",
+  "nav.guide": "How to use",
+  "home.how_to": "How to use Imaa",
+  "guide.title": "How to use Imaa",
+  "guide.subtitle": "Eight short steps, then a cheat sheet of every gesture.",
+  "guide.open": "Open",
+  "guide.s1": "Start Imaa",
+  "guide.s1_d": "Press the big power button on Home. The camera light turns on and the status changes to “Watching”.",
+  "guide.s2": "Face the camera",
+  "guide.s2_d": "Sit 40–100 cm from the camera with light in front of you. Raise one hand, palm towards the screen.",
+  "guide.s3": "Make a gesture and hold it",
+  "guide.s3_d": "Hold the pose for about half a second. A bubble on the screen shows what Imaa did, e.g. “🔊 Volume up”. Try 👍 first.",
+  "guide.s4": "Click the app you want to control",
+  "guide.s4_d": "Keyboard actions (next slide, play/pause, scroll) go to the window you clicked last. Click your slides, video or browser once.",
+  "guide.s5": "Choose what each gesture does",
+  "guide.s5_d": "On Hand gestures, pick an action for any gesture, switch gestures off, or set a custom keyboard shortcut. Use Practice mode to learn safely.",
+  "guide.s6": "Go hands-free with head gestures",
+  "guide.s6_d": "Turn on Head gestures to nod, shake, tilt and turn. Accurate mode adds open-mouth and smile. Press Recalibrate while looking straight ahead.",
+  "guide.s7": "Let profiles switch for you",
+  "guide.s7_d": "Presentation, Media, Browser and Meeting profiles change the gestures automatically when PowerPoint, VLC, Zoom and others are in front.",
+  "guide.s8": "Pause, stop or hide",
+  "guide.s8_d": "Pause with 🤘, the Pause button or Ctrl + Alt + G. Closing the window keeps Imaa in the tray; quit from the tray icon.",
+  "guide.hand_sheet": "Hand gestures",
+  "guide.head_sheet": "Head gestures"
 }

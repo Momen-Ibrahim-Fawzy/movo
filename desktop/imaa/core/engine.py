@@ -332,10 +332,10 @@ class Engine:
             pts = [(int(x / aspect * pw), int(y * ph)) for x, y, _ in hand_lm]
             for a, b in HAND_CONNECTIONS:
                 cv2.line(img, pts[a], pts[b], (255, 255, 255), 3, cv2.LINE_AA)
-                cv2.line(img, pts[a], pts[b], (124, 92, 255), 1, cv2.LINE_AA)
+                cv2.line(img, pts[a], pts[b], (26, 115, 232), 1, cv2.LINE_AA)
             for i, p in enumerate(pts):
-                cv2.circle(img, p, 4 if i in (4, 8, 12, 16, 20) else 3, (0, 201, 167), -1, cv2.LINE_AA)
+                cv2.circle(img, p, 4 if i in (4, 8, 12, 16, 20) else 3, (26, 115, 232), -1, cv2.LINE_AA)
         if face_tracker is not None and face_tracker.points:
             for x, y in face_tracker.points:
-                cv2.circle(img, (int(x * pw), int(y * ph)), 3, (0, 201, 167), -1, cv2.LINE_AA)
+                cv2.circle(img, (int(x * pw), int(y * ph)), 3, (26, 115, 232), -1, cv2.LINE_AA)
         return img

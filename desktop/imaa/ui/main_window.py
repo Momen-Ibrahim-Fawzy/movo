@@ -20,6 +20,7 @@ from imaa.services.system_hooks import is_wayland, mac_accessibility_trusted, op
 from imaa.ui import theme
 from imaa.ui.pages.about import AboutPage
 from imaa.ui.pages.gestures import HandPage, HeadPage
+from imaa.ui.pages.guide import GuidePage
 from imaa.ui.pages.home import HomePage
 from imaa.ui.pages.profiles import ProfilesPage
 from imaa.ui.pages.settings import SettingsPage
@@ -30,6 +31,7 @@ NAV = (
     ("hand", "hand", HandPage),
     ("head", "face", HeadPage),
     ("profiles", "layers", ProfilesPage),
+    ("guide", "book", GuidePage),
     ("settings", "settings", SettingsPage),
     ("about", "info", AboutPage),
 )

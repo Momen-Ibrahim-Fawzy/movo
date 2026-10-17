@@ -28,7 +28,7 @@ struct ViewerView: View {
                     .tabViewStyle(.page)
                 } else {
                     VStack(spacing: 14) {
-                        Image(systemName: "hand.wave").font(.system(size: 54)).foregroundStyle(Brand.gradient)
+                        Image(systemName: "hand.wave").font(.system(size: 54)).foregroundStyle(Brand.accent)
                         Text("viewer.empty").multilineTextAlignment(.center).foregroundStyle(.secondary)
                     }
                     .padding(32)

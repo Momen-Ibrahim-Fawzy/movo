@@ -16,7 +16,7 @@ from PySide6.QtCore import (
     Qt,
     QTimer,
 )
-from PySide6.QtGui import QBrush, QColor, QConicalGradient, QImage, QLinearGradient, QPainter, QPainterPath, QPen
+from PySide6.QtGui import QBrush, QColor, QConicalGradient, QImage, QPainter, QPainterPath, QPen
 from PySide6.QtWidgets import (
     QAbstractButton,
     QComboBox,
@@ -281,19 +281,16 @@ class PowerButton(QAbstractButton):
         if on and not self._busy:
             for k in (0.0, 0.5):
                 ph = (self._phase + k) % 1.0
-                ring = QColor(theme.GRADIENT[1])
+                ring = QColor(p.accent)
                 ring.setAlphaF(0.45 * (1 - ph))
                 qp.setPen(QPen(ring, 2))
                 qp.setBrush(Qt.NoBrush)
                 qp.drawEllipse(c, r + 2 + 10 * ph, r + 2 + 10 * ph)
 
         if on or self._hover:
-            g = QLinearGradient(c.x() - r, c.y() - r, c.x() + r, c.y() + r)
-            g.setColorAt(0, QColor(theme.GRADIENT[0]))
-            g.setColorAt(1, QColor(theme.GRADIENT[1]))
-            brush = QBrush(g)
+            brush = QBrush(QColor(p.accent))
             if not on:
-                qp.setOpacity(0.18)
+                qp.setOpacity(0.14)
         else:
             brush = QBrush(QColor(p.surface_alt))
         qp.setPen(Qt.NoPen)
@@ -307,13 +304,13 @@ class PowerButton(QAbstractButton):
 
         if self._busy:
             cg = QConicalGradient(c, -self._phase * 360 * 3)
-            cg.setColorAt(0, QColor(theme.GRADIENT[0]))
+            cg.setColorAt(0, QColor(p.accent))
             cg.setColorAt(0.5, QColor(0, 0, 0, 0))
             qp.setPen(QPen(QBrush(cg), 4, Qt.SolidLine, Qt.RoundCap))
             qp.drawEllipse(c, r - 2, r - 2)
 
         # power glyph
-        fg = QColor("#FFFFFF") if on else QColor(p.accent if self._hover else p.text_muted)
+        fg = QColor(p.accent_text) if on else QColor(p.accent if self._hover else p.text_muted)
         pen = QPen(fg, 6, Qt.SolidLine, Qt.RoundCap)
         qp.setPen(pen)
         qp.setBrush(Qt.NoBrush)

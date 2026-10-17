@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#F5F6FA</color>
-    <color name="brand_violet">#7C5CFF</color>
-    <color name="brand_teal">#00C9A7</color>
+    <color name="bg">#F8F9FA</color>
+    <color name="brand_blue">#1A73E8</color>
 </resources>

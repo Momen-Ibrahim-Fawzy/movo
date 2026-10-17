@@ -75,7 +75,7 @@ class Hud(QWidget):
         qp.setPen(Qt.NoPen)
         qp.setBrush(bg)
         qp.drawRoundedRect(r, r.height() / 2, r.height() / 2)
-        accent = QColor(theme.GRADIENT[1] if self._ok else theme.DARK.danger)
+        accent = QColor(theme.DARK.accent if self._ok else theme.DARK.danger)
         qp.setBrush(accent)
         dot = QRectF(r.right() - 22 if is_rtl() else r.left() + 14, r.center().y() - 4, 8, 8)
         qp.drawEllipse(dot)

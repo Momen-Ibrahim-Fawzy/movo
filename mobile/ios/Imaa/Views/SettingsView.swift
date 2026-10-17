@@ -6,6 +6,9 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section {
+                    NavigationLink("help.title") { HelpView() }
+                }
                 Section("settings.appearance") {
                     Picker("settings.theme", selection: $model.theme) {
                         Text("settings.system").tag("system")

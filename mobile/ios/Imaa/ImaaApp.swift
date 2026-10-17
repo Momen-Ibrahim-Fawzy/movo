@@ -16,10 +16,7 @@ struct ImaaApp: App {
 }
 
 enum Brand {
-    static let violet = Color(red: 124 / 255, green: 92 / 255, blue: 1)
-    static let teal = Color(red: 0, green: 201 / 255, blue: 167 / 255)
     static let accent = Color("AccentColor")
-    static let gradient = LinearGradient(colors: [violet, teal], startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
 struct ContentView: View {

@@ -36,8 +36,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role
@@ -45,14 +43,13 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import app.imaa.android.ui.theme.BrandTeal
-import app.imaa.android.ui.theme.BrandViolet
+import app.imaa.android.ui.theme.BrandBlue
 
 @Composable
 fun LogoMark(size: androidx.compose.ui.unit.Dp) {
     Box(
         Modifier.size(size).clip(androidx.compose.foundation.shape.RoundedCornerShape(size * 0.23f))
-            .background(Brush.linearGradient(listOf(BrandViolet, BrandTeal))),
+            .background(BrandBlue),
         contentAlignment = Alignment.Center,
     ) {
         androidx.compose.foundation.Image(
@@ -119,6 +116,8 @@ fun <T> Dropdown(label: String, options: List<Pair<T, String>>, selected: T, onS
 fun PowerButton(running: Boolean, description: String, onClick: () -> Unit) {
     val transition = rememberInfiniteTransition(label = "pulse")
     val phase by transition.animateFloat(0f, 1f, infiniteRepeatable(tween(1800, easing = LinearEasing), RepeatMode.Restart), label = "phase")
+    val accent = MaterialTheme.colorScheme.primary
+    val onAccent = MaterialTheme.colorScheme.onPrimary
     val idle = MaterialTheme.colorScheme.surfaceVariant
     val outline = MaterialTheme.colorScheme.outline
     val glyphOff = MaterialTheme.colorScheme.onSurfaceVariant
@@ -131,14 +130,14 @@ fun PowerButton(running: Boolean, description: String, onClick: () -> Unit) {
             if (running) {
                 listOf(0f, 0.5f).forEach { k ->
                     val p = (phase + k) % 1f
-                    drawCircle(BrandTeal.copy(alpha = 0.45f * (1 - p)), radius = r + 2.dp.toPx() + 14.dp.toPx() * p, style = Stroke(2.dp.toPx()))
+                    drawCircle(accent.copy(alpha = 0.45f * (1 - p)), radius = r + 2.dp.toPx() + 14.dp.toPx() * p, style = Stroke(2.dp.toPx()))
                 }
-                drawCircle(Brush.linearGradient(listOf(BrandViolet, BrandTeal), Offset.Zero, Offset(size.width, size.height)), radius = r)
+                drawCircle(accent, radius = r)
             } else {
                 drawCircle(idle, radius = r)
                 drawCircle(outline, radius = r, style = Stroke(2.dp.toPx()))
             }
-            val glyph = if (running) Color.White else glyphOff
+            val glyph = if (running) onAccent else glyphOff
             val gr = r * 0.36f
             val stroke = Stroke(6.dp.toPx(), cap = StrokeCap.Round)
             drawArc(glyph, -60f, 300f, false, Offset(center.x - gr, center.y - gr + 3.dp.toPx()), androidx.compose.ui.geometry.Size(gr * 2, gr * 2), style = stroke)

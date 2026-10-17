@@ -36,45 +36,45 @@ class Palette:
 
 LIGHT = Palette(
     name="light",
-    bg="#F5F6FA",
+    bg="#F8F9FA",
     sidebar="#FFFFFF",
     surface="#FFFFFF",
-    surface_alt="#F0F1F7",
-    border="#E3E5EE",
-    text="#161A26",
-    text_muted="#5F6678",
-    accent="#6A4DF5",
-    accent_hover="#5A3DE6",
-    accent_soft="#ECE8FF",
+    surface_alt="#F1F3F4",
+    border="#E0E3E7",
+    text="#1F1F1F",
+    text_muted="#5F6368",
+    accent="#1A73E8",
+    accent_hover="#1765CC",
+    accent_soft="#E8F0FE",
     accent_text="#FFFFFF",
-    teal="#00B39A",
-    success="#0E9F6E",
-    warning="#C27803",
-    danger="#E02D3C",
-    shadow="#1A1F36",
+    teal="#1A73E8",
+    success="#1E8E3E",
+    warning="#E37400",
+    danger="#D93025",
+    shadow="#3C4043",
 )
 
 DARK = Palette(
     name="dark",
-    bg="#0E1016",
-    sidebar="#13161F",
-    surface="#181B26",
-    surface_alt="#222636",
-    border="#2A2F3E",
-    text="#ECEEF5",
-    text_muted="#9AA2B5",
-    accent="#8B74FF",
-    accent_hover="#9C88FF",
-    accent_soft="#2A2550",
-    accent_text="#FFFFFF",
-    teal="#2ED3B7",
-    success="#34D399",
-    warning="#FBBF24",
-    danger="#F87171",
+    bg="#1F1F1F",
+    sidebar="#202124",
+    surface="#28292C",
+    surface_alt="#303134",
+    border="#3C4043",
+    text="#E8EAED",
+    text_muted="#9AA0A6",
+    accent="#8AB4F8",
+    accent_hover="#AECBFA",
+    accent_soft="#283B57",
+    accent_text="#202124",
+    teal="#8AB4F8",
+    success="#81C995",
+    warning="#FDD663",
+    danger="#F28B82",
     shadow="#000000",
 )
 
-GRADIENT = ("#7C5CFF", "#00C9A7")  # brand gradient (logo)
+BRAND_BLUE = "#1A73E8"  # logo and brand colour
 
 _current: Palette = LIGHT
 
@@ -227,6 +227,7 @@ ICONS = {
     "v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0"
     ' 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
     "info": '<circle cx="12" cy="12" r="9"/><path d="M12 16v-4.5M12 8h.01"/>',
+    "book": '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M8.5 7.5h7M8.5 11h5"/>',
     "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2'
     'M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/>',
     "moon": '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',

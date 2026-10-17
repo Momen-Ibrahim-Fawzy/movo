@@ -158,4 +158,18 @@
     <string name="a_tap">Tap centre of screen</string>
     <string name="a_lock_screen">Lock screen</string>
     <string name="a_pause_control">Pause / resume Imaa</string>
+    <string name="nav_help">Help</string>
+    <string name="help_title">How to use Imaa</string>
+    <string name="help_s1">Turn on phone control</string>
+    <string name="help_s1_d">On Home, tap Turn on and enable “Imaa gesture control” in Accessibility. This lets gestures scroll, go back and take screenshots.</string>
+    <string name="help_s2">Start Imaa</string>
+    <string name="help_s2_d">Tap the big power button and allow the camera. A notification shows Imaa is watching, with Pause and Stop buttons.</string>
+    <string name="help_s3">Prop up your phone</string>
+    <string name="help_s3_d">Stand the phone so the front camera sees your hand 30–80 cm away, with light in front of you.</string>
+    <string name="help_s4">Make a gesture and hold it</string>
+    <string name="help_s4_d">Hold the pose for about half a second. A bubble shows what happened — try 👍 to raise the volume.</string>
+    <string name="help_s5">Choose what each gesture does</string>
+    <string name="help_s5_d">Open Gestures to change any action or switch a gesture off. Practice mode shows what Imaa sees without doing anything.</string>
+    <string name="help_s6">Pause or stop</string>
+    <string name="help_s6_d">Make the 🤘 sign, or use Pause / Stop in the notification or on Home.</string>
 </resources>

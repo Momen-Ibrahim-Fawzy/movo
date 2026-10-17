@@ -113,6 +113,18 @@ STRINGS = {
     "settings.about": ("About", "حول التطبيق"),
     "settings.meaning": ("“Imaa” (إيماءة) is Arabic for a gesture or a nod.", "«إيماءة» تعني الإشارة باليد أو الإيماء بالرأس."),
     "settings.version": ("Version", "الإصدار"),
+    "help.title": ("How to use Imaa", "طريقة استخدام إيماءة"),
+    "help.gestures": ("Gestures", "الإيماءات"),
+    "help.s1": ("Start Imaa", "شغّل التطبيق"),
+    "help.s1_d": ("Tap the power button on Home and allow the camera.", "اضغط زر التشغيل في الصفحة الرئيسية واسمح بالكاميرا."),
+    "help.s2": ("Open something to control", "افتح شيئًا للتحكم فيه"),
+    "help.s2_d": ("In Viewer, open a PDF or photos. Turn pages with 👉 👈, scroll with ☝️, zoom with pinch-and-pull.", "في العارض افتح ملف PDF أو صورًا. قلّب الصفحات بـ 👉 👈، ومرّر بـ ☝️، وكبّر بالقرص والسحب."),
+    "help.s3": ("Prop up your device", "اسند جهازك"),
+    "help.s3_d": ("Stand it so the front camera sees your hand 30–80 cm away, with light in front of you.", "ضعه بحيث ترى الكاميرا الأمامية يدك على بُعد 30–80 سم، مع إضاءة أمامك."),
+    "help.s4": ("Control your computer", "تحكّم في حاسوبك"),
+    "help.s4_d": ("In Remote, scan the QR code shown by Imaa on your computer, then turn on “Send gestures to the computer”.", "في صفحة عن بُعد امسح رمز QR الظاهر في تطبيق إيماءة على حاسوبك، ثم فعّل «إرسال الإيماءات إلى الحاسوب»."),
+    "help.s5": ("Pause any time", "أوقف مؤقتًا في أي وقت"),
+    "help.s5_d": ("Make the 🤘 sign or tap Pause on Home.", "أشر بعلامة 🤘 أو اضغط إيقاف مؤقت في الصفحة الرئيسية."),
 }
 
 

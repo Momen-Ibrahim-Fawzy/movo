@@ -57,6 +57,14 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .card()
 
+                    NavigationLink {
+                        HelpView()
+                    } label: {
+                        Label("help.title", systemImage: "questionmark.circle")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .card()
+
                     Label("home.privacy", systemImage: "lock")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
@@ -79,10 +87,10 @@ struct PowerButton: View {
         Button(action: action) {
             ZStack {
                 if running {
-                    Circle().stroke(Brand.teal.opacity(pulse ? 0 : 0.5), lineWidth: 2)
+                    Circle().stroke(Brand.accent.opacity(pulse ? 0 : 0.5), lineWidth: 2)
                         .frame(width: pulse ? 176 : 140, height: pulse ? 176 : 140)
                         .animation(.easeOut(duration: 1.6).repeatForever(autoreverses: false), value: pulse)
-                    Circle().fill(Brand.gradient).frame(width: 140, height: 140)
+                    Circle().fill(Brand.accent).frame(width: 140, height: 140)
                 } else {
                     Circle().fill(Color(.secondarySystemBackground)).frame(width: 140, height: 140)
                         .overlay(Circle().stroke(Color(.separator), lineWidth: 2))

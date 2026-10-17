@@ -63,7 +63,7 @@ function send(obj) {
 function setStatus(connected) {
   chrome.storage.local.set({ connected });
   chrome.action.setBadgeText({ text: connected ? "" : "!" });
-  chrome.action.setBadgeBackgroundColor({ color: "#E02D3C" });
+  chrome.action.setBadgeBackgroundColor({ color: "#D93025" });
 }
 
 async function runInActiveTab(func) {

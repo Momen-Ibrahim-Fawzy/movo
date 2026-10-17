@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QGridLayout, QHBoxLayout, QVBoxLayout
+from PySide6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout
 
 from imaa import __version__
-from imaa.core.catalog import DEFAULT_BINDINGS, HAND_GESTURES, HEAD_GESTURES
 from imaa.i18n import tr
 from imaa.ui.pages import Page
 from imaa.ui.widgets import Card, LogoMark, label, page_header
@@ -28,26 +27,10 @@ class AboutPage(Page):
         hero.lay.addWidget(label(tr("about.meaning"), wrap=True))
         self.body.addWidget(hero)
 
-        sheet = Card()
-        sheet.lay.addWidget(label(tr("about.cheatsheet"), "SectionTitle"))
-        grid = QGridLayout()
-        grid.setHorizontalSpacing(24)
-        grid.setVerticalSpacing(6)
-        gestures = [g for g in HAND_GESTURES + HEAD_GESTURES if DEFAULT_BINDINGS.get(g.id, "none") != "none"]
-        half = (len(gestures) + 1) // 2
-        for i, g in enumerate(gestures):
-            col = (i // half) * 2
-            r = i % half
-            grid.addWidget(label(f"{g.emoji}  {tr(f'g.{g.id}')}"), r, col)
-            grid.addWidget(label(tr(f"a.{DEFAULT_BINDINGS[g.id]}"), "Muted"), r, col + 1)
-        sheet.lay.addLayout(grid)
-        self.body.addWidget(sheet)
-
-        tips = Card()
-        tips.lay.addWidget(label(tr("about.tips"), "SectionTitle"))
-        for i in range(1, 7):
-            tips.lay.addWidget(label(f"•  {tr(f'about.tip{i}')}", wrap=True))
-        self.body.addWidget(tips)
+        guide = QPushButton(tr("home.how_to"))
+        guide.setObjectName("Primary")
+        guide.clicked.connect(lambda: self.ctx.go("guide"))
+        hero.lay.addWidget(guide, 0, Qt.AlignLeft)
 
         privacy = Card()
         privacy.lay.addWidget(label(tr("settings.privacy"), "SectionTitle"))

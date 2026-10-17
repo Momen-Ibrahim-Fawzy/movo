@@ -38,7 +38,7 @@ def main() -> int:
     # A soft gradient stands in for the camera picture in the preview.
     h, w = 360, 480
     yy, xx = np.mgrid[0:h, 0:w]
-    fake = np.stack([60 + xx * 0.2, 70 + yy * 0.25, 110 + xx * 0.1], axis=-1).astype(np.uint8)
+    fake = np.stack([90 + yy * 0.15, 95 + yy * 0.15, 100 + yy * 0.15 + xx * 0.02], axis=-1).astype(np.uint8)
 
     for lang, theme_name in (("en", "light"), ("en", "dark"), ("ar", "light"), ("ar", "dark")):
         settings.set("language", lang)

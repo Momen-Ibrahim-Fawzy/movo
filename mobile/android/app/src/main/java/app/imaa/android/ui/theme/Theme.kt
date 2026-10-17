@@ -10,41 +10,44 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-val BrandViolet = Color(0xFF7C5CFF)
-val BrandTeal = Color(0xFF00C9A7)
+val BrandBlue = Color(0xFF1A73E8)
 
 private val Light = lightColorScheme(
-    primary = Color(0xFF6A4DF5),
+    primary = Color(0xFF1A73E8),
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFECE8FF),
-    onPrimaryContainer = Color(0xFF22125F),
-    secondary = Color(0xFF00B39A),
+    primaryContainer = Color(0xFFE8F0FE),
+    onPrimaryContainer = Color(0xFF0B3D91),
+    secondary = Color(0xFF1A73E8),
     onSecondary = Color.White,
-    background = Color(0xFFF5F6FA),
-    onBackground = Color(0xFF161A26),
+    secondaryContainer = Color(0xFFE8F0FE),
+    onSecondaryContainer = Color(0xFF0B3D91),
+    background = Color(0xFFF8F9FA),
+    onBackground = Color(0xFF1F1F1F),
     surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF161A26),
-    surfaceVariant = Color(0xFFF0F1F7),
-    onSurfaceVariant = Color(0xFF5F6678),
-    outline = Color(0xFFE3E5EE),
-    error = Color(0xFFE02D3C),
+    onSurface = Color(0xFF1F1F1F),
+    surfaceVariant = Color(0xFFF1F3F4),
+    onSurfaceVariant = Color(0xFF5F6368),
+    outline = Color(0xFFDADCE0),
+    error = Color(0xFFD93025),
 )
 
 private val Dark = darkColorScheme(
-    primary = Color(0xFF8B74FF),
-    onPrimary = Color.White,
-    primaryContainer = Color(0xFF2A2550),
-    onPrimaryContainer = Color(0xFFE6E0FF),
-    secondary = Color(0xFF2ED3B7),
-    onSecondary = Color(0xFF00201A),
-    background = Color(0xFF0E1016),
-    onBackground = Color(0xFFECEEF5),
-    surface = Color(0xFF181B26),
-    onSurface = Color(0xFFECEEF5),
-    surfaceVariant = Color(0xFF222636),
-    onSurfaceVariant = Color(0xFF9AA2B5),
-    outline = Color(0xFF2A2F3E),
-    error = Color(0xFFF87171),
+    primary = Color(0xFF8AB4F8),
+    onPrimary = Color(0xFF202124),
+    primaryContainer = Color(0xFF283B57),
+    onPrimaryContainer = Color(0xFFD2E3FC),
+    secondary = Color(0xFF8AB4F8),
+    onSecondary = Color(0xFF202124),
+    secondaryContainer = Color(0xFF283B57),
+    onSecondaryContainer = Color(0xFFD2E3FC),
+    background = Color(0xFF1F1F1F),
+    onBackground = Color(0xFFE8EAED),
+    surface = Color(0xFF28292C),
+    onSurface = Color(0xFFE8EAED),
+    surfaceVariant = Color(0xFF303134),
+    onSurfaceVariant = Color(0xFF9AA0A6),
+    outline = Color(0xFF3C4043),
+    error = Color(0xFFF28B82),
 )
 
 @Composable

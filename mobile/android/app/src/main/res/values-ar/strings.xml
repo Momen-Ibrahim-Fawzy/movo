@@ -156,4 +156,18 @@
     <string name="a_tap">نقرة في منتصف الشاشة</string>
     <string name="a_lock_screen">قفل الشاشة</string>
     <string name="a_pause_control">إيقاف / استئناف التطبيق</string>
+    <string name="nav_help">المساعدة</string>
+    <string name="help_title">طريقة استخدام إيماءة</string>
+    <string name="help_s1">فعّل التحكم في الهاتف</string>
+    <string name="help_s1_d">من الصفحة الرئيسية اضغط تفعيل، ثم فعّل «التحكم بالإيماءات - إيماءة» في تسهيلات الاستخدام. هذا يسمح للإيماءات بالتمرير والرجوع وأخذ لقطات الشاشة.</string>
+    <string name="help_s2">شغّل التطبيق</string>
+    <string name="help_s2_d">اضغط زر التشغيل الكبير واسمح بالكاميرا. يظهر إشعار يوضح أن التطبيق يعمل، مع زرَي الإيقاف المؤقت والإيقاف.</string>
+    <string name="help_s3">اسند هاتفك</string>
+    <string name="help_s3_d">ضع الهاتف بحيث ترى الكاميرا الأمامية يدك على بُعد 30–80 سم، مع إضاءة أمامك.</string>
+    <string name="help_s4">اصنع الإيماءة واثبت عليها</string>
+    <string name="help_s4_d">اثبت على الإيماءة نصف ثانية تقريبًا. تظهر فقاعة توضح ما حدث — جرّب 👍 لرفع الصوت.</string>
+    <string name="help_s5">اختر ما تفعله كل إيماءة</string>
+    <string name="help_s5_d">افتح صفحة الإيماءات لتغيير أي إجراء أو إيقاف إيماءة. وضع التدريب يُظهر ما يراه التطبيق دون تنفيذ أي شيء.</string>
+    <string name="help_s6">أوقف مؤقتًا أو أوقف</string>
+    <string name="help_s6_d">أشر بعلامة 🤘، أو استخدم الإيقاف المؤقت / الإيقاف من الإشعار أو الصفحة الرئيسية.</string>
 </resources>
