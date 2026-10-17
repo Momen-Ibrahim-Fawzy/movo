@@ -52,7 +52,10 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           cd dist && 7z a -tzip "Imaa-Windows-x64-portable.zip" Imaa > /dev/null && cd ..
-          "/c/Program Files (x86)/Inno Setup 6/ISCC.exe" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
+          ISCC="/c/Program Files (x86)/Inno Setup 6/ISCC.exe"
+          if [ ! -f "$ISCC" ]; then choco install innosetup -y --no-progress > /dev/null; fi
+          ls "/c/Program Files (x86)/Inno Setup 6/Languages" | head -50
+          "$ISCC" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
           ls dist
       - name: Package (macOS)
         if: runner.os == 'macOS'
