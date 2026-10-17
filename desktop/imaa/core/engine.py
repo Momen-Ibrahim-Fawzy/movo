@@ -134,6 +134,14 @@ class Engine:
 
     # ------------------------------------------------------------------ loop
     def _run(self) -> None:
+        try:
+            self._loop()
+        except Exception:
+            log.exception("engine failed to start")
+            self.running = False
+            self.cb.state("error:engine_failed")
+
+    def _loop(self) -> None:
         from imaa.core.trackers import FaceTracker, HandTracker
 
         self.cb.state("starting")

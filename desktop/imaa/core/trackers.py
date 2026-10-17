@@ -10,6 +10,23 @@ import numpy as np
 os.environ.setdefault("GLOG_minloglevel", "2")
 os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 
+
+def _stub_matplotlib() -> None:
+    """MediaPipe's vision package imports matplotlib for a 3-D plotting helper we never call.
+    The packaged app leaves matplotlib out (~40 MB), so provide an empty stand-in."""
+    import importlib.util
+    import sys
+    import types
+
+    if importlib.util.find_spec("matplotlib") is None:
+        mpl = types.ModuleType("matplotlib")
+        mpl.pyplot = types.ModuleType("matplotlib.pyplot")  # type: ignore[attr-defined]
+        sys.modules.setdefault("matplotlib", mpl)
+        sys.modules.setdefault("matplotlib.pyplot", mpl.pyplot)  # type: ignore[attr-defined]
+
+
+_stub_matplotlib()
+
 import mediapipe as mp  # noqa: E402
 from mediapipe.tasks.python import BaseOptions, vision  # noqa: E402
 

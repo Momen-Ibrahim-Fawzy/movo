@@ -1,5 +1,4 @@
 mediapipe>=0.10.14
-opencv-python>=4.9
 numpy>=1.24
 PySide6>=6.6
 pynput>=1.7.7

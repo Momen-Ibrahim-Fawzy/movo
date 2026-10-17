@@ -42,3 +42,6 @@ xcuserdata/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# iOS generated plist (xcodegen)
+mobile/ios/Supporting/

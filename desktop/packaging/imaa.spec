@@ -18,9 +18,11 @@ datas = [
     (str(REPO / "LICENSE"), "."),
     (str(REPO / "THIRD_PARTY_NOTICES.md"), "."),
 ]
-datas += collect_data_files("mediapipe", includes=["**/*.so", "**/*.dll", "**/*.dylib", "**/*.pyd"])
+datas += collect_data_files("mediapipe", includes=["**/*.so", "**/*.dll", "**/*.dylib", "**/*.pyd"], excludes=["**/test/**"])
 binaries = collect_dynamic_libs("mediapipe")
-hiddenimports = collect_submodules("mediapipe.tasks.python") + collect_submodules("websockets") + ["segno"]
+hiddenimports = [
+    m for m in collect_submodules("mediapipe.tasks.python") if ".test" not in m
+] + collect_submodules("websockets") + ["segno"]
 if IS_WIN:
     hiddenimports += ["pynput.keyboard._win32", "pynput.mouse._win32", "comtypes.stream", "pycaw.pycaw"]
 elif IS_MAC:
@@ -32,6 +34,7 @@ excludes = [
     "tkinter", "PySide6.QtWebEngineCore", "PySide6.QtWebEngineWidgets", "PySide6.QtQuick", "PySide6.QtQml",
     "PySide6.Qt3DCore", "PySide6.QtCharts", "PySide6.QtDataVisualization", "PySide6.QtPdf", "matplotlib",
     "PySide6.QtDesigner", "PySide6.QtBluetooth", "PySide6.QtLocation", "PySide6.QtSql", "PySide6.QtTest",
+    "sounddevice", "PIL",
 ]
 
 a = Analysis(
@@ -43,6 +46,27 @@ a = Analysis(
     excludes=excludes,
     noarchive=False,
 )
+
+# Trim what a gesture app never uses: video-file codecs, software OpenGL, QML/Quick, PDF, extra translations.
+DROP = (
+    "opencv_videoio_ffmpeg", "opengl32sw", "Qt6Quick", "Qt6Qml", "Qt6Pdf", "Qt6VirtualKeyboard",
+    "_sounddevice_data", "portaudio", "Qt6Designer", "Qt6Charts", "Qt6WebEngine", "QtWebEngineProcess",
+)
+KEEP_TRANSLATIONS = ("qtbase_ar", "qtbase_en", "qt_ar", "qt_en")
+
+
+def _keep(entry) -> bool:
+    name = entry[0].replace("\\", "/")
+    base = name.rsplit("/", 1)[-1]
+    if any(d in base for d in DROP):
+        return False
+    if "/translations/" in name and name.endswith(".qm") and not base.startswith(KEEP_TRANSLATIONS):
+        return False
+    return True
+
+
+a.binaries = [b for b in a.binaries if _keep(b)]
+a.datas = [d for d in a.datas if _keep(d)]
 pyz = PYZ(a.pure)
 
 exe = EXE(
