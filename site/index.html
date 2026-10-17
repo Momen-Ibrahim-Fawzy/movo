@@ -140,6 +140,18 @@
     summary { cursor: pointer; font-weight: 600; }
     details p { color: var(--muted); margin: 10px 0 0; }
 
+    .dev { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+    .dev .avatar { width: 96px; height: 96px; border-radius: 50%; background: var(--accent); color: var(--on-accent);
+      display: grid; place-items: center; font-size: 34px; font-weight: 700; }
+    .dev h3 { margin: 0; font-size: 24px; }
+    .dev .role { color: var(--muted); margin: 2px 0 14px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--surface-alt); color: var(--text); font-weight: 500; font-size: 15px; }
+    .chip:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .chip svg { width: 18px; height: 18px; flex: none; }
+    .chip bdi { direction: ltr; unicode-bidi: isolate; }
+    @media (max-width: 640px) { .dev { grid-template-columns: 1fr; text-align: center; } .dev .avatar { margin: 0 auto; } .links { justify-content: center; } }
     footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
     .foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
     .foot .brand { font-size: 16px; }
@@ -156,6 +168,7 @@
         <a href="#gestures" data-i18n="nav_gestures">Gestures</a>
         <a href="#privacy" data-i18n="nav_privacy">Privacy</a>
         <a href="#download" data-i18n="nav_download">Download</a>
+        <a href="#developer" data-i18n="nav_dev">Developer</a>
       </nav>
       <div class="tools">
         <button class="icon-btn" id="lang" type="button" aria-label="Language">ع</button>
@@ -276,12 +289,34 @@
         <details><summary data-i18n="q5">I wear glasses — will eye gestures work?</summary><p data-i18n="a5">Yes. Turn on “I wear glasses” and run the 7-second calibration while wearing them. Avoid a lamp reflecting in your lenses.</p></details>
       </div>
     </section>
+    <section id="developer">
+      <div class="wrap" style="max-width:920px">
+        <h2 class="section-title" data-i18n="dev_title">Meet the developer</h2>
+        <p class="section-sub" data-i18n="dev_sub">Questions, ideas, partnerships or accessibility projects — get in touch.</p>
+        <div class="card dev">
+          <div class="avatar" aria-hidden="true">M</div>
+          <div>
+            <h3 data-i18n="dev_name">Momen Ibrahim Fawzy Hassan</h3>
+            <p class="role" data-i18n="dev_role">Creator of Movo</p>
+            <div class="links">
+              <a class="chip" href="mailto:momenibrahimfawzy982000@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><bdi>momenibrahimfawzy982000@gmail.com</bdi></a>
+              <a class="chip" href="tel:+966557068834"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><bdi>+966 55 706 8834</bdi></a>
+              <a class="chip" href="tel:+201096388123"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><bdi>+20 10 9638 8123</bdi></a>
+              <a class="chip" href="https://www.linkedin.com/in/momen-ibrahim-fawzy-0b067a1b8/" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 7.5v.01M12 17v-6M12 13.5a2.5 2.5 0 0 1 5 0V17"/></svg>LinkedIn</a>
+              <a class="chip" href="https://github.com/Momen-Ibrahim-Fawzy" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub</a>
+              <a class="chip" href="https://orcid.org/0009-0001-7287-0705" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 8v.01M9 11v6M13 11h1.5a3 3 0 0 1 0 6H13z"/></svg>ORCID</a>
+              <a class="chip" href="https://scholar.google.com/citations?user=PV3WxD4AAAAJ&amp;hl=en" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 12 4l10 6-10 6z"/><path d="M6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>Google Scholar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="wrap foot">
       <a class="brand" href="#top"><img src="assets/logo.svg" alt="" /><span>Movo · موفو</span></a>
-      <span data-i18n="copy">© 2026 Momen Ibrahim Fawzy. All rights reserved.</span>
+      <span data-i18n="copy">© 2026 Momen Ibrahim Fawzy Hassan. All rights reserved.</span>
       <a href="https://github.com/Momen-Ibrahim-Fawzy/movo" data-i18n="source">GitHub</a>
     </div>
   </footer>
@@ -325,7 +360,9 @@
         q3: "يظهر في ويندوز «حماية Windows لجهازك».", a3: "يظهر ذلك لأن موفو غير موقّع رقميًا بعد. اضغط «مزيد من المعلومات» ثم «التشغيل على أي حال».",
         q4: "هل يوجد إصدار للآيفون؟", a4: "نعم، لكن Apple لا تسمح للتطبيقات بالتحكم في تطبيقات أخرى. على آيفون وآيباد يتحكم موفو في عارض PDF والصور الخاص به، ويمكن استخدامه ككاميرا عن بُعد لحاسوبك. غير متوفر في App Store بعد.",
         q5: "أرتدي نظارة — هل تعمل إيماءات العين؟", a5: "نعم. فعّل «أرتدي نظارة» وأجرِ المعايرة لمدة 7 ثوانٍ وأنت ترتديها، وتجنّب انعكاس المصباح على العدسات.",
-        copy: "© 2026 مؤمن إبراهيم فوزي. جميع الحقوق محفوظة.", source: "GitHub",
+        copy: "© 2026 مؤمن إبراهيم فوزي حسن. جميع الحقوق محفوظة.", source: "GitHub",
+        nav_dev: "المطوّر", dev_title: "تعرّف على المطوّر", dev_sub: "للأسئلة والأفكار والشراكات ومشاريع إتاحة الاستخدام — تواصل معي.",
+        dev_name: "مؤمن إبراهيم فوزي حسن", dev_role: "مطوّر موفو",
       },
     };
 

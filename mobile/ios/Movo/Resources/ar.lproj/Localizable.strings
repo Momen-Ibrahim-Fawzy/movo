@@ -70,6 +70,7 @@
 "settings.about" = "حول التطبيق";
 "settings.meaning" = "«موفو» مستوحى من الحركة: تحكّم في أجهزتك بتلويحة يد أو إيماءة رأس أو غمزة عين — دون لمس.";
 "settings.version" = "الإصدار";
+"settings.developer" = "مؤمن إبراهيم فوزي حسن\nmomenibrahimfawzy982000@gmail.com";
 "help.title" = "طريقة استخدام موفو";
 "help.gestures" = "الإيماءات";
 "help.s1" = "شغّل التطبيق";

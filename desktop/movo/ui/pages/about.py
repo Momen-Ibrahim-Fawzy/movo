@@ -32,6 +32,22 @@ class AboutPage(Page):
         guide.clicked.connect(lambda: self.ctx.go("guide"))
         hero.lay.addWidget(guide, 0, Qt.AlignLeft)
 
+        dev = Card()
+        dev.lay.addWidget(label(tr("about.developer"), "SectionTitle"))
+        dev.lay.addWidget(label(tr("about.dev_name")))
+        dev.lay.addWidget(label(tr("about.dev_role"), "Muted", wrap=True))
+        contact = label(
+            '<a href="mailto:momenibrahimfawzy982000@gmail.com">momenibrahimfawzy982000@gmail.com</a><br>'
+            '<span dir="ltr">+966 55 706 8834 · +20 10 9638 8123</span><br>'
+            '<a href="https://www.linkedin.com/in/momen-ibrahim-fawzy-0b067a1b8/">LinkedIn</a> · <a href="https://github.com/Momen-Ibrahim-Fawzy">GitHub</a> · <a href="https://orcid.org/0009-0001-7287-0705">ORCID</a> · <a href="https://scholar.google.com/citations?user=PV3WxD4AAAAJ&hl=en">Google Scholar</a>',
+            wrap=True,
+        )
+        contact.setTextFormat(Qt.RichText)
+        contact.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        contact.setOpenExternalLinks(True)
+        dev.lay.addWidget(contact)
+        self.body.addWidget(dev)
+
         privacy = Card()
         privacy.lay.addWidget(label(tr("settings.privacy"), "SectionTitle"))
         privacy.lay.addWidget(label(tr("settings.privacy_text"), wrap=True))

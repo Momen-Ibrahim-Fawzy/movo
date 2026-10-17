@@ -120,6 +120,7 @@ STRINGS = {
     "settings.about": ("About", "حول التطبيق"),
     "settings.meaning": ("“Movo” comes from “move”: control your devices with motion — a wave, a nod or a wink — without touching them.", "«موفو» مستوحى من الحركة: تحكّم في أجهزتك بتلويحة يد أو إيماءة رأس أو غمزة عين — دون لمس."),
     "settings.version": ("Version", "الإصدار"),
+    "settings.developer": ("Momen Ibrahim Fawzy Hassan\nmomenibrahimfawzy982000@gmail.com", "مؤمن إبراهيم فوزي حسن\nmomenibrahimfawzy982000@gmail.com"),
     "help.title": ("How to use Movo", "طريقة استخدام موفو"),
     "help.gestures": ("Gestures", "الإيماءات"),
     "help.s1": ("Start Movo", "شغّل التطبيق"),

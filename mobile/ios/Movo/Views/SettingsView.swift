@@ -61,6 +61,9 @@ struct SettingsView: View {
                 }
                 Section("settings.about") {
                     Text("settings.meaning").foregroundStyle(.secondary)
+                    Text("settings.developer").font(.footnote)
+                    Link("LinkedIn", destination: URL(string: "https://www.linkedin.com/in/momen-ibrahim-fawzy-0b067a1b8/")!)
+                    Link("GitHub", destination: URL(string: "https://github.com/Momen-Ibrahim-Fawzy")!)
                     LabeledContent("settings.version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
                 }
             }

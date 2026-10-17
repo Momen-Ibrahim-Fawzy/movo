@@ -309,7 +309,7 @@
   "about.tip6": "Practice mode shows what Movo sees without doing anything.",
   "about.credits": "Credits",
   "about.credits_text": "Hand, face and expression tracking by Google MediaPipe (Apache 2.0). Interface built with Qt for Python (LGPL). Full licence texts are included with the app.",
-  "about.copyright": "© 2026 Momen Ibrahim Fawzy. All rights reserved.",
+  "about.copyright": "© 2026 Momen Ibrahim Fawzy Hassan. All rights reserved.",
   "banner.mac_accessibility": "macOS is blocking keyboard and mouse control. Allow Movo under Privacy & Security → Accessibility, then restart Movo.",
   "banner.wayland": "You're using Wayland. Some keyboard shortcuts may need X11 or the ydotool service; volume and microphone work through PulseAudio/PipeWire.",
   "banner.open_settings": "Open Settings",
@@ -417,5 +417,8 @@
   "g.eye_look_left": "Look left",
   "g.eye_look_left.how": "Without moving your head, look far to your left and hold.",
   "g.eye_look_right": "Look right",
-  "g.eye_look_right.how": "Without moving your head, look far to your right and hold."
+  "g.eye_look_right.how": "Without moving your head, look far to your right and hold.",
+  "about.developer": "Developer",
+  "about.dev_name": "Momen Ibrahim Fawzy Hassan",
+  "about.dev_role": "Creator of Movo — questions, ideas and partnerships are welcome."
 }

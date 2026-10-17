@@ -9,7 +9,7 @@ description = "Control your computer with hand and head gestures — privately, 
 readme = "../README.md"
 requires-python = ">=3.10"
 license = { text = "Proprietary" }
-authors = [{ name = "Momen Ibrahim Fawzy" }]
+authors = [{ name = "Momen Ibrahim Fawzy Hassan", email = "momenibrahimfawzy982000@gmail.com" }]
 dependencies = [
     "mediapipe>=0.10.14",
     "numpy>=1.24",

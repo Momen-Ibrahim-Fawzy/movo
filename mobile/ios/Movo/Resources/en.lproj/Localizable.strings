@@ -70,6 +70,7 @@
 "settings.about" = "About";
 "settings.meaning" = "“Movo” comes from “move”: control your devices with motion — a wave, a nod or a wink — without touching them.";
 "settings.version" = "Version";
+"settings.developer" = "Momen Ibrahim Fawzy Hassan\nmomenibrahimfawzy982000@gmail.com";
 "help.title" = "How to use Movo";
 "help.gestures" = "Gestures";
 "help.s1" = "Start Movo";

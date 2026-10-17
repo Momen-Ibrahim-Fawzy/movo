@@ -85,6 +85,7 @@ fun SettingsScreen(modifier: Modifier, onLanguage: (String) -> Unit) {
         SectionCard(stringResource(R.string.settings_about)) {
             Text(stringResource(R.string.settings_version, BuildConfig.VERSION_NAME))
             Text(stringResource(R.string.settings_meaning), color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.settings_developer), style = MaterialTheme.typography.bodySmall)
         }
     }
 }

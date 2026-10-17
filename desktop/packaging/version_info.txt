@@ -6,7 +6,7 @@ VSVersionInfo(
       StringStruct('FileDescription', 'Movo - gesture control'),
       StringStruct('FileVersion', '1.1.0'),
       StringStruct('InternalName', 'Movo'),
-      StringStruct('LegalCopyright', '(c) 2026 Momen Ibrahim Fawzy'),
+      StringStruct('LegalCopyright', '(c) 2026 Momen Ibrahim Fawzy Hassan'),
       StringStruct('OriginalFilename', 'Movo.exe'),
       StringStruct('ProductName', 'Movo'),
       StringStruct('ProductVersion', '1.1.0')])]),

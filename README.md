@@ -182,7 +182,20 @@ pyinstaller packaging/movo.spec --noconfirm         # package for this OS
 
 Continuous integration builds every platform; tagging `vX.Y.Z` publishes a release.
 
+## Developer
+
+**Momen Ibrahim Fawzy Hassan** — creator of Movo
+
+| | |
+|---|---|
+| ✉️ Email | [momenibrahimfawzy982000@gmail.com](mailto:momenibrahimfawzy982000@gmail.com) |
+| 📞 Phone | +966 55 706 8834 · +20 10 9638 8123 |
+| 💼 LinkedIn | [momen-ibrahim-fawzy](https://www.linkedin.com/in/momen-ibrahim-fawzy-0b067a1b8/) |
+| 🐙 GitHub | [Momen-Ibrahim-Fawzy](https://github.com/Momen-Ibrahim-Fawzy) |
+| 🆔 ORCID | [0009-0001-7287-0705](https://orcid.org/0009-0001-7287-0705) |
+| 🎓 Google Scholar | [Profile](https://scholar.google.com/citations?user=PV3WxD4AAAAJ&hl=en) |
+
 ## Licence
 
-© 2026 Momen Ibrahim Fawzy. All rights reserved — see [LICENSE](LICENSE).
+© 2026 Momen Ibrahim Fawzy Hassan. All rights reserved — see [LICENSE](LICENSE).
 Open-source components are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

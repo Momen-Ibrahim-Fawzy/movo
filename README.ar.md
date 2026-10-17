@@ -110,8 +110,21 @@
 لا ينظر التطبيق إلى الكاميرا إلا أثناء تشغيله. تُحلَّل كل صورة في الذاكرة ثم تُستبدل بالتالية — لا يوجد أي كود يكتب
 صور الكاميرا على القرص أو يرسلها عبر الشبكة. لا حسابات ولا تحليلات ولا إعلانات.
 
+## المطوّر
+
+**مؤمن إبراهيم فوزي حسن** (Momen Ibrahim Fawzy Hassan) — مطوّر موفو
+
+| | |
+|---|---|
+| ✉️ البريد | [momenibrahimfawzy982000@gmail.com](mailto:momenibrahimfawzy982000@gmail.com) |
+| 📞 الهاتف | <bdi>+966 55 706 8834</bdi> · <bdi>+20 10 9638 8123</bdi> |
+| 💼 LinkedIn | [momen-ibrahim-fawzy](https://www.linkedin.com/in/momen-ibrahim-fawzy-0b067a1b8/) |
+| 🐙 GitHub | [Momen-Ibrahim-Fawzy](https://github.com/Momen-Ibrahim-Fawzy) |
+| 🆔 ORCID | [0009-0001-7287-0705](https://orcid.org/0009-0001-7287-0705) |
+| 🎓 Google Scholar | [الملف الشخصي](https://scholar.google.com/citations?user=PV3WxD4AAAAJ&hl=en) |
+
 ## الترخيص
 
-© 2026 مؤمن إبراهيم فوزي. جميع الحقوق محفوظة.
+© 2026 مؤمن إبراهيم فوزي حسن. جميع الحقوق محفوظة.
 
 </div>
