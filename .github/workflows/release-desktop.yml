@@ -54,8 +54,8 @@ jobs:
           cd dist && 7z a -tzip "Imaa-Windows-x64-portable.zip" Imaa > /dev/null && cd ..
           ISCC="/c/Program Files (x86)/Inno Setup 6/ISCC.exe"
           if [ ! -f "$ISCC" ]; then choco install innosetup -y --no-progress > /dev/null; fi
-          ls "/c/Program Files (x86)/Inno Setup 6/Languages" | head -50
-          "$ISCC" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
+          # Git Bash would rewrite "/DAppVersion=..." into a file path; turn that conversion off for this call.
+          MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" "$ISCC" "/DAppVersion=${{ steps.v.outputs.version }}" packaging/windows/imaa.iss
           ls dist
       - name: Package (macOS)
         if: runner.os == 'macOS'
