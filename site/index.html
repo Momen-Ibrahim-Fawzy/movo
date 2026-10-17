@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movo · موفو — Control Without Contact</title>
+  <meta name="description" content="Control your computer and phone with hand, head and eye gestures — privately, on your device. Free for Windows, macOS, Linux and Android." />
+  <meta name="theme-color" content="#1A73E8" />
+  <meta property="og:title" content="Movo · موفو — Control Without Contact" />
+  <meta property="og:description" content="Hand, head and eye gestures for your computer and phone. Nothing leaves your device." />
+  <meta property="og:image" content="assets/logo-512.png" />
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/logo-256.png" />
+  <style>
+    :root {
+      --bg: #f8f9fa; --surface: #ffffff; --surface-alt: #f1f3f4; --border: #e0e3e7;
+      --text: #1f1f1f; --muted: #5f6368; --accent: #1a73e8; --accent-hover: #1765cc;
+      --accent-soft: #e8f0fe; --on-accent: #ffffff; --success: #1e8e3e;
+      --shadow: 0 1px 2px rgba(60,64,67,.12), 0 4px 16px rgba(60,64,67,.08);
+      --radius: 20px;
+    }
+    :root[data-theme="dark"] {
+      --bg: #1f1f1f; --surface: #28292c; --surface-alt: #303134; --border: #3c4043;
+      --text: #e8eaed; --muted: #9aa0a6; --accent: #8ab4f8; --accent-hover: #aecbfa;
+      --accent-soft: #283b57; --on-accent: #202124; --success: #81c995;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #1f1f1f; --surface: #28292c; --surface-alt: #303134; --border: #3c4043;
+        --text: #e8eaed; --muted: #9aa0a6; --accent: #8ab4f8; --accent-hover: #aecbfa;
+        --accent-soft: #283b57; --on-accent: #202124; --success: #81c995;
+        --shadow: 0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Arabic", Tahoma, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* header */
+    header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; gap: 16px; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--text); }
+    .brand img { width: 34px; height: 34px; }
+    .brand:hover { text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; margin-inline-start: auto; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: 15px; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .tools { display: flex; gap: 6px; }
+    .icon-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); height: 38px; min-width: 38px;
+      padding: 0 10px; border-radius: 10px; cursor: pointer; font: inherit; font-weight: 600; font-size: 14px; }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 760px) { .nav-links { display: none; } .tools { margin-inline-start: auto; } }
+
+    /* hero */
+    .hero { padding-block: 72px 48px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-block-start: 40px; text-align: center; } .hero-art { order: -1; } }
+    .eyebrow { display: inline-flex; gap: 8px; align-items: center; background: var(--accent-soft); color: var(--accent);
+      font-weight: 600; font-size: 14px; padding: 6px 12px; border-radius: 999px; }
+    h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.08; margin: 18px 0 16px; letter-spacing: -0.02em; }
+    h1 .ar { display: block; font-size: .55em; color: var(--muted); font-weight: 600; letter-spacing: 0; margin-top: 6px; }
+    .lead { font-size: 19px; color: var(--muted); max-width: 560px; margin: 0 0 28px; }
+    @media (max-width: 900px) { .lead { margin-inline: auto; } }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 900px) { .cta { justify-content: center; } }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 14px; font-weight: 600;
+      font-size: 16px; border: 1px solid transparent; cursor: pointer; transition: background .15s, border-color .15s; }
+    .btn:hover { text-decoration: none; }
+    .btn-primary { background: var(--accent); color: var(--on-accent); }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn small { display: block; font-weight: 500; opacity: .85; font-size: 12px; }
+    .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+    .hero-art { display: grid; place-items: center; }
+    .hero-art img { width: min(360px, 70vw); filter: drop-shadow(0 20px 40px rgba(26,115,232,.25)); animation: float 6s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-10px); } }
+
+    /* sections */
+    section { padding: 64px 0; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em; text-align: center; }
+    .section-sub { color: var(--muted); text-align: center; max-width: 640px; margin: 0 auto 40px; font-size: 17px; }
+    .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+    .card h3 { margin: 12px 0 6px; font-size: 19px; }
+    .card p { margin: 0; color: var(--muted); }
+    .card .emoji { font-size: 30px; line-height: 1; }
+    .pill { display: inline-block; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 13px; font-weight: 600; }
+
+    .steps { counter-reset: s; }
+    .step { position: relative; padding-inline-start: 64px; }
+    .step::before { counter-increment: s; content: counter(s); position: absolute; inset-inline-start: 22px; top: 24px;
+      width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft);
+      color: var(--accent); font-weight: 700; }
+    .step h3 { margin-top: 0; }
+
+    .gestures { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .g-row { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 12px 16px; }
+    .g-row .e { font-size: 24px; width: 34px; text-align: center; }
+    .g-row .n { font-weight: 600; flex: 1; }
+    .g-row .a { color: var(--muted); font-size: 14px; }
+    .tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 22px; flex-wrap: wrap; }
+    .tab { border: 1px solid var(--border); background: var(--surface); color: var(--muted); padding: 8px 18px; border-radius: 999px;
+      font: inherit; font-weight: 600; cursor: pointer; }
+    .tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+    .shots { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .shots figure { margin: 0; }
+    .shots img { width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); display: block; }
+    .shots figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 8px; }
+
+    .privacy { background: var(--accent); color: var(--on-accent); border-radius: 28px; padding: 44px; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .privacy h2 { font-size: clamp(26px, 3.4vw, 36px); margin: 0 0 10px; }
+    .privacy p { opacity: .92; margin: 0; }
+    .privacy ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .privacy li { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; }
+    .privacy li::before { content: "✓"; font-weight: 800; }
+    @media (max-width: 800px) { .privacy { grid-template-columns: 1fr; padding: 30px; } }
+
+    .downloads .card { display: flex; flex-direction: column; gap: 10px; }
+    .downloads .card h3 { margin: 0; display: flex; align-items: center; gap: 10px; }
+    .downloads .card .btn { justify-content: center; margin-top: auto; }
+    .downloads .muted { color: var(--muted); font-size: 14px; }
+    .ver { text-align: center; color: var(--muted); margin-top: 18px; font-size: 14px; }
+
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; }
+    details + details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 600; }
+    details p { color: var(--muted); margin: 10px 0 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+    .foot { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .foot .brand { font-size: 16px; }
+    .foot .brand img { width: 26px; height: 26px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Movo"><img src="assets/logo.svg" alt="" /><span data-i18n="name">Movo</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="#how" data-i18n="nav_how">How it works</a>
+        <a href="#gestures" data-i18n="nav_gestures">Gestures</a>
+        <a href="#privacy" data-i18n="nav_privacy">Privacy</a>
+        <a href="#download" data-i18n="nav_download">Download</a>
+      </nav>
+      <div class="tools">
+        <button class="icon-btn" id="lang" type="button" aria-label="Language">ع</button>
+        <button class="icon-btn" id="theme" type="button" aria-label="Theme">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div>
+        <span class="eyebrow">🔒 <span data-i18n="eyebrow">Private · Free · On-device</span></span>
+        <h1><span data-i18n="hero_title">Control Without Contact</span><span class="ar" data-i18n="hero_alt">تحكّم دون لمس</span></h1>
+        <p class="lead" data-i18n="hero_lead">Movo turns your hands, head and eyes into a remote control for your computer and phone — using only the camera you already have. Nothing is recorded or sent anywhere.</p>
+        <div class="cta">
+          <a class="btn btn-primary" id="main-download" href="#download">⬇ <span><span data-i18n="download_for">Download</span> <small id="main-os"></small></span></a>
+          <a class="btn btn-ghost" href="#how" data-i18n="see_how">See how it works</a>
+        </div>
+        <p class="note" data-i18n="hero_note">Windows · macOS · Linux · Android — English & العربية — light & dark</p>
+      </div>
+      <div class="hero-art"><img src="assets/logo.svg" alt="Movo logo" width="360" height="360" /></div>
+    </div>
+
+    <section id="features">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="f_title">Everything, hands-free</h2>
+        <p class="section-sub" data-i18n="f_sub">Everyday controls for presenting, watching, reading and calling — and full computer access for people who can't use a mouse.</p>
+        <div class="grid">
+          <div class="card"><div class="emoji">✋</div><h3 data-i18n="f1_t">Hand gestures</h3><p data-i18n="f1_d">Thumbs up for volume, point for next and previous, pinch to play, swipe between tabs, ✌️ for a screenshot.</p></div>
+          <div class="card"><div class="emoji">🙂</div><h3 data-i18n="f2_t">Head gestures</h3><p data-i18n="f2_d">Nod, shake, tilt and turn. Open your mouth or smile for clicks — completely hands-free.</p></div>
+          <div class="card"><div class="emoji">👁️</div><h3 data-i18n="f3_t">Eye gestures</h3><p data-i18n="f3_d">Wink, double-blink or glance — with or without glasses, thanks to a 7-second personal calibration.</p></div>
+          <div class="card"><div class="emoji">🖱️</div><h3 data-i18n="f4_t">Air mouse & head pointer</h3><p data-i18n="f4_d">Move the cursor with your hand or your head. Pinch to click and drag.</p></div>
+          <div class="card"><div class="emoji">🎬</div><h3 data-i18n="f5_t">Smart profiles</h3><p data-i18n="f5_d">Gestures adapt to PowerPoint, VLC, Zoom, Teams and your browser automatically.</p></div>
+          <div class="card"><div class="emoji">📱</div><h3 data-i18n="f6_t">Phone as a remote</h3><p data-i18n="f6_d">Put your phone on the desk and control your computer from across the room. Only gesture names travel over Wi-Fi.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="h_title">How it works</h2>
+        <p class="section-sub" data-i18n="h_sub">Three steps — no account, no setup wizard to fight with.</p>
+        <div class="grid steps">
+          <div class="card step"><h3 data-i18n="s1_t">Install and press start</h3><p data-i18n="s1_d">Download Movo for your device and press the big blue power button.</p></div>
+          <div class="card step"><h3 data-i18n="s2_t">Make a gesture</h3><p data-i18n="s2_d">Hold a pose for half a second — try 👍. A small bubble confirms what happened.</p></div>
+          <div class="card step"><h3 data-i18n="s3_t">Make it yours</h3><p data-i18n="s3_d">Change any gesture, add your own keyboard shortcuts, and practise safely in Practice mode.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gestures">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="g_title">Gesture cheat sheet</h2>
+        <p class="section-sub" data-i18n="g_sub">The defaults — every gesture can be changed or switched off.</p>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-set="hand" data-i18n="tab_hand">Hand</button>
+          <button class="tab" role="tab" aria-selected="false" data-set="head" data-i18n="tab_head">Head</button>
+          <button class="tab" role="tab" aria-selected="false" data-set="eye" data-i18n="tab_eye">Eyes</button>
+        </div>
+        <div class="gestures" id="gesture-list"></div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="sc_title">Designed to feel familiar</h2>
+        <p class="section-sub" data-i18n="sc_sub">Calm, clear and fully right-to-left in Arabic.</p>
+        <div class="shots" id="shots"></div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <div class="privacy">
+          <div>
+            <h2 data-i18n="p_title">Your camera never leaves your device</h2>
+            <p data-i18n="p_sub">Movo analyses each picture in memory and immediately discards it. Privacy isn't a setting — it's how Movo is built.</p>
+          </div>
+          <ul>
+            <li data-i18n="p1">No video is recorded, saved or uploaded</li>
+            <li data-i18n="p2">Works offline — no account, no analytics, no ads</li>
+            <li data-i18n="p3">The phone remote sends gesture names only, inside your Wi-Fi</li>
+            <li data-i18n="p4">Pause or stop any time — app, tray icon or Ctrl + Alt + G</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="downloads">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="d_title">Download Movo</h2>
+        <p class="section-sub" data-i18n="d_sub">Free. Pick your device.</p>
+        <div class="grid">
+          <div class="card"><h3>🪟 Windows</h3><p class="muted" data-i18n="d_win">Windows 10 / 11. No admin rights needed.</p>
+            <a class="btn btn-primary" data-asset="Movo-Setup" data-i18n="d_installer">Installer</a>
+            <a class="btn btn-ghost" data-asset="Movo-Windows-x64-portable.zip" data-i18n="d_portable">Portable (zip)</a></div>
+          <div class="card"><h3> macOS</h3><p class="muted" data-i18n="d_mac">macOS 12 or newer.</p>
+            <a class="btn btn-primary" data-asset="Movo-macOS-macos-arm64.dmg" data-i18n="d_mac_arm">Apple Silicon (M1+)</a>
+            <a class="btn btn-ghost" data-asset="Movo-macOS-macos-x86_64.dmg" data-i18n="d_mac_intel">Intel Mac</a></div>
+          <div class="card"><h3>🐧 Linux</h3><p class="muted" data-i18n="d_linux">Ubuntu, Fedora, Debian and more (X11 recommended).</p>
+            <a class="btn btn-primary" data-asset="Movo-Linux-x86_64.AppImage">AppImage</a>
+            <a class="btn btn-ghost" data-asset="Movo-Linux-x86_64.tar.gz">tar.gz</a></div>
+          <div class="card"><h3>🤖 Android</h3><p class="muted" data-i18n="d_android">Android 8+ phones, tablets and Chromebooks.</p>
+            <a class="btn btn-primary" data-asset="Movo-Android.apk" data-i18n="d_apk">Download APK</a>
+            <a class="btn btn-ghost" data-asset="Movo-Browser-Helper.zip" data-i18n="d_helper">Browser helper (optional)</a></div>
+        </div>
+        <p class="ver" id="version-line"></p>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap" style="max-width:820px">
+        <h2 class="section-title" data-i18n="q_title">Questions</h2>
+        <details><summary data-i18n="q1">Does Movo record or upload my camera?</summary><p data-i18n="a1">No. Pictures are analysed in memory and discarded immediately. There is no code that saves or sends them, and the app works without internet.</p></details>
+        <details><summary data-i18n="q2">Will it work on my old laptop?</summary><p data-i18n="a2">Most likely. Movo needs about 10–20 ms of processor time per frame, rests at 5 frames per second when nobody is in view, and has an Eco mode.</p></details>
+        <details><summary data-i18n="q3">Windows says “Windows protected your PC”.</summary><p data-i18n="a3">That appears because Movo isn't code-signed yet. Click “More info”, then “Run anyway”.</p></details>
+        <details><summary data-i18n="q4">Is there an iPhone version?</summary><p data-i18n="a4">Yes, but Apple doesn't allow apps to control other apps. On iPhone and iPad, Movo controls its own PDF and photo viewer and can act as a remote camera for your computer. It isn't on the App Store yet.</p></details>
+        <details><summary data-i18n="q5">I wear glasses — will eye gestures work?</summary><p data-i18n="a5">Yes. Turn on “I wear glasses” and run the 7-second calibration while wearing them. Avoid a lamp reflecting in your lenses.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <a class="brand" href="#top"><img src="assets/logo.svg" alt="" /><span>Movo · موفو</span></a>
+      <span data-i18n="copy">© 2026 Momen Ibrahim Fawzy. All rights reserved.</span>
+      <a href="https://github.com/Momen-Ibrahim-Fawzy/movo" data-i18n="source">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    const REPO = "Momen-Ibrahim-Fawzy/movo";
+    const RELEASES = `https://github.com/${REPO}/releases/latest`;
+
+    const T = {
+      en: {},
+      ar: {
+        name: "موفو", nav_features: "المزايا", nav_how: "طريقة العمل", nav_gestures: "الإيماءات", nav_privacy: "الخصوصية", nav_download: "التنزيل",
+        eyebrow: "خاص · مجاني · على جهازك", hero_title: "تحكّم دون لمس", hero_alt: "Control Without Contact",
+        hero_lead: "يحوّل موفو يديك ورأسك وعينيك إلى جهاز تحكّم لحاسوبك وهاتفك — باستخدام الكاميرا الموجودة لديك فقط. لا يُسجَّل شيء ولا يُرسل إلى أي مكان.",
+        download_for: "تنزيل", see_how: "شاهد طريقة العمل", hero_note: "ويندوز · ماك · لينكس · أندرويد — العربية والإنجليزية — فاتح وداكن",
+        f_title: "كل شيء دون لمس", f_sub: "تحكّم يومي للعروض والمشاهدة والقراءة والمكالمات — ووصول كامل للحاسوب لمن لا يستطيع استخدام الماوس.",
+        f1_t: "إيماءات اليد", f1_d: "ارفع إبهامك للصوت، وأشر للتالي والسابق، واقرص للتشغيل، واسحب بين علامات التبويب، و✌️ للقطة شاشة.",
+        f2_t: "إيماءات الرأس", f2_d: "أومئ، هزّ رأسك، أمِله أو التفت. افتح فمك أو ابتسم للنقر — دون استخدام اليدين.",
+        f3_t: "إيماءات العين", f3_d: "اغمز أو ارمش مرتين أو انظر — مع النظارة أو بدونها بفضل معايرة شخصية في 7 ثوانٍ.",
+        f4_t: "الماوس الهوائي ومؤشر الرأس", f4_d: "حرّك المؤشر بيدك أو برأسك، واقرص للنقر والسحب.",
+        f5_t: "ملفات ذكية", f5_d: "تتكيّف الإيماءات تلقائيًا مع PowerPoint وVLC وZoom وTeams والمتصفح.",
+        f6_t: "الهاتف كجهاز تحكم", f6_d: "ضع هاتفك على المكتب وتحكّم في حاسوبك من بعيد. تُرسَل أسماء الإيماءات فقط عبر Wi-Fi.",
+        h_title: "طريقة العمل", h_sub: "ثلاث خطوات — دون حساب ودون إعدادات معقّدة.",
+        s1_t: "ثبّت واضغط تشغيل", s1_d: "نزّل موفو لجهازك واضغط زر التشغيل الأزرق الكبير.",
+        s2_t: "اصنع إيماءة", s2_d: "اثبت على الإيماءة نصف ثانية — جرّب 👍. تظهر فقاعة صغيرة تؤكد ما حدث.",
+        s3_t: "اجعله لك", s3_d: "غيّر أي إيماءة، وأضف اختصاراتك الخاصة، وتدرّب بأمان في وضع التدريب.",
+        g_title: "دليل الإيماءات", g_sub: "الإعدادات الافتراضية — يمكن تغيير أي إيماءة أو إيقافها.",
+        tab_hand: "اليد", tab_head: "الرأس", tab_eye: "العينان",
+        sc_title: "تصميم مألوف ومريح", sc_sub: "هادئ وواضح، ومن اليمين إلى اليسار بالكامل بالعربية.",
+        p_title: "كاميرتك لا تغادر جهازك", p_sub: "يحلّل موفو كل صورة في الذاكرة ثم يحذفها فورًا. الخصوصية ليست خيارًا — بل هي أساس بناء موفو.",
+        p1: "لا يُسجَّل أي فيديو ولا يُحفظ ولا يُرفع", p2: "يعمل دون إنترنت — بلا حساب ولا تحليلات ولا إعلانات",
+        p3: "التحكم عبر الهاتف يرسل أسماء الإيماءات فقط داخل شبكتك", p4: "أوقفه مؤقتًا أو نهائيًا في أي وقت — من التطبيق أو الأيقونة أو Ctrl + Alt + G",
+        d_title: "نزّل موفو", d_sub: "مجاني. اختر جهازك.",
+        d_win: "ويندوز 10 / 11، دون صلاحيات المسؤول.", d_installer: "برنامج التثبيت", d_portable: "نسخة محمولة (zip)",
+        d_mac: "macOS 12 أو أحدث.", d_mac_arm: "معالج Apple (M1 وأحدث)", d_mac_intel: "ماك بمعالج Intel",
+        d_linux: "أوبونتو وفيدورا وديبيان وغيرها (يُفضّل X11).", d_android: "هواتف وأجهزة أندرويد 8 فأحدث وأجهزة Chromebook.",
+        d_apk: "تنزيل APK", d_helper: "مساعد المتصفح (اختياري)",
+        q_title: "أسئلة شائعة",
+        q1: "هل يسجّل موفو الكاميرا أو يرفعها؟", a1: "لا. تُحلَّل الصور في الذاكرة ثم تُحذف فورًا. لا يوجد أي كود يحفظها أو يرسلها، ويعمل التطبيق دون إنترنت.",
+        q2: "هل يعمل على حاسوبي القديم؟", a2: "على الأرجح نعم. يحتاج موفو إلى 10–20 مللي ثانية من المعالج لكل إطار، ويرتاح عند 5 إطارات في الثانية عند عدم وجود أحد، وفيه وضع اقتصادي.",
+        q3: "يظهر في ويندوز «حماية Windows لجهازك».", a3: "يظهر ذلك لأن موفو غير موقّع رقميًا بعد. اضغط «مزيد من المعلومات» ثم «التشغيل على أي حال».",
+        q4: "هل يوجد إصدار للآيفون؟", a4: "نعم، لكن Apple لا تسمح للتطبيقات بالتحكم في تطبيقات أخرى. على آيفون وآيباد يتحكم موفو في عارض PDF والصور الخاص به، ويمكن استخدامه ككاميرا عن بُعد لحاسوبك. غير متوفر في App Store بعد.",
+        q5: "أرتدي نظارة — هل تعمل إيماءات العين؟", a5: "نعم. فعّل «أرتدي نظارة» وأجرِ المعايرة لمدة 7 ثوانٍ وأنت ترتديها، وتجنّب انعكاس المصباح على العدسات.",
+        copy: "© 2026 مؤمن إبراهيم فوزي. جميع الحقوق محفوظة.", source: "GitHub",
+      },
+    };
+
+    const G = {
+      hand: [["👍", "Thumb up", "رفع الإبهام", "Volume up", "رفع الصوت"], ["👎", "Thumb down", "خفض الإبهام", "Volume down", "خفض الصوت"],
+        ["👉", "Point right", "الإشارة يمينًا", "Next", "التالي"], ["👈", "Point left", "الإشارة يسارًا", "Previous", "السابق"],
+        ["🤏", "Pinch", "قرص", "Play / pause", "تشغيل / إيقاف"], ["☝️", "Index up + move", "السبابة مع الحركة", "Scroll", "التمرير"],
+        ["🤏", "Pinch, hold & pull", "قرص وسحب", "Zoom in / out", "تكبير / تصغير"], ["✋", "Swipe right / left", "سحب يمينًا / يسارًا", "Next / previous tab", "علامة التبويب التالية / السابقة"],
+        ["✌️", "Victory", "علامة النصر", "Screenshot", "لقطة شاشة"], ["🤙", "Call sign", "علامة الاتصال", "Microphone on / off", "تشغيل / كتم الميكروفون"],
+        ["✊", "Fist", "قبضة", "Skip ad", "تخطي الإعلان"], ["🤘", "Rock sign", "علامة الروك", "Pause Movo", "إيقاف موفو مؤقتًا"]],
+      head: [["🙂", "Nod", "إيماءة بالرأس", "Play / pause", "تشغيل / إيقاف"], ["🙅", "Shake", "هزّ الرأس", "Skip ad", "تخطي الإعلان"],
+        ["↗️", "Tilt right / left", "إمالة يمينًا / يسارًا", "Next / previous", "التالي / السابق"], ["⬆️", "Look up / down", "النظر للأعلى / للأسفل", "Scroll", "التمرير"],
+        ["➡️", "Turn right / left", "الالتفات يمينًا / يسارًا", "Next / previous tab", "علامة التبويب التالية / السابقة"],
+        ["😮", "Open mouth", "فتح الفم", "Microphone on / off", "تشغيل / كتم الميكروفون"], ["😁", "Smile", "ابتسامة", "Screenshot", "لقطة شاشة"]],
+      eye: [["😉", "Wink left / right", "غمزة يسرى / يمنى", "Previous / next", "السابق / التالي"], ["👁️", "Double blink", "رمشة مزدوجة", "Play / pause", "تشغيل / إيقاف"],
+        ["😌", "Long blink", "رمشة طويلة", "Skip ad", "تخطي الإعلان"], ["😴", "Eyes closed 2 s", "إغماض العينين ثانيتين", "Pause Movo", "إيقاف موفو مؤقتًا"],
+        ["🔼", "Glance up / down", "النظر للأعلى / للأسفل", "Scroll", "التمرير"]],
+    };
+
+    const SHOTS = { en: [["en-light-home", "Home"], ["en-dark-head", "Head gestures"], ["en-light-eyes", "Eye gestures"], ["en-light-guide", "How to use"]],
+      ar: [["ar-light-home", "الرئيسية"], ["ar-dark-home", "الوضع الداكن"], ["ar-dark-eyes", "إيماءات العين"], ["ar-light-about", "حول التطبيق"]] };
+
+    let lang = "en";
+    let set = "hand";
+    let assets = {};
+    const store = { get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
+      set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+
+    // capture English defaults from the markup
+    document.querySelectorAll("[data-i18n]").forEach((el) => { T.en[el.dataset.i18n] = el.textContent; });
+
+    function renderGestures() {
+      const ar = lang === "ar";
+      document.getElementById("gesture-list").innerHTML = G[set]
+        .map(([e, n, na, a, aa]) => `<div class="g-row"><span class="e">${e}</span><span class="n">${ar ? na : n}</span><span class="a">${ar ? aa : a}</span></div>`)
+        .join("");
+    }
+    function renderShots() {
+      document.getElementById("shots").innerHTML = SHOTS[lang]
+        .map(([f, c]) => `<figure><img loading="lazy" src="assets/screenshots/${f}.png" alt="${c}" /><figcaption>${c}</figcaption></figure>`).join("");
+    }
+    function applyLang(l) {
+      lang = l;
+      document.documentElement.lang = l;
+      document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+      document.querySelectorAll("[data-i18n]").forEach((el) => { const v = T[l][el.dataset.i18n]; if (v) el.textContent = v; });
+      document.getElementById("lang").textContent = l === "ar" ? "EN" : "ع";
+      document.title = l === "ar" ? "موفو · Movo — تحكّم دون لمس" : "Movo · موفو — Control Without Contact";
+      renderGestures(); renderShots(); updateMain(); updateVersion();
+      store.set("movo-lang", l);
+    }
+    function applyTheme(t) {
+      if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+    }
+
+    // Detect the visitor's platform for the main download button.
+    function detect() {
+      const ua = navigator.userAgent;
+      if (/Android/i.test(ua)) return ["Movo-Android.apk", "Android"];
+      if (/iPhone|iPad|iPod/i.test(ua)) return [null, "iPhone / iPad"];
+      if (/Windows/i.test(ua)) return ["Movo-Setup", "Windows"];
+      if (/Mac/i.test(ua)) return ["Movo-macOS-macos-arm64.dmg", "macOS"];
+      if (/Linux/i.test(ua)) return ["Movo-Linux-x86_64.AppImage", "Linux"];
+      return [null, ""];
+    }
+    function link(name) {
+      if (!name) return "#download";
+      const hit = Object.keys(assets).find((k) => k.startsWith(name));
+      return hit ? assets[hit] : RELEASES;
+    }
+    function updateMain() {
+      const [asset, os] = detect();
+      const a = document.getElementById("main-download");
+      document.getElementById("main-os").textContent = os ? (lang === "ar" ? `لـ ${os}` : `for ${os}`) : "";
+      a.href = asset ? link(asset) : "#download";
+    }
+    function updateDownloads() {
+      document.querySelectorAll("[data-asset]").forEach((a) => { a.href = link(a.dataset.asset); });
+      updateMain();
+    }
+    let version = "";
+    function updateVersion() {
+      const v = document.getElementById("version-line");
+      v.innerHTML = version
+        ? (lang === "ar" ? `أحدث إصدار: ${version} · <a href="${RELEASES}">كل الإصدارات</a>` : `Latest version: ${version} · <a href="${RELEASES}">All releases</a>`)
+        : `<a href="${RELEASES}">${lang === "ar" ? "كل الإصدارات" : "All releases"}</a>`;
+    }
+
+    fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((rel) => {
+        if (!rel) return;
+        version = rel.tag_name;
+        rel.assets.forEach((a) => { assets[a.name] = a.browser_download_url; });
+        updateDownloads(); updateVersion();
+      })
+      .catch(() => {});
+
+    document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => {
+      set = b.dataset.set;
+      document.querySelectorAll(".tab").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+      renderGestures();
+    }));
+    document.getElementById("lang").addEventListener("click", () => applyLang(lang === "ar" ? "en" : "ar"));
+    document.getElementById("theme").addEventListener("click", () => {
+      const dark = document.documentElement.dataset.theme === "dark" ||
+        (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+      const next = dark ? "light" : "dark";
+      applyTheme(next); store.set("movo-theme", next);
+    });
+
+    applyTheme(store.get("movo-theme"));
+    const saved = store.get("movo-lang");
+    applyLang(saved || ((navigator.language || "").startsWith("ar") ? "ar" : "en"));
+    updateDownloads();
+  </script>
+</body>
+</html>
