@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">إيماءة</string>
+    <string name="tagline">تحكّم في هاتفك بتلويحة أو إيماءة — بخصوصية تامة.</string>
+
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_gestures">الإيماءات</string>
+    <string name="nav_remote">التحكم عن بُعد</string>
+    <string name="nav_settings">الإعدادات</string>
+
+    <string name="state_stopped">متوقف</string>
+    <string name="state_running">يعمل</string>
+    <string name="state_paused">متوقف مؤقتًا</string>
+    <string name="state_stopped_d">اضغط الزر لبدء التعرّف على الإيماءات.</string>
+    <string name="state_running_d">الإيماءات مفعّلة. أشر بعلامة 🤘 أو استخدم الإشعار للإيقاف المؤقت.</string>
+    <string name="state_paused_d">سيتم تجاهل الإيماءات حتى تستأنف.</string>
+    <string name="state_remote_d">يتم إرسال الإيماءات إلى حاسوبك.</string>
+
+    <string name="home_control_title">التحكم في الهاتف</string>
+    <string name="home_control_on">يمكن للتطبيق التحكم في هاتفك.</string>
+    <string name="home_control_off">فعّل التطبيق من إعدادات تسهيلات الاستخدام حتى تتمكن الإيماءات من التمرير والرجوع وأخذ لقطات الشاشة وتخطي الإعلانات.</string>
+    <string name="home_control_button">تفعيل</string>
+    <string name="home_quick">مفاتيح سريعة</string>
+    <string name="home_hand">إيماءات اليد</string>
+    <string name="home_head">إيماءات الرأس</string>
+    <string name="home_practice">وضع التدريب</string>
+    <string name="home_practice_d">اعرف ما يتعرّف عليه التطبيق دون تنفيذ أي إجراء</string>
+    <string name="home_hud">تنبيهات على الشاشة</string>
+    <string name="home_last">آخر إجراء</string>
+    <string name="home_seeing">يرى الآن</string>
+    <string name="home_nothing">لا شيء بعد — جرّب 👍 لرفع الصوت.</string>
+    <string name="home_privacy">تتم معالجة صورة الكاميرا على هذا الهاتف فقط. لا يُسجَّل أي شيء ولا يُحفظ ولا يُرسل.</string>
+    <string name="home_fps">%1$d إطار/ث</string>
+    <string name="home_idle">في وضع الراحة — لا أحد أمام الكاميرا</string>
+    <string name="home_pause">إيقاف مؤقت</string>
+    <string name="home_resume">استئناف</string>
+
+    <string name="disclosure_title">كيف يستخدم التطبيق تسهيلات الاستخدام</string>
+    <string name="disclosure_body">إيماءة أداة لتسهيل الاستخدام تتيح التحكم دون لمس. عند تفعيلها يمكن للتطبيق:\n\n• تنفيذ النقرات والسحب والقرص التي تطلبها بالإيماءات (التمرير والتكبير والتالي/السابق)،\n• الضغط على أزرار النظام (رجوع، الرئيسية، التطبيقات الأخيرة، الإشعارات، لقطة الشاشة)،\n• البحث عن زر «تخطي الإعلان» الظاهر على الشاشة والضغط عليه عند استخدام إيماءة التخطي.\n\nلا يقرأ التطبيق محتوى شاشتك أو ما تكتبه أو بياناتك الشخصية، ولا يخزنها ولا يرسلها. يبقى كل شيء على هذا الهاتف، ويمكنك إيقافه في أي وقت من الإعدادات ← تسهيلات الاستخدام.</string>
+    <string name="disclosure_agree">أوافق، افتح الإعدادات</string>
+    <string name="disclosure_cancel">ليس الآن</string>
+    <string name="camera_permission">يحتاج التطبيق إلى الكاميرا لرؤية إيماءاتك. الصورة لا تغادر هاتفك أبدًا.</string>
+    <string name="grant">السماح بالكاميرا</string>
+
+    <string name="gestures_hand">اليد</string>
+    <string name="gestures_head">الرأس</string>
+    <string name="gestures_does">تقوم بـ</string>
+    <string name="gestures_accurate">الوضع الدقيق</string>
+
+    <string name="remote_title">استخدم هذا الهاتف ككاميرا عن بُعد</string>
+    <string name="remote_body">ضع هاتفك في مكان يراك منه وتحكّم في حاسوبك بالإيماءات. يُرسَل اسم الإيماءة فقط عبر شبكة Wi-Fi — وليس الفيديو أبدًا.</string>
+    <string name="remote_steps">على الحاسوب: إيماءة ← الإعدادات ← التكاملات ← فعّل «استخدام هاتفي ككاميرا عن بُعد»، ثم امسح رمز QR بكاميرا هذا الهاتف أو أدخل البيانات أدناه.</string>
+    <string name="remote_host">عنوان الحاسوب</string>
+    <string name="remote_port">المنفذ</string>
+    <string name="remote_code">رمز الاقتران</string>
+    <string name="remote_use">إرسال الإيماءات إلى الحاسوب</string>
+    <string name="remote_off">غير متصل</string>
+    <string name="remote_connecting">جارٍ الاتصال…</string>
+    <string name="remote_connected">متصل بـ %1$s</string>
+    <string name="remote_failed">تعذّر الاتصال. تحقق من العنوان والرمز ومن أن الجهازين على شبكة Wi-Fi نفسها.</string>
+    <string name="remote_paired">تم استلام بيانات الاقتران.</string>
+
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_theme">السمة</string>
+    <string name="settings_system">النظام</string>
+    <string name="settings_light">فاتح</string>
+    <string name="settings_dark">داكن</string>
+    <string name="settings_detection">التعرّف</string>
+    <string name="settings_power">وضع الطاقة</string>
+    <string name="settings_power_eco">اقتصادي</string>
+    <string name="settings_power_balanced">متوازن</string>
+    <string name="settings_power_performance">أداء عالٍ</string>
+    <string name="settings_hold">مدة الثبات</string>
+    <string name="settings_head_mode">التعرّف على الرأس</string>
+    <string name="settings_head_light">خفيف</string>
+    <string name="settings_head_accurate">دقيق (تعابير الوجه)</string>
+    <string name="settings_head_sens">حساسية الرأس</string>
+    <string name="settings_recalibrate">إعادة معايرة الرأس</string>
+    <string name="settings_privacy">الخصوصية</string>
+    <string name="settings_privacy_text">لا ينظر التطبيق إلى الكاميرا إلا أثناء تشغيله، وعلى هذا الهاتف فقط. تُحلَّل الصور في الذاكرة ثم تُحذف فورًا — لا يُسجَّل شيء ولا يُحفظ ولا يُرفع. لا حسابات ولا تحليلات ولا إعلانات.</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="settings_version">الإصدار %1$s</string>
+    <string name="settings_meaning">«إيماءة» تعني الإشارة باليد أو الإيماء بالرأس.</string>
+
+    <string name="notif_channel">التحكم بالإيماءات</string>
+    <string name="notif_running">في انتظار الإيماءات</string>
+    <string name="notif_paused">متوقف مؤقتًا</string>
+    <string name="notif_pause">إيقاف مؤقت</string>
+    <string name="notif_resume">استئناف</string>
+    <string name="notif_stop">إيقاف</string>
+
+    <string name="accessibility_label">التحكم بالإيماءات - إيماءة</string>
+    <string name="accessibility_summary">تحكّم دون لمس بإيماءات اليد والرأس.</string>
+    <string name="accessibility_description">يتيح لك التطبيق التحكم في هاتفك دون لمسه باستخدام إيماءات اليد والرأس التي تراها الكاميرا الأمامية. ينفّذ النقرات والسحب والقرص وإجراءات النظام (رجوع، الرئيسية، التطبيقات الأخيرة، الإشعارات، لقطة الشاشة) التي تطلبها بالإيماءات، ويضغط على أزرار «تخطي الإعلان» الظاهرة عند استخدام إيماءة التخطي. لا يجمع التطبيق محتوى الشاشة أو البيانات الشخصية ولا يخزنها ولا يشاركها.</string>
+
+    <string name="hud_needs_accessibility">فعّل التطبيق من إعدادات تسهيلات الاستخدام أولًا</string>
+    <string name="hud_unsupported">غير متاح على هذا الهاتف</string>
+    <string name="hud_mic_muted">تم كتم الميكروفون</string>
+    <string name="hud_mic_on">الميكروفون يعمل</string>
+    <string name="hud_skip_done">تم تخطي الإعلان</string>
+    <string name="hud_skip_none">لا يوجد إعلان قابل للتخطي حاليًا</string>
+    <string name="hud_paused">تم الإيقاف المؤقت</string>
+    <string name="hud_resumed">تم الاستئناف</string>
+    <string name="error_camera">تعذّر فتح الكاميرا.</string>
+
+    <string name="g_thumb_up">رفع الإبهام</string>
+    <string name="g_thumb_down">خفض الإبهام</string>
+    <string name="g_point_right">الإشارة يمينًا</string>
+    <string name="g_point_left">الإشارة يسارًا</string>
+    <string name="g_pinch">قرص</string>
+    <string name="g_index_up_move_up">السبابة للأعلى مع الرفع</string>
+    <string name="g_index_up_move_down">السبابة للأعلى مع الخفض</string>
+    <string name="g_pinch_drag_up">قرص وسحب للأعلى</string>
+    <string name="g_pinch_drag_down">قرص وسحب للأسفل</string>
+    <string name="g_swipe_right">سحب لليمين</string>
+    <string name="g_swipe_left">سحب لليسار</string>
+    <string name="g_victory">علامة النصر</string>
+    <string name="g_call">علامة الاتصال</string>
+    <string name="g_fist">قبضة</string>
+    <string name="g_rock">علامة الروك</string>
+    <string name="g_three">ثلاثة أصابع</string>
+    <string name="g_nod">إيماءة بالرأس</string>
+    <string name="g_shake">هزّ الرأس</string>
+    <string name="g_tilt_right">إمالة لليمين</string>
+    <string name="g_tilt_left">إمالة لليسار</string>
+    <string name="g_look_up">النظر للأعلى</string>
+    <string name="g_look_down">النظر للأسفل</string>
+    <string name="g_turn_right">الالتفات لليمين</string>
+    <string name="g_turn_left">الالتفات لليسار</string>
+    <string name="g_mouth_open">فتح الفم</string>
+    <string name="g_smile">ابتسامة</string>
+    <string name="g_brows_up">رفع الحاجبين</string>
+
+    <string name="a_none">لا شيء</string>
+    <string name="a_volume_up">رفع الصوت</string>
+    <string name="a_volume_down">خفض الصوت</string>
+    <string name="a_volume_mute">كتم الصوت</string>
+    <string name="a_media_play_pause">تشغيل / إيقاف</string>
+    <string name="a_media_next">المقطع التالي</string>
+    <string name="a_media_prev">المقطع السابق</string>
+    <string name="a_next">التالي (سحب لليسار)</string>
+    <string name="a_previous">السابق (سحب لليمين)</string>
+    <string name="a_scroll_up">تمرير للأعلى</string>
+    <string name="a_scroll_down">تمرير للأسفل</string>
+    <string name="a_zoom_in">تكبير</string>
+    <string name="a_zoom_out">تصغير</string>
+    <string name="a_back">رجوع</string>
+    <string name="a_home">الشاشة الرئيسية</string>
+    <string name="a_recents">التطبيقات الأخيرة</string>
+    <string name="a_notifications">الإشعارات</string>
+    <string name="a_quick_settings">الإعدادات السريعة</string>
+    <string name="a_screenshot">لقطة شاشة</string>
+    <string name="a_mic_toggle">تشغيل / كتم الميكروفون</string>
+    <string name="a_skip_ad">تخطي الإعلان</string>
+    <string name="a_tap">نقرة في منتصف الشاشة</string>
+    <string name="a_lock_screen">قفل الشاشة</string>
+    <string name="a_pause_control">إيقاف / استئناف التطبيق</string>
+</resources>

@@ -1,0 +1,65 @@
+name: Imaa
+options:
+  bundleIdPrefix: app.imaa
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: en
+  knownRegions: [en, ar]
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+targets:
+  Imaa:
+    type: application
+    platform: iOS
+    sources:
+      - path: Imaa
+    info:
+      path: Supporting/Info.plist
+      properties:
+        CFBundleDisplayName: Imaa
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ar]
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSCameraUsageDescription: Imaa looks at your hand and head gestures. The picture is processed on this device only and is never saved or sent.
+        NSLocalNetworkUsageDescription: Imaa can send gesture names (never video) to the Imaa app on your own computer.
+        CFBundleURLTypes:
+          - CFBundleURLName: app.imaa.pair
+            CFBundleURLSchemes: [imaa]
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        UIApplicationSupportsIndirectInputEvents: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.imaa.ios
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+  ImaaTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ImaaTests
+    dependencies:
+      - target: Imaa
+schemes:
+  Imaa:
+    build:
+      targets:
+        Imaa: all
+        ImaaTests: [test]
+    test:
+      targets: [ImaaTests]

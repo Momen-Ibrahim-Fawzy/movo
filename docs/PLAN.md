@@ -17,7 +17,7 @@ Research notes that informed it are in [RESEARCH.md](RESEARCH.md); the technical
 | G1 | Control common tasks hands-free: volume, media, slides, scrolling, zoom, tabs, screenshot, microphone, ad skipping | Every action reachable from a default gesture |
 | G2 | Head gestures as a first-class input, so people who cannot use their hands are included | Every action can be bound to a head gesture |
 | G3 | Privacy by construction | Frames live only in memory; no network code touches frames; no telemetry |
-| G4 | Runs on modest hardware | < 15 % of one CPU core on a 2018 dual-core laptop in *Eco* mode; idle mode when nobody is in view |
+| G4 | Runs on modest hardware | ≈10–20 ms of CPU per processed frame (measured); 5 fps idle mode when nobody is in view; Eco mode at 12 fps |
 | G5 | Friendly for everyone | Arabic + English (full RTL), light/dark/system themes, onboarding, live practice mode |
 | G6 | Everywhere | Windows, macOS, Linux desktop; Android phone/tablet/ChromeOS; iOS/iPadOS |
 
@@ -141,6 +141,8 @@ second and re-captured with one click ("Recalibrate"), so posture, camera height
 - Hand + head enabled together → models alternate frames instead of both running every frame.
 - Preview frames are only drawn when the window is visible (≤ 15 fps, downscaled).
 - Models are bundled (12 MB total) — the app never downloads anything at run time.
+- Measured on the development laptop: hand model 10–20 ms/frame, face detector ≈3 ms, face landmarker ≈4 ms;
+  Windows package 276 MB unpacked after trimming (was 378 MB).
 
 ## 6. Privacy & platform constraints
 
@@ -172,7 +174,7 @@ for people with disabilities and schools, and B2B site licences for clinics, lab
 | 5 | Unit tests (classifiers, dispatcher, config, translations) + UI smoke tests | ✅ |
 | 6 | Packaging workflows: Windows, macOS, Linux | ✅ |
 | 7 | Android app | ✅ |
-| 8 | iOS app | ✅ |
+| 8 | iOS app | ✅ code complete — compiles in CI (macOS runner) |
 | 9 | User guides EN/AR, privacy policy, release | ✅ |
 
 ## 9. Risks & mitigations
