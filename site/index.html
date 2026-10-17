@@ -208,8 +208,8 @@
     .ver { text-align: center; color: var(--muted); margin-top: 22px; font-size: 14px; }
 
     .dev { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; }
-    .avatar { width: 104px; height: 104px; border-radius: 28px; background: linear-gradient(135deg, #1a73e8, #0b57d0); color: #fff;
-      display: grid; place-items: center; font-size: 36px; font-weight: 800; box-shadow: var(--shadow); }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; display: block; background: var(--surface-alt);
+      box-shadow: var(--shadow); border: 4px solid var(--surface); outline: 2px solid var(--accent); }
     .dev h3 { margin: 0; font-size: 26px; letter-spacing: -0.01em; }
     .dev .role { color: var(--muted); margin: 4px 0 16px; }
     .links { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -443,7 +443,7 @@
         <h2 class="title reveal" data-i18n="dv_t">Built with care</h2>
         <p class="subtitle reveal" data-i18n="dv_s">Questions, ideas, partnerships or accessibility projects — I'd love to hear from you.</p>
         <div class="card dev reveal">
-          <div class="avatar" aria-hidden="true">MF</div>
+          <img class="avatar" src="assets/developer.jpg" alt="Momen Ibrahim Fawzy Hassan" width="104" height="104" loading="lazy" />
           <div>
             <h3 data-i18n="dv_name">Momen Ibrahim Fawzy Hassan</h3>
             <p class="role" data-i18n="dv_role">Creator of Movo</p>

@@ -26,7 +26,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site/assets/screenshots
-          cp site/index.html _site/
+          cp -R site/. _site/
           cp branding/logo.svg branding/logo-256.png branding/logo-512.png _site/assets/
           cp docs/screenshots/*.png _site/assets/screenshots/
           touch _site/.nojekyll
